@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://ryxskbh0j8q2"]
+
+[node name="MainScene" type="Node2D"]
+modulate = Color(0.0509804, 0.0509804, 0.0509804, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 479.0
+offset_top = 68.0
+offset_right = 641.0
+offset_bottom = 91.0
+text = "Whispers - Prototype"
+uppercase = true
