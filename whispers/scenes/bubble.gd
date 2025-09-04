@@ -22,13 +22,12 @@ func _ready():
 		animation = animation_name   # garante que estamos na animação correta
 		var total_frames = sprite_frames.get_frame_count(animation_name)
 		if total_frames > 0:
-			print(total_frames)
 			frame = randi() % total_frames  # escolhe um frame alaeatório
 	
 	var viewport_size = get_viewport_rect().size * 2
 	
 	# Spawn Y logo abaixo da visão da câmera
-	global_position.y = camera.global_position.y + viewport_size.y / 2 + randf_range(10, 40)
+	global_position.y = camera.global_position.y + viewport_size.y + randf_range(10, 40)
 	
 	# Define X inicial aleatório dentro da visão da câmera
 	var left = camera.global_position.x - viewport_size.x
@@ -38,6 +37,14 @@ func _ready():
 	base_x = global_position.x   # salva posição inicial no eixo X
 	scale = Vector2.ONE * randf_range(0.5, 1.5)
 	modulate.a = randf_range(0.6, 1.0)
+	
+	# Luz da bolha
+	var light = $PointLight2D
+	if light:
+		# intensidade aleatória para cada bolha
+		light.energy = 0.5
+		# escala proporcional ao tamanho da bolha
+		light.scale = Vector2.ONE * scale.x * 10
 
 func _process(delta):
 	time_passed += delta
@@ -45,8 +52,12 @@ func _process(delta):
 	# sobe no Y
 	global_position.y -= speed * delta
 	
-	# oscila no X
-	global_position.x = base_x + sin(time_passed * frequency) * amplitude
+	# Movimento lateral mais orgânico (duas senoides combinadas)
+	global_position.x = base_x + sin(time_passed * frequency) * amplitude \
+							   + sin(time_passed * frequency * 0.5) * (amplitude * 0.5)
+							
+	# Pequena rotação aleatória
+	rotation = sin(time_passed * frequency * 1.2) * 0.1
 
 	# Remove bolha ao passar da parte de cima da tela
 	var camera = get_tree().get_root().get_node("MainScene/Camera2D")

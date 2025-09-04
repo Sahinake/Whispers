@@ -51,4 +51,4 @@ func _update_animation(input_vector: Vector2):
 func _input(event):
 	if event.is_action_pressed("toggle_lantern"):  # tecla T
 		lantern_on = !lantern_on
-		$PointLight2D.visible = lantern_on
+		$PointLight2D.enabled = lantern_on
