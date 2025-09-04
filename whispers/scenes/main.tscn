@@ -1,7 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://ryxskbh0j8q2"]
+[gd_scene load_steps=9 format=3 uid="uid://ryxskbh0j8q2"]
 
 [ext_resource type="PackedScene" uid="uid://b6u2c7130mn3l" path="res://scenes/player/player.tscn" id="1_elqb8"]
 [ext_resource type="PackedScene" uid="uid://dx6kq64qhkiu8" path="res://scenes/levels/LevelOne.tscn" id="1_rvslj"]
+[ext_resource type="Texture2D" uid="uid://bdg40fy77b8g2" path="res://icon.svg" id="3_0bbpv"]
+[ext_resource type="Shader" uid="uid://cwuirfvs10jof" path="res://scenes/scripts/shaders/WaterShader.gdshader" id="3_rarhs"]
+[ext_resource type="PackedScene" uid="uid://cqe2af6sbeprw" path="res://scenes/bubbles.tscn" id="5_vcsgt"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_rarhs"]
+frequency = 0.0034
+fractal_type = 2
+fractal_gain = 0.98
+fractal_weighted_strength = 0.57
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vcsgt"]
+seamless = true
+seamless_blend_skirt = 0.6
+noise = SubResource("FastNoiseLite_rarhs")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vcsgt"]
+shader = ExtResource("3_rarhs")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/fast_noise = SubResource("NoiseTexture2D_vcsgt")
+shader_parameter/speed = Vector2(0.03, 0.07)
+shader_parameter/wave_strength = 2.0
 
 [node name="MainScene" type="Node2D"]
 
@@ -19,3 +40,12 @@ position = Vector2(366, 370)
 zoom = Vector2(0.5, 0.5)
 limit_left = 0
 limit_top = 0
+
+[node name="Bubbles" parent="." instance=ExtResource("5_vcsgt")]
+position = Vector2(363, 374)
+
+[node name="WaterShade" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_vcsgt")
+position = Vector2(576, 455.5)
+scale = Vector2(8.9375, 7.10156)
+texture = ExtResource("3_0bbpv")
