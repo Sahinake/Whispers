@@ -276,6 +276,7 @@ size = Vector2(24.0496, 936.52)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_gmlin")
+speed = null
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5q8fn")
