@@ -1,9 +1,8 @@
-[gd_scene load_steps=39 format=3 uid="uid://b6u2c7130mn3l"]
+[gd_scene load_steps=38 format=3 uid="uid://b6u2c7130mn3l"]
 
 [ext_resource type="Script" uid="uid://dbclh5ij2q4tj" path="res://scenes/scripts/player.gd" id="1_gmlin"]
 [ext_resource type="Texture2D" uid="uid://k3bkkeuytk4p" path="res://assets/player/Char_001_Idle.png" id="2_lvxji"]
 [ext_resource type="Texture2D" uid="uid://dmdygr4comb5e" path="res://assets/player/Char_001.png" id="3_p47bc"]
-[ext_resource type="Texture2D" uid="uid://bbp7hh4ax1aem" path="res://assets/tiles/flashlight_texture.png" id="4_lvxji"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gmlin"]
 atlas = ExtResource("2_lvxji")
@@ -273,10 +272,11 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wva7c"]
-size = Vector2(24.0496, 468.26)
+size = Vector2(24.0496, 936.52)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_gmlin")
+speed = null
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5q8fn")
@@ -284,15 +284,12 @@ animation = &"idle_down"
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.91648e-05, 25.5)
+position = Vector2(2.38419e-06, 17)
 rotation = -3.14159
 scale = Vector2(1.58007, 0.0363046)
 shape = SubResource("RectangleShape2D_wva7c")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(0, 23)
-scale = Vector2(2.71558, 2.7541)
-shadow_enabled = true
-texture = ExtResource("4_lvxji")
-offset = Vector2(133.12, 0)
-texture_scale = 1.2
+color = Color(1, 1, 0.376471, 1)
+energy = 2.0
+texture_scale = 3.6
