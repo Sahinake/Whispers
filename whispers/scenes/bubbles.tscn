@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://be3befjd56utq" path="res://scenes/bubble.tscn" id="2_gt360"]
 
 [node name="Bubbles" type="Node2D"]
+light_mask = 8
+visibility_layer = 8
 script = ExtResource("2_0gcng")
 bubble_scene = ExtResource("2_gt360")
 
