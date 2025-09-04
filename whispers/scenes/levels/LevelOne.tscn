@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=4 uid="uid://dx6kq64qhkiu8"]
+[gd_scene load_steps=3 format=4 uid="uid://dx6kq64qhkiu8"]
 
 [ext_resource type="TileSet" uid="uid://dukwad64niofq" path="res://assets/tiles/walls_floor.tres" id="1_a2vuh"]
+[ext_resource type="PackedScene" uid="uid://cqe2af6sbeprw" path="res://scenes/bubbles.tscn" id="2_bmctr"]
 
 [node name="LevelOne" type="Node2D"]
 
@@ -27,3 +28,10 @@ tile_set = ExtResource("1_a2vuh")
 use_parent_material = true
 tile_map_data = PackedByteArray("AAAKAAkACQABAAgAAAALAAkACQABAAgAAAAMAAkACQABAAgAAAANAAkACQABAAgAAAAOAAkACQABAAgAAAATAAkACQABAAgAAAAKAAgACQABAAYAAAALAAgACQABAAYAAAAMAAgACQABAAYAAAANAAgACQABAAYAAAAOAAgACQABAAYAAAATAAgACQABAAYAAAAWAAcACQACAAYAAAAUAAgACQACAAYAAAAVAAcACQABAAYAAAAUAAcACQAHAAMAAAAVAAgACQABAAgAAAAUAAkACQACAAgAAAAWAAgACQACAAgAAAAJAAkACQACAAUAAAAJAAoACQACAAUAAAAJAAsACQACAAUAAAAJAAwACQACAAUAAAAJAAgACQAHAAMAAAASAAkACQAAAAgAAAAPAAkACQACAAgAAAASAAgACQAAAAYAAAAPAAgACQACAAYAAAASAAcACQAGAAMAAAAPAAcACQAHAAMAAAA=")
 tile_set = ExtResource("1_a2vuh")
+
+[node name="AmbientLight" type="DirectionalLight2D" parent="."]
+energy = 0.8
+blend_mode = 1
+
+[node name="Bubbles" parent="." instance=ExtResource("2_bmctr")]
+position = Vector2(363, 374)
