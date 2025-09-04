@@ -5,15 +5,17 @@
 
 [node name="MainScene" type="Node2D"]
 
-[node name="Label" type="Label" parent="."]
-offset_left = 479.0
-offset_top = 68.0
-offset_right = 641.0
-offset_bottom = 91.0
-text = "Whispers - Prototype"
-uppercase = true
-
 [node name="LevelOne" parent="." instance=ExtResource("1_rvslj")]
+position = Vector2(-49, 194)
 
 [node name="Player" parent="." instance=ExtResource("1_elqb8")]
-position = Vector2(141, 89)
+position = Vector2(366, 370)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+remote_path = NodePath("../../Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(366, 370)
+zoom = Vector2(0.5, 0.5)
+limit_left = 0
+limit_top = 0

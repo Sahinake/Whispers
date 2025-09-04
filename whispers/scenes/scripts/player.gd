@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed: float = 120.0
+@export var speed: float = 250.0
 var sprite: AnimatedSprite2D
 
 func _ready():

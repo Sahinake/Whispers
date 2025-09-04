@@ -15,6 +15,12 @@ run/main_scene="uid://ryxskbh0j8q2"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[display]
+
+window/stretch/scale=2.0
+window/snap/snap_2d_vertices_to_pixel=false
+window/snap/snap_2d_transforms_to_pixel=false
+
 [input]
 
 ui_left={
@@ -60,3 +66,6 @@ ui_down={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+2d/vsync/vsync_mode=0
+2d/size/viewport_height=480
+2d/size/viewport_width=640
