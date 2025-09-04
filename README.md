@@ -90,7 +90,9 @@ Whispers /
 Exemplo:
 ```bash
 # Criando uma nova branch
-git checkout main 
+git checkout develop
+git fetch
+git pull
 git branch develop/descrição-da-implementação
 git checkout develop/descrição-da-implementação
 
@@ -117,4 +119,5 @@ git clone https://github.com/Sahinake/Whispers.git
  - Implementar coleta das runas
  - Adicionar monstros e comportamentos
  - Implementar sonar e armas
+
  - Polimento e ambientação
