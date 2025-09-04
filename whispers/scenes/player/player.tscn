@@ -273,7 +273,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wva7c"]
-size = Vector2(24.0496, 468.26)
+size = Vector2(24.0496, 550.894)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_gmlin")
@@ -284,7 +284,7 @@ animation = &"idle_down"
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.91648e-05, 25.5)
+position = Vector2(-2.29676e-05, 27)
 rotation = -3.14159
 scale = Vector2(1.58007, 0.0363046)
 shape = SubResource("RectangleShape2D_wva7c")
@@ -294,6 +294,8 @@ position = Vector2(0, 23)
 scale = Vector2(2.71558, 2.7541)
 color = Color(0.321569, 1, 0.658824, 0.65098)
 shadow_enabled = true
+shadow_filter = 2
+shadow_filter_smooth = 0.3
 texture = ExtResource("4_lvxji")
 offset = Vector2(133.12, 0)
 texture_scale = 1.2
