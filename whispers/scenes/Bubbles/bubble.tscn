@@ -1,78 +1,78 @@
 [gd_scene load_steps=24 format=3 uid="uid://be3befjd56utq"]
 
-[ext_resource type="Texture2D" uid="uid://bddelotvp4pc" path="res://assets/tiles/char_bubbles.png" id="1_pm753"]
-[ext_resource type="Script" uid="uid://c2vwh7umi5cpg" path="res://scenes/scripts/bubble.gd" id="2_b4vvx"]
+[ext_resource type="Texture2D" uid="uid://bddelotvp4pc" path="res://Assets/Tiles/Bubbles_TileSheet.png" id="1_nyqok"]
+[ext_resource type="Script" uid="uid://c2vwh7umi5cpg" path="res://Scenes/Scripts/bubble.gd" id="2_jfwrf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fs0b5"]
-atlas = ExtResource("1_pm753")
+atlas = ExtResource("1_nyqok")
 region = Rect2(480, 48, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2c4at"]
-atlas = ExtResource("1_pm753")
+atlas = ExtResource("1_nyqok")
 region = Rect2(240, 96, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cobve"]
-atlas = ExtResource("1_pm753")
+atlas = ExtResource("1_nyqok")
 region = Rect2(432, 96, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8cp6k"]
-atlas = ExtResource("1_pm753")
+atlas = ExtResource("1_nyqok")
 region = Rect2(528, 96, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8gny2"]
-atlas = ExtResource("1_pm753")
+atlas = ExtResource("1_nyqok")
 region = Rect2(240, 144, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oa6sj"]
-atlas = ExtResource("1_pm753")
+atlas = ExtResource("1_nyqok")
 region = Rect2(384, 144, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ki8c"]
-atlas = ExtResource("1_pm753")
+atlas = ExtResource("1_nyqok")
 region = Rect2(288, 192, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0owt5"]
-atlas = ExtResource("1_pm753")
+atlas = ExtResource("1_nyqok")
 region = Rect2(336, 192, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o1tg2"]
-atlas = ExtResource("1_pm753")
+atlas = ExtResource("1_nyqok")
 region = Rect2(384, 192, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e2bht"]
-atlas = ExtResource("1_pm753")
+atlas = ExtResource("1_nyqok")
 region = Rect2(0, 240, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a3hxr"]
-atlas = ExtResource("1_pm753")
+atlas = ExtResource("1_nyqok")
 region = Rect2(48, 240, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gcaob"]
-atlas = ExtResource("1_pm753")
+atlas = ExtResource("1_nyqok")
 region = Rect2(96, 240, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ylqph"]
-atlas = ExtResource("1_pm753")
+atlas = ExtResource("1_nyqok")
 region = Rect2(288, 240, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fcv70"]
-atlas = ExtResource("1_pm753")
+atlas = ExtResource("1_nyqok")
 region = Rect2(336, 240, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mou0d"]
-atlas = ExtResource("1_pm753")
+atlas = ExtResource("1_nyqok")
 region = Rect2(384, 240, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gia1l"]
-atlas = ExtResource("1_pm753")
+atlas = ExtResource("1_nyqok")
 region = Rect2(48, 288, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aw8hi"]
-atlas = ExtResource("1_pm753")
+atlas = ExtResource("1_nyqok")
 region = Rect2(96, 288, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_le2d2"]
-atlas = ExtResource("1_pm753")
+atlas = ExtResource("1_nyqok")
 region = Rect2(384, 288, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_05jx6"]
@@ -150,13 +150,13 @@ fill_to = Vector2(0.901235, 0.114198)
 [node name="Bubble" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_05jx6")
 animation = &"bubbles"
-script = ExtResource("2_b4vvx")
+script = ExtResource("2_jfwrf")
 frequency = 4.0
 metadata/_edit_lock_ = true
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 scale = Vector2(4.125, 4.125)
-color = Color(0.548222, 0.669436, 1, 0.490196)
+color = Color(0.54902, 0.980392, 1, 0.490196)
 shadow_filter = 2
 shadow_filter_smooth = 0.3
 texture = SubResource("GradientTexture2D_b4vvx")

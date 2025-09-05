@@ -12,22 +12,22 @@ var time_passed := 0.0
 
 func _ready():
 	# Pega a câmera principal da cena
-	var camera = get_tree().get_root().get_node("MainScene/Camera2D")
+	var camera = get_tree().get_root().get_node("CTScene/Camera2D")
 	
 	if camera == null:
 		push_error("Nenhuma câmera encontrada!")
 		return
 		
 	if sprite_frames and sprite_frames.has_animation(animation_name):
-		animation = animation_name   # garante que estamos na animação correta
+		animation = animation_name
 		var total_frames = sprite_frames.get_frame_count(animation_name)
 		if total_frames > 0:
 			frame = randi() % total_frames  # escolhe um frame alaeatório
 	
-	var viewport_size = get_viewport_rect().size * 2
+	var viewport_size = get_viewport_rect().size
 	
 	# Spawn Y logo abaixo da visão da câmera
-	global_position.y = camera.global_position.y + viewport_size.y + randf_range(10, 40)
+	global_position.y = (camera.global_position.y)/2 + viewport_size.y + randf_range(10, 40)
 	
 	# Define X inicial aleatório dentro da visão da câmera
 	var left = camera.global_position.x - viewport_size.x
@@ -60,7 +60,7 @@ func _process(delta):
 	rotation = sin(time_passed * frequency * 1.2) * 0.1
 
 	# Remove bolha ao passar da parte de cima da tela
-	var camera = get_tree().get_root().get_node("MainScene/Camera2D")
+	var camera = get_tree().get_root().get_node("CT_Scene/Camera2D")
 	
 	# remove bolha quando passar do topo do mapa
 	if global_position.y < map_top:

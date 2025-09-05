@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://ryxskbh0j8q2"]
+[gd_scene load_steps=12 format=3 uid="uid://ryxskbh0j8q2"]
 
-[ext_resource type="PackedScene" uid="uid://b6u2c7130mn3l" path="res://scenes/player/player.tscn" id="1_elqb8"]
-[ext_resource type="PackedScene" uid="uid://dx6kq64qhkiu8" path="res://scenes/levels/LevelOne.tscn" id="1_rvslj"]
-[ext_resource type="Texture2D" uid="uid://bdg40fy77b8g2" path="res://icon.svg" id="3_0bbpv"]
-[ext_resource type="Shader" uid="uid://cwuirfvs10jof" path="res://scenes/scripts/shaders/WaterShader.gdshader" id="3_rarhs"]
-[ext_resource type="PackedScene" uid="uid://cqe2af6sbeprw" path="res://scenes/bubbles.tscn" id="5_vcsgt"]
+[ext_resource type="Script" uid="uid://clp8g286y4bdq" path="res://Scenes/Scripts/initial_menu.gd" id="1_8gbba"]
+[ext_resource type="Texture2D" uid="uid://b7tmfwctu31fw" path="res://Assets/Menu/Background.png" id="2_jjvhh"]
+[ext_resource type="FontFile" uid="uid://i52ggsec0scu" path="res://Assets/Fonts/PixelSerif_16px_v02.ttf" id="3_8gbba"]
+[ext_resource type="Shader" uid="uid://cwuirfvs10jof" path="res://Scenes/Scripts/shaders/WaterShader.gdshader" id="3_21xkr"]
+[ext_resource type="Texture2D" uid="uid://dag57tsbr0d3u" path="res://Assets/Menu/Title.png" id="3_jjvhh"]
+[ext_resource type="Texture2D" uid="uid://bdg40fy77b8g2" path="res://icon.svg" id="4_6bp64"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_rarhs"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_344ge"]
 frequency = 0.0034
 fractal_type = 2
 fractal_gain = 0.98
@@ -15,51 +16,90 @@ fractal_weighted_strength = 0.57
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vcsgt"]
 seamless = true
 seamless_blend_skirt = 0.6
-noise = SubResource("FastNoiseLite_rarhs")
+noise = SubResource("FastNoiseLite_344ge")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vcsgt"]
-shader = ExtResource("3_rarhs")
-shader_parameter/color = Color(0.950119, 0.950119, 0.950119, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ynf5e"]
+shader = ExtResource("3_21xkr")
+shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/fast_noise = SubResource("NoiseTexture2D_vcsgt")
 shader_parameter/speed = Vector2(0.03, 0.07)
 shader_parameter/wave_strength = 2.0
 
-[node name="MainScene" type="Node2D"]
+[sub_resource type="Theme" id="Theme_jjvhh"]
+default_font = ExtResource("3_8gbba")
+default_font_size = 16
 
-[node name="Layer 0" type="CanvasLayer" parent="."]
-layer = 0
-follow_viewport_enabled = true
+[sub_resource type="Theme" id="Theme_kry3j"]
 
-[node name="LevelOne" parent="Layer 0" instance=ExtResource("1_rvslj")]
-position = Vector2(-46, 192)
+[node name="InitialMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8gbba")
 
-[node name="Player" parent="Layer 0" instance=ExtResource("1_elqb8")]
-position = Vector2(366, 370)
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Layer 0/Player"]
-remote_path = NodePath("../../../Camera2D")
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(0.601359, 0.601359)
+texture = ExtResource("2_jjvhh")
+expand_mode = 1
 
-[node name="Bubbles" parent="Layer 0" instance=ExtResource("5_vcsgt")]
-light_mask = 1
-visibility_layer = 1
-position = Vector2(363, 374)
+[node name="CanvasModulate" type="CanvasModulate" parent="CanvasLayer"]
+color = Color(0.628315, 0.628315, 0.628315, 1)
 
-[node name="Layer 1" type="CanvasLayer" parent="."]
-follow_viewport_enabled = true
-
-[node name="Layer 3" type="CanvasLayer" parent="."]
-layer = 2
-follow_viewport_enabled = true
-
-[node name="WaterShade" type="Sprite2D" parent="Layer 3"]
+[node name="WaterShade" type="Sprite2D" parent="CanvasLayer"]
 top_level = true
-material = SubResource("ShaderMaterial_vcsgt")
-position = Vector2(576, 455.5)
-scale = Vector2(8.9375, 7.10156)
-texture = ExtResource("3_0bbpv")
+material = SubResource("ShaderMaterial_ynf5e")
+position = Vector2(579.5, 455.5)
+scale = Vector2(8.99219, 7.10156)
+texture = ExtResource("4_6bp64")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(366, 370)
-zoom = Vector2(0.58, 0.58)
-limit_left = 0
-limit_top = 0
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 293.0
+offset_right = 1829.0
+offset_bottom = 1024.0
+scale = Vector2(0.394056, 0.394056)
+texture = ExtResource("3_jjvhh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = 404.0
+offset_right = 41.9999
+offset_bottom = -117.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.7, 1.7)
+alignment = 1
+
+[node name="NewGameButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_jjvhh")
+text = "New Game"
+
+[node name="LoadGameButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Load Game"
+
+[node name="Settings" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_kry3j")
+text = "Settings"
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
+[node name="MenuSound" type="AudioStreamPlayer2D" parent="."]

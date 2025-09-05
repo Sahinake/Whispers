@@ -1,9 +1,9 @@
 [gd_scene load_steps=39 format=3 uid="uid://b6u2c7130mn3l"]
 
-[ext_resource type="Script" uid="uid://dbclh5ij2q4tj" path="res://scenes/scripts/player.gd" id="1_gmlin"]
-[ext_resource type="Texture2D" uid="uid://k3bkkeuytk4p" path="res://assets/player/Char_001_Idle.png" id="2_lvxji"]
-[ext_resource type="Texture2D" uid="uid://dmdygr4comb5e" path="res://assets/player/Char_001.png" id="3_p47bc"]
-[ext_resource type="Texture2D" uid="uid://bbp7hh4ax1aem" path="res://assets/tiles/flashlight_texture.png" id="4_lvxji"]
+[ext_resource type="Script" uid="uid://dbclh5ij2q4tj" path="res://Scenes/Scripts/player.gd" id="1_gmlin"]
+[ext_resource type="Texture2D" uid="uid://k3bkkeuytk4p" path="res://Assets/Player/Char_001_Idle.png" id="2_lvxji"]
+[ext_resource type="Texture2D" uid="uid://dmdygr4comb5e" path="res://Assets/Player/Char_001.png" id="3_p47bc"]
+[ext_resource type="Texture2D" uid="uid://bbp7hh4ax1aem" path="res://Assets/Tiles/Flashlight_Texture.png" id="4_lvxji"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gmlin"]
 atlas = ExtResource("2_lvxji")
@@ -297,5 +297,4 @@ shadow_enabled = true
 shadow_filter = 2
 shadow_filter_smooth = 0.3
 texture = ExtResource("4_lvxji")
-offset = Vector2(133.12, 0)
-texture_scale = 1.2
+offset = Vector2(110.95, 0)

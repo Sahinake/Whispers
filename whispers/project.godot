@@ -17,9 +17,12 @@ config/icon="res://icon.svg"
 
 [display]
 
-window/stretch/scale=2.0
 window/snap/snap_2d_vertices_to_pixel=false
 window/snap/snap_2d_transforms_to_pixel=false
+
+[gui]
+
+theme/custom_font="uid://i52ggsec0scu"
 
 [input]
 
