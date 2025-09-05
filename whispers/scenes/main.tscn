@@ -57,8 +57,8 @@ color = Color(0.628315, 0.628315, 0.628315, 1)
 [node name="WaterShade" type="Sprite2D" parent="CanvasLayer"]
 top_level = true
 material = SubResource("ShaderMaterial_ynf5e")
-position = Vector2(579.5, 455.5)
-scale = Vector2(8.99219, 7.10156)
+position = Vector2(577.75, 328.5)
+scale = Vector2(9.01953, 5.13281)
 texture = ExtResource("4_6bp64")
 
 [node name="TextureRect" type="TextureRect" parent="."]

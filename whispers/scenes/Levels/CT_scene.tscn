@@ -31,7 +31,7 @@ layer = 0
 follow_viewport_enabled = true
 
 [node name="CTMap" parent="Layer1" instance=ExtResource("1_ugtr7")]
-position = Vector2(-46, 192)
+position = Vector2(-48, 192)
 
 [node name="Player" parent="Layer1" instance=ExtResource("2_qu154")]
 position = Vector2(366, 370)
@@ -52,8 +52,8 @@ follow_viewport_enabled = true
 [node name="WaterShade" type="Sprite2D" parent="Layer3"]
 top_level = true
 material = SubResource("ShaderMaterial_vcsgt")
-position = Vector2(576, 455.5)
-scale = Vector2(8.9375, 7.10156)
+position = Vector2(579, 472.25)
+scale = Vector2(9.04688, 7.37109)
 texture = ExtResource("5_hl38i")
 
 [node name="Camera2D" type="Camera2D" parent="."]
