@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5ruu526orclv"
-path="res://.godot/imported/tf_B_atlantisA.png-1cad15cc38eddb280b1563eb762a15ed.ctex"
+uid="uid://bkh0yasx3jlqg"
+path="res://.godot/imported/Animated_algae_02.png-922b5b8f05df418e64244f6a3ec6e232.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tiles/tf_B_atlantisA.png"
-dest_files=["res://.godot/imported/tf_B_atlantisA.png-1cad15cc38eddb280b1563eb762a15ed.ctex"]
+source_file="res://Assets/Tiles/Algaes/Animated_algae_02.png"
+dest_files=["res://.godot/imported/Animated_algae_02.png-922b5b8f05df418e64244f6a3ec6e232.ctex"]
 
 [params]
 

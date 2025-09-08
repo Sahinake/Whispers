@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgqbelws01awd"
-path="res://.godot/imported/Alga_luz.png-3fea59cb7449ae3d7ce5ff57c66c01fc.ctex"
+uid="uid://pfi64ugspnu2"
+path="res://.godot/imported/Crab.png-3b1083e6f76b15f73e98cd6aba3dda38.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tiles/Alga_luz.png"
-dest_files=["res://.godot/imported/Alga_luz.png-3fea59cb7449ae3d7ce5ff57c66c01fc.ctex"]
+source_file="res://Assets/Tiles/Animals/Crab.png"
+dest_files=["res://.godot/imported/Crab.png-3b1083e6f76b15f73e98cd6aba3dda38.ctex"]
 
 [params]
 

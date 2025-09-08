@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://c0rk7ubtyg3so"]
 
-[ext_resource type="Script" uid="uid://yq5erkl1k4lx" path="res://scenes/scripts/peixe.gd" id="1_v7d5g"]
-[ext_resource type="Texture2D" uid="uid://npfyl67weu0u" path="res://assets/tiles/peixe_virando_01.png" id="3_iyxa5"]
+[ext_resource type="Script" path="res://scenes/scripts/peixe.gd" id="1_v7d5g"]
+[ext_resource type="Texture2D" uid="uid://b4y1r3vup2wp" path="res://Assets/Tiles/Animals/Turning_fish_03.png" id="3_iyxa5"]
 
 [sub_resource type="Animation" id="Animation_iyxa5"]
 length = 0.001
@@ -216,22 +216,22 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_n34id"]
 radius = 5.0
 
-[node name="Node2D" type="Node2D"]
+[node name="FishScene" type="Node2D"]
 
-[node name="peixe" type="CharacterBody2D" parent="."]
+[node name="Fish" type="CharacterBody2D" parent="."]
 script = ExtResource("1_v7d5g")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="peixe"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Fish"]
 libraries = {
 &"": SubResource("AnimationLibrary_f5qig")
 }
 autoplay = "peixe_nadando_dir"
 speed_scale = 0.5
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="peixe"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fish"]
 shape = SubResource("CircleShape2D_n34id")
 
-[node name="Sprite2D" type="Sprite2D" parent="peixe"]
+[node name="Sprite2D" type="Sprite2D" parent="Fish"]
 texture = ExtResource("3_iyxa5")
 hframes = 5
 vframes = 2

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://npfyl67weu0u"
-path="res://.godot/imported/peixe_virando_01.png-ee85a1f9a60b4dfbf3c69b3a69ab7915.ctex"
+uid="uid://b4y1r3vup2wp"
+path="res://.godot/imported/Turning_fish_03.png-2ff66b3b679e7f0e8d5ece05cb508a28.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tiles/peixe_virando_01.png"
-dest_files=["res://.godot/imported/peixe_virando_01.png-ee85a1f9a60b4dfbf3c69b3a69ab7915.ctex"]
+source_file="res://Assets/Tiles/Animals/Turning_fish_03.png"
+dest_files=["res://.godot/imported/Turning_fish_03.png-2ff66b3b679e7f0e8d5ece05cb508a28.ctex"]
 
 [params]
 

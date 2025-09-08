@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://drow6xyndjjxu"]
 
-[ext_resource type="Texture2D" uid="uid://ctrm44qgyf1nd" path="res://assets/tiles/caranguejo.png" id="1_earsb"]
+[ext_resource type="Texture2D" uid="uid://pfi64ugspnu2" path="res://Assets/Tiles/Animals/Crab.png" id="1_earsb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m2psh"]
 atlas = ExtResource("1_earsb")
@@ -56,12 +56,13 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 2.0
+"speed": 4.0
 }]
 
-[node name="Node2D" type="Node2D"]
+[node name="CrabScene" type="Node2D"]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Crab" type="AnimatedSprite2D" parent="."]
 modulate = Color(0.531713, 0.531713, 0.531713, 1)
+scale = Vector2(1.54167, 1.54167)
 sprite_frames = SubResource("SpriteFrames_vpewt")
 autoplay = "default"

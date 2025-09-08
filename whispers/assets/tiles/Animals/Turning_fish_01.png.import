@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctrm44qgyf1nd"
-path="res://.godot/imported/caranguejo.png-82079a71ba199bfc8c1abfa2847a5a50.ctex"
+uid="uid://78sdnw1a0d8k"
+path="res://.godot/imported/Turning_fish_01.png-bbf61814c0b55505bf37631e7e4251d9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tiles/caranguejo.png"
-dest_files=["res://.godot/imported/caranguejo.png-82079a71ba199bfc8c1abfa2847a5a50.ctex"]
+source_file="res://Assets/Tiles/Animals/Turning_fish_01.png"
+dest_files=["res://.godot/imported/Turning_fish_01.png-bbf61814c0b55505bf37631e7e4251d9.ctex"]
 
 [params]
 

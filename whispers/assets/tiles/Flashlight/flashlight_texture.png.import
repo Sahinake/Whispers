@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkh0yasx3jlqg"
-path="res://.godot/imported/alga_anim_02.png-0d1ff9fb41ae71537ee3e10ee95f936e.ctex"
+uid="uid://dtikiwc8ucvwu"
+path="res://.godot/imported/flashlight_texture.png-23575acba6339e7ed5b67d14a03162f1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/animacao/alga_anim_02.png"
-dest_files=["res://.godot/imported/alga_anim_02.png-0d1ff9fb41ae71537ee3e10ee95f936e.ctex"]
+source_file="res://Assets/Tiles/Flashlight/flashlight_texture.png"
+dest_files=["res://.godot/imported/flashlight_texture.png-23575acba6339e7ed5b67d14a03162f1.ctex"]
 
 [params]
 

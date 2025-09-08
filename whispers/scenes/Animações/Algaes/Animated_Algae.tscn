@@ -1,29 +1,29 @@
 [gd_scene load_steps=9 format=3 uid="uid://dj5evx0a2mqmo"]
 
-[ext_resource type="Texture2D" uid="uid://clnvx8rlsjouq" path="res://assets/tiles/Alga_anim_01.png" id="1_bxxbd"]
+[ext_resource type="Texture2D" uid="uid://cws7mldbi5wng" path="res://Assets/Tiles/Algaes/Animated_algae_01.png" id="1_a6tjd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h3vpm"]
-atlas = ExtResource("1_bxxbd")
+atlas = ExtResource("1_a6tjd")
 region = Rect2(0, 0, 48, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r1vsx"]
-atlas = ExtResource("1_bxxbd")
+atlas = ExtResource("1_a6tjd")
 region = Rect2(48, 0, 48, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_40363"]
-atlas = ExtResource("1_bxxbd")
+atlas = ExtResource("1_a6tjd")
 region = Rect2(96, 0, 48, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q7k6t"]
-atlas = ExtResource("1_bxxbd")
+atlas = ExtResource("1_a6tjd")
 region = Rect2(144, 0, 48, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xw7sy"]
-atlas = ExtResource("1_bxxbd")
+atlas = ExtResource("1_a6tjd")
 region = Rect2(96, 0, 48, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4spn5"]
-atlas = ExtResource("1_bxxbd")
+atlas = ExtResource("1_a6tjd")
 region = Rect2(48, 0, 48, 96)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_004dc"]
@@ -52,7 +52,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="alga animada" type="Node2D"]
+[node name="AnimatedAlgae" type="Node2D"]
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(636, 543)

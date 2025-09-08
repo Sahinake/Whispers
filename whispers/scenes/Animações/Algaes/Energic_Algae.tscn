@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dhse2g6bs8dok"]
 
-[ext_resource type="Texture2D" uid="uid://bgqbelws01awd" path="res://assets/tiles/Alga_luz.png" id="1_7vw2a"]
-[ext_resource type="Texture2D" uid="uid://bp00idohjrobd" path="res://assets/tiles/light.jpg" id="2_t3332"]
+[ext_resource type="Texture2D" uid="uid://e2vn34per1oh" path="res://Assets/Tiles/Algaes/Energic_algae.png" id="1_7vw2a"]
+[ext_resource type="Texture2D" uid="uid://db3nmj1ueugd0" path="res://Assets/Tiles/Flashlight/light.jpg" id="2_t3332"]
 
 [node name="alga luz" type="Node2D"]
 

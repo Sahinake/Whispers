@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0orbgnyr17jo"
-path="res://.godot/imported/peixe_virando_011.png-4b79168db89cecb427700f275975189e.ctex"
+uid="uid://db3nmj1ueugd0"
+path="res://.godot/imported/light.jpg-45b344ec78bd389094f1678da59e2901.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tiles/peixe_virando_011.png"
-dest_files=["res://.godot/imported/peixe_virando_011.png-4b79168db89cecb427700f275975189e.ctex"]
+source_file="res://Assets/Tiles/Flashlight/light.jpg"
+dest_files=["res://.godot/imported/light.jpg-45b344ec78bd389094f1678da59e2901.ctex"]
 
 [params]
 

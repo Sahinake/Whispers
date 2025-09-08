@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bp00idohjrobd"
-path="res://.godot/imported/light.jpg-00df5ce5a9effcc4f39f897d04fd1b56.ctex"
+uid="uid://bpw7dtvwjff2"
+path="res://.godot/imported/Turning_fish_02.png-0006c2f7109fbf2cdbe7be180c0dc50c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tiles/light.jpg"
-dest_files=["res://.godot/imported/light.jpg-00df5ce5a9effcc4f39f897d04fd1b56.ctex"]
+source_file="res://Assets/Tiles/Animals/Turning_fish_02.png"
+dest_files=["res://.godot/imported/Turning_fish_02.png-0006c2f7109fbf2cdbe7be180c0dc50c.ctex"]
 
 [params]
 

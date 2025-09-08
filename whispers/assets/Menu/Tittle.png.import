@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bj02iw6djkf4p"
-path="res://.godot/imported/tf_A5_atlantisB.png-7ae9fcc8de04a00f53fc858a729b3a68.ctex"
+uid="uid://bwmtqs7l3qpyj"
+path="res://.godot/imported/Tittle.png-b6ab7a47a29a9175ec8c511a18b7a7de.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tiles/tf_A5_atlantisB.png"
-dest_files=["res://.godot/imported/tf_A5_atlantisB.png-7ae9fcc8de04a00f53fc858a729b3a68.ctex"]
+source_file="res://Assets/Menu/Tittle.png"
+dest_files=["res://.godot/imported/Tittle.png-b6ab7a47a29a9175ec8c511a18b7a7de.ctex"]
 
 [params]
 

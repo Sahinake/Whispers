@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dx6kq64qhkiu8" path="res://Scenes/Levels/CT_map.tscn" id="1_ugtr7"]
 [ext_resource type="PackedScene" uid="uid://b6u2c7130mn3l" path="res://Scenes/Player/player.tscn" id="2_qu154"]
 [ext_resource type="PackedScene" uid="uid://cqe2af6sbeprw" path="res://Scenes/Bubbles/bubbles.tscn" id="3_yu7oq"]
-[ext_resource type="Shader" uid="uid://cwuirfvs10jof" path="res://Scenes/Scripts/shaders/WaterShader.gdshader" id="4_tqncf"]
+[ext_resource type="Shader" uid="uid://cwuirfvs10jof" path="res://Scenes/Scripts/Shaders/WaterShader.gdshader" id="4_tqncf"]
 [ext_resource type="Texture2D" uid="uid://bdg40fy77b8g2" path="res://icon.svg" id="5_hl38i"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_rarhs"]
