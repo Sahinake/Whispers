@@ -38,7 +38,7 @@ func _physics_process(delta: float) -> void:
 		State.BACK:
 			if light_detect(luz):
 				current_state = State.CHASE
-			elif nav_chase.is_navigation_finished():
+			elif nav_chase.is_navigation_finished() && target_to_chase.global_position == nav_chase.target_position:
 				current_state = State.IDLE
 			dir = to_local(nav_chase.get_next_path_position()).normalized()
 			velocity = dir *speed
