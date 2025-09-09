@@ -1,8 +1,9 @@
-[gd_scene load_steps=38 format=3 uid="uid://b6u2c7130mn3l"]
+[gd_scene load_steps=39 format=3 uid="uid://b6u2c7130mn3l"]
 
-[ext_resource type="Script" uid="uid://dbclh5ij2q4tj" path="res://Scenes/Scripts/player.gd" id="1_gmlin"]
-[ext_resource type="Texture2D" uid="uid://b0ka22ntfxfjy" path="res://Assets/Player/Half.png" id="2_xpcdj"]
-[ext_resource type="Texture2D" uid="uid://bbp7hh4ax1aem" path="res://Assets/Tiles/Flashlight_Texture.png" id="4_lvxji"]
+[ext_resource type="Script" uid="uid://dbclh5ij2q4tj" path="res://scenes/scripts/player.gd" id="1_gmlin"]
+[ext_resource type="Texture2D" uid="uid://b0ka22ntfxfjy" path="res://assets/Player/Half.png" id="2_xpcdj"]
+[ext_resource type="Texture2D" uid="uid://bbp7hh4ax1aem" path="res://assets/tiles/flashlight_texture.png" id="4_lvxji"]
+[ext_resource type="Script" uid="uid://butmpgj80cji6" path="res://scenes/scripts/light.gd" id="4_p47bc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mtuoh"]
 atlas = ExtResource("2_xpcdj")
@@ -288,12 +289,23 @@ rotation = -3.14159
 scale = Vector2(1.58007, 0.0363046)
 shape = SubResource("RectangleShape2D_wva7c")
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="light" type="PointLight2D" parent="."]
 position = Vector2(0, -23.78)
 scale = Vector2(2.71558, 2.7541)
+enabled = false
 color = Color(0.321569, 1, 0.658824, 0.65098)
 shadow_enabled = true
 shadow_filter = 2
 shadow_filter_smooth = 0.3
 texture = ExtResource("4_lvxji")
 offset = Vector2(111, 0)
+script = ExtResource("4_p47bc")
+
+[node name="lightArea" type="Area2D" parent="light"]
+
+[node name="lightPolygon" type="CollisionPolygon2D" parent="light/lightArea"]
+polygon = PackedVector2Array(6.99666, -1.89536, 98.3215, -32.0322, 105.318, -20.7763, 108.264, -6.61559, 106.423, 19.5273, 99.058, 26.063)
+disabled = true
+
+[connection signal="body_entered" from="light/lightArea" to="light" method="_on_light_area_body_entered"]
+[connection signal="body_exited" from="light/lightArea" to="light" method="_on_light_area_body_exited"]

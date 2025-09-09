@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://dx6kq64qhkiu8" path="res://scenes/Levels/CT_map.tscn" id="1_ugtr7"]
 [ext_resource type="PackedScene" uid="uid://b6u2c7130mn3l" path="res://scenes/player/player.tscn" id="2_qu154"]
+[ext_resource type="PackedScene" uid="uid://cqe2af6sbeprw" path="res://scenes/Bubbles/bubbles.tscn" id="3_yu7oq"]
 [ext_resource type="PackedScene" uid="uid://ttkefanoi1bc" path="res://scenes/enemys/enemy_test.tscn" id="4_8dys5"]
-[ext_resource type="PackedScene" uid="uid://cqe2af6sbeprw" path="res://scenes/Bubbles/bubbles.tscn" id="4_fjj6x"]
 [ext_resource type="Shader" uid="uid://cwuirfvs10jof" path="res://scenes/scripts/shaders/WaterShader.gdshader" id="4_tqncf"]
 [ext_resource type="Texture2D" uid="uid://bdg40fy77b8g2" path="res://icon.svg" id="5_hl38i"]
 
@@ -45,7 +45,7 @@ position = Vector2(366, 370)
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Layer1/Player"]
 remote_path = NodePath("../../../Camera2D")
 
-[node name="Bubbles" parent="Layer1" instance=ExtResource("4_fjj6x")]
+[node name="Bubbles" parent="Layer1" instance=ExtResource("3_yu7oq")]
 
 [node name="Layer2" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true

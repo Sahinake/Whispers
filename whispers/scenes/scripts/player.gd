@@ -1,8 +1,12 @@
 extends CharacterBody2D
 
 @export var speed: float = 250.0
+@onready var light_area: Area2D = $light/lightArea
+@onready var light_polygon: CollisionPolygon2D = $light/lightArea/lightPolygon
+
+
 var sprite: AnimatedSprite2D
-var lantern_on := true
+var lantern_on := false
 
 func _ready():
 	sprite = $Sprite
@@ -22,7 +26,7 @@ func _physics_process(delta):
 	_update_animation(input_vector)
 	
 	# Faz a lanterna seguir o mouse
-	$PointLight2D.rotation = (get_global_mouse_position() - global_position).angle()
+	$light.rotation = (get_global_mouse_position() - global_position).angle()
 
 func _update_animation(input_vector: Vector2):
 	var mouse_dir = (get_global_mouse_position() - global_position).normalized()
@@ -51,4 +55,5 @@ func _update_animation(input_vector: Vector2):
 func _input(event):
 	if event.is_action_pressed("toggle_lantern"):  # tecla T
 		lantern_on = !lantern_on
-		$PointLight2D.enabled = lantern_on
+		$light.enabled = lantern_on
+		light_polygon.disabled = !lantern_on

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b5ruu526orclv"
-path="res://.godot/imported/tf_B_atlantisA.png-1cad15cc38eddb280b1563eb762a15ed.ctex"
+path="res://.godot/imported/tf_B_atlantisA.png-da9ae6b74e62708fe829eb05a03c61ce.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tiles/tf_B_atlantisA.png"
-dest_files=["res://.godot/imported/tf_B_atlantisA.png-1cad15cc38eddb280b1563eb762a15ed.ctex"]
+source_file="res://assets/tiles/tf_B_atlantisA.png"
+dest_files=["res://.godot/imported/tf_B_atlantisA.png-da9ae6b74e62708fe829eb05a03c61ce.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bbp7hh4ax1aem"
-path="res://.godot/imported/Flashlight_Texture.png-c0c68ce7077baed4ba342f3c39195f01.ctex"
+path="res://.godot/imported/flashlight_texture.png-81b12fe6d471e45541223013eeb14a04.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tiles/Flashlight_Texture.png"
-dest_files=["res://.godot/imported/Flashlight_Texture.png-c0c68ce7077baed4ba342f3c39195f01.ctex"]
+source_file="res://assets/tiles/flashlight_texture.png"
+dest_files=["res://.godot/imported/flashlight_texture.png-81b12fe6d471e45541223013eeb14a04.ctex"]
 
 [params]
 

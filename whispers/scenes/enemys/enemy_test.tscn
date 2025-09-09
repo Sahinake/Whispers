@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://ttkefanoi1bc"]
+
+[ext_resource type="Script" uid="uid://dqebc4f5ga81" path="res://scenes/scripts/enemy.gd" id="1_4x8xn"]
+[ext_resource type="Texture2D" uid="uid://bdg40fy77b8g2" path="res://icon.svg" id="1_dcrlu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4x8xn"]
+size = Vector2(139.5, 128)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4x8xn"]
+radius = 61.3922
+
+[node name="enemy" type="CharacterBody2D"]
+script = ExtResource("1_4x8xn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_dcrlu")
+
+[node name="detect_light" type="Area2D" parent="."]
+
+[node name="CollisionLight" type="CollisionShape2D" parent="detect_light"]
+modulate = Color(1, 1, 0, 1)
+shape = SubResource("RectangleShape2D_4x8xn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4x8xn")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 5.0
+target_desired_distance = 5.0
+path_postprocessing = 1
+debug_enabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="area_entered" from="detect_light" to="." method="_on_detect_light_area_entered"]
+[connection signal="area_exited" from="detect_light" to="." method="_on_detect_light_area_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
