@@ -653,7 +653,7 @@ scenes/1/scene = ExtResource("4_bnw48")
 scenes/2/scene = ExtResource("6_bpjtg")
 scenes/3/scene = ExtResource("5_58ruv")
 scenes/4/scene = ExtResource("8_bx66q")
-scenes/5/scene = ExtResource("7_dhm2k")
+scenes/7/scene = ExtResource("7_dhm2k")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r68sw"]
 texture = ExtResource("2_dp1rp")
