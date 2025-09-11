@@ -38,13 +38,13 @@ func _ready():
 	scale = Vector2.ONE * randf_range(0.5, 1.5)
 	modulate.a = randf_range(0.6, 1.0)
 	
-	# Luz da bolha
+	# Configura luz da bolha
 	var light = $PointLight2D
 	if light:
-		# intensidade aleatória para cada bolha
-		light.energy = 0.5
-		# escala proporcional ao tamanho da bolha
-		light.scale = Vector2.ONE * scale.x * 10
+		# Intensidade proporcional à opacidade
+		light.energy = 0.5 * modulate.a
+		# Escala proporcional ao tamanho da bolha
+		light.scale = Vector2.ONE * scale.x * 10   # ajuste visual do alcance
 
 func _process(delta):
 	time_passed += delta

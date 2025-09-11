@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bwmtqs7l3qpyj"
-path="res://.godot/imported/Sussurros Mágicos e Ancorados.png-73ed36220c29795433cd029dbae119df.ctex"
+path="res://.godot/imported/Sussurros Mágicos e Ancorados.png-1e3bd86730cba31133f13de7a0142e0b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Menu/Sussurros Mágicos e Ancorados.png"
-dest_files=["res://.godot/imported/Sussurros Mágicos e Ancorados.png-73ed36220c29795433cd029dbae119df.ctex"]
+source_file="res://assets/Menu/Sussurros Mágicos e Ancorados.png"
+dest_files=["res://.godot/imported/Sussurros Mágicos e Ancorados.png-1e3bd86730cba31133f13de7a0142e0b.ctex"]
 
 [params]
 

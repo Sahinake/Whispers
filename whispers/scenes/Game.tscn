@@ -50,6 +50,7 @@ layer = 2
 follow_viewport_enabled = true
 
 [node name="WaterShade" type="Sprite2D" parent="Layer3"]
+visible = false
 top_level = true
 material = SubResource("ShaderMaterial_bf53h")
 position = Vector2(612, 492.25)
@@ -60,6 +61,4 @@ texture = ExtResource("5_fgofq")
 position = Vector2(366, 370)
 limit_left = 0
 limit_top = 0
-limit_right = 1152
-limit_bottom = 900
 limit_smoothed = true

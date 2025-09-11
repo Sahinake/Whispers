@@ -1,14 +1,14 @@
 [gd_resource type="TileSet" load_steps=55 format=3 uid="uid://dukwad64niofq"]
 
-[ext_resource type="Texture2D" uid="uid://b5ruu526orclv" path="res://Assets/Tiles/Atlantis Map/tf_B_atlantisA.png" id="1_aboys"]
-[ext_resource type="Texture2D" uid="uid://bj02iw6djkf4p" path="res://Assets/Tiles/Atlantis Map/tf_A5_atlantisB.png" id="2_dp1rp"]
-[ext_resource type="Texture2D" uid="uid://b5whtqdup4vlo" path="res://Assets/Tiles/walls_floor (48x48).png" id="3_b8m0x"]
-[ext_resource type="PackedScene" uid="uid://dj5evx0a2mqmo" path="res://Scenes/Animações/Algaes/Animated_Algae.tscn" id="4_bnw48"]
-[ext_resource type="PackedScene" uid="uid://dhse2g6bs8dok" path="res://Scenes/Animações/Algaes/Energic_Algae.tscn" id="5_58ruv"]
-[ext_resource type="PackedScene" uid="uid://cla6361k7cj6o" path="res://Scenes/Animações/Algaes/Animated_Algae_2.tscn" id="6_bpjtg"]
-[ext_resource type="PackedScene" uid="uid://c0rk7ubtyg3so" path="res://Scenes/Animações/Animals/Fish_1.tscn" id="7_dhm2k"]
-[ext_resource type="PackedScene" uid="uid://dqt40lul4jryx" path="res://Scenes/Animações/Animals/Crab.tscn" id="8_bx66q"]
-[ext_resource type="Texture2D" uid="uid://bas7ti8fryjpe" path="res://Assets/Tiles/Atlantis Map/tf_A5_atlantisA.png" id="10_hste0"]
+[ext_resource type="Texture2D" uid="uid://b5ruu526orclv" path="res://assets/tiles/Atlantis Map/tf_B_atlantisA.png" id="1_aboys"]
+[ext_resource type="Texture2D" uid="uid://bj02iw6djkf4p" path="res://assets/tiles/Atlantis Map/tf_A5_atlantisB.png" id="2_dp1rp"]
+[ext_resource type="Texture2D" uid="uid://b5whtqdup4vlo" path="res://assets/tiles/walls_floor (48x48).png" id="3_b8m0x"]
+[ext_resource type="PackedScene" uid="uid://dj5evx0a2mqmo" path="res://scenes/Animações/Algaes/Animated_Algae.tscn" id="4_bnw48"]
+[ext_resource type="PackedScene" uid="uid://dhse2g6bs8dok" path="res://scenes/Animações/Algaes/Energic_Algae.tscn" id="5_58ruv"]
+[ext_resource type="PackedScene" uid="uid://cla6361k7cj6o" path="res://scenes/Animações/Algaes/Animated_Algae_2.tscn" id="6_bpjtg"]
+[ext_resource type="PackedScene" uid="uid://c0rk7ubtyg3so" path="res://scenes/Animações/Animals/Fish_1.tscn" id="7_dhm2k"]
+[ext_resource type="PackedScene" uid="uid://dqt40lul4jryx" path="res://scenes/Animações/Animals/Crab.tscn" id="8_bx66q"]
+[ext_resource type="Texture2D" uid="uid://bas7ti8fryjpe" path="res://assets/tiles/Atlantis Map/tf_A5_atlantisA.png" id="10_hste0"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_kk8j6"]
 polygon = PackedVector2Array(-11.5, -9.5, -11.5, -11.5, -8.5, -11.5, -8.5, -14.5, 5.5, -14.5, 5.5, -11.5, 8.5, -11.5, 8.5, -9.5, 8.5, -9.5, 8.5, -11.5, 5.5, -11.5, 5.5, -14.5, -8.5, -14.5, -8.5, -11.5, -11.5, -11.5)
@@ -653,7 +653,7 @@ scenes/1/scene = ExtResource("4_bnw48")
 scenes/2/scene = ExtResource("6_bpjtg")
 scenes/3/scene = ExtResource("5_58ruv")
 scenes/4/scene = ExtResource("8_bx66q")
-scenes/5/scene = ExtResource("7_dhm2k")
+scenes/7/scene = ExtResource("7_dhm2k")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r68sw"]
 texture = ExtResource("2_dp1rp")

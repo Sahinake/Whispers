@@ -1,11 +1,11 @@
 [gd_scene load_steps=12 format=3 uid="uid://ryxskbh0j8q2"]
 
-[ext_resource type="Script" uid="uid://clp8g286y4bdq" path="res://Scenes/Scripts/initial_menu.gd" id="1_8gbba"]
-[ext_resource type="Texture2D" uid="uid://b7tmfwctu31fw" path="res://Assets/Menu/Background.png" id="2_jjvhh"]
-[ext_resource type="FontFile" uid="uid://i52ggsec0scu" path="res://Assets/Fonts/PixelSerif_16px_v02.ttf" id="3_8gbba"]
-[ext_resource type="Shader" uid="uid://cwuirfvs10jof" path="res://Scenes/Scripts/Shaders/WaterShader.gdshader" id="3_21xkr"]
+[ext_resource type="Script" uid="uid://clp8g286y4bdq" path="res://scenes/scripts/initial_menu.gd" id="1_8gbba"]
+[ext_resource type="Texture2D" uid="uid://b7tmfwctu31fw" path="res://assets/Menu/Background.png" id="2_jjvhh"]
+[ext_resource type="FontFile" uid="uid://i52ggsec0scu" path="res://assets/Fonts/PixelSerif_16px_v02.ttf" id="3_8gbba"]
+[ext_resource type="Shader" uid="uid://cwuirfvs10jof" path="res://scenes/scripts/shaders/WaterShader.gdshader" id="3_21xkr"]
 [ext_resource type="Texture2D" uid="uid://bdg40fy77b8g2" path="res://icon.svg" id="4_6bp64"]
-[ext_resource type="Texture2D" uid="uid://bwmtqs7l3qpyj" path="res://Assets/Menu/Tittle.png" id="5_21xkr"]
+[ext_resource type="Texture2D" uid="uid://bwmtqs7l3qpyj" path="res://assets/Menu/Sussurros Mágicos e Ancorados.png" id="5_21xkr"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_344ge"]
 frequency = 0.0034
