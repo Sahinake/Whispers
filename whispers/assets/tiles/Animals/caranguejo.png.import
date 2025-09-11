@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bj02iw6djkf4p"
-path="res://.godot/imported/tf_A5_atlantisB.png-5e2e43a24f4adfc9c3c5e86e40fe1d0c.ctex"
+uid="uid://ctrm44qgyf1nd"
+path="res://.godot/imported/caranguejo.png-b5875a37e0593be720c7cdb4258a1669.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tiles/tf_A5_atlantisB.png"
-dest_files=["res://.godot/imported/tf_A5_atlantisB.png-5e2e43a24f4adfc9c3c5e86e40fe1d0c.ctex"]
+source_file="res://Assets/Tiles/Animals/caranguejo.png"
+dest_files=["res://.godot/imported/caranguejo.png-b5875a37e0593be720c7cdb4258a1669.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgqbelws01awd"
-path="res://.godot/imported/Alga_luz.png-3fea59cb7449ae3d7ce5ff57c66c01fc.ctex"
+uid="uid://npfyl67weu0u"
+path="res://.godot/imported/peixe_virando_01.png-69a46a686a2e203ad69378e04fa8f6af.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tiles/Alga_luz.png"
-dest_files=["res://.godot/imported/Alga_luz.png-3fea59cb7449ae3d7ce5ff57c66c01fc.ctex"]
+source_file="res://Assets/Tiles/Animals/peixe_virando_01.png"
+dest_files=["res://.godot/imported/peixe_virando_01.png-69a46a686a2e203ad69378e04fa8f6af.ctex"]
 
 [params]
 

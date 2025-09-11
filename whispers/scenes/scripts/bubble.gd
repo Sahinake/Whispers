@@ -12,7 +12,7 @@ var time_passed := 0.0
 
 func _ready():
 	# Pega a câmera principal da cena
-	var camera = get_tree().get_root().get_node("CTScene/Camera2D")
+	var camera = get_tree().get_root().get_node("Game/Camera2D")
 	
 	if camera == null:
 		push_error("Nenhuma câmera encontrada!")
@@ -60,7 +60,7 @@ func _process(delta):
 	rotation = sin(time_passed * frequency * 1.2) * 0.1
 
 	# Remove bolha ao passar da parte de cima da tela
-	var camera = get_tree().get_root().get_node("CT_Scene/Camera2D")
+	var camera = get_tree().get_root().get_node("Game/Camera2D")
 	
 	# remove bolha quando passar do topo do mapa
 	if global_position.y < map_top:

@@ -1,60 +1,45 @@
-[gd_scene load_steps=9 format=3 uid="uid://cla6361k7cj6o"]
+[gd_scene load_steps=7 format=3 uid="uid://cla6361k7cj6o"]
 
-[ext_resource type="Texture2D" uid="uid://bkh0yasx3jlqg" path="res://Assets/Tiles/Algaes/Animated_algae_02.png" id="1_ejjo0"]
+[ext_resource type="Texture2D" uid="uid://bkh0yasx3jlqg" path="res://Assets/Tiles/Algaes/Animated_algae_02.png" id="1_7p4n7"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bbvav"]
-atlas = ExtResource("1_ejjo0")
+[sub_resource type="AtlasTexture" id="AtlasTexture_7p4n7"]
+atlas = ExtResource("1_7p4n7")
 region = Rect2(0, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vu6c4"]
-atlas = ExtResource("1_ejjo0")
+[sub_resource type="AtlasTexture" id="AtlasTexture_og20l"]
+atlas = ExtResource("1_7p4n7")
 region = Rect2(48, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uowp1"]
-atlas = ExtResource("1_ejjo0")
+[sub_resource type="AtlasTexture" id="AtlasTexture_1lb4o"]
+atlas = ExtResource("1_7p4n7")
 region = Rect2(96, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tqf8t"]
-atlas = ExtResource("1_ejjo0")
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtaum"]
+atlas = ExtResource("1_7p4n7")
 region = Rect2(144, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kl083"]
-atlas = ExtResource("1_ejjo0")
-region = Rect2(96, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xndn5"]
-atlas = ExtResource("1_ejjo0")
-region = Rect2(48, 0, 48, 48)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_tssg2"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_nxfyf"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bbvav")
+"texture": SubResource("AtlasTexture_7p4n7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vu6c4")
+"texture": SubResource("AtlasTexture_og20l")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uowp1")
+"texture": SubResource("AtlasTexture_1lb4o")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tqf8t")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kl083")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xndn5")
+"texture": SubResource("AtlasTexture_qtaum")
 }],
 "loop": true,
-"name": &"alga_02",
+"name": &"default",
 "speed": 5.0
 }]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_tssg2")
-animation = &"alga_02"
-autoplay = "alga_02"
+sprite_frames = SubResource("SpriteFrames_nxfyf")
+autoplay = "default"
