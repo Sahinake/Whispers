@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5whtqdup4vlo"
-path="res://.godot/imported/walls_floor (48x48).png-c88db76d09eb5c9c635825f519c203d9.ctex"
+uid="uid://d0orbgnyr17jo"
+path="res://.godot/imported/peixe_virando_011.png-4b79168db89cecb427700f275975189e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tiles/walls_floor (48x48).png"
-dest_files=["res://.godot/imported/walls_floor (48x48).png-c88db76d09eb5c9c635825f519c203d9.ctex"]
+source_file="res://assets/tiles/peixe_virando_011.png"
+dest_files=["res://.godot/imported/peixe_virando_011.png-4b79168db89cecb427700f275975189e.ctex"]
 
 [params]
 

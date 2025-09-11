@@ -1,14 +1,15 @@
 [gd_resource type="TileSet" load_steps=56 format=3 uid="uid://dukwad64niofq"]
 
-[ext_resource type="Texture2D" uid="uid://00r2ru1vem8f" path="res://Assets/Tiles/Atlantis Map/tf_B_atlantisA.png" id="1_u8qio"]
-[ext_resource type="Texture2D" uid="uid://bg80xmh5uui5f" path="res://Assets/Tiles/Atlantis Map/tf_A5_atlantisB.png" id="2_5a001"]
-[ext_resource type="Texture2D" uid="uid://b5whtqdup4vlo" path="res://Assets/Tiles/walls_floor (48x48).png" id="3_b8m0x"]
-[ext_resource type="PackedScene" uid="uid://dj5evx0a2mqmo" path="res://Scenes/Animações/Algaes/Animated_Algae.tscn" id="4_r68sw"]
-[ext_resource type="Texture2D" uid="uid://c4bon8j6s2ed" path="res://Assets/Tiles/Atlantis Map/tf_A5_atlantisA.png" id="4_x2ygb"]
-[ext_resource type="PackedScene" uid="uid://cla6361k7cj6o" path="res://Scenes/Animações/Algaes/Animated_Algae_2.tscn" id="5_aboys"]
-[ext_resource type="PackedScene" uid="uid://dhse2g6bs8dok" path="res://Scenes/Animações/Algaes/Energic_Algae.tscn" id="6_dp1rp"]
-[ext_resource type="PackedScene" uid="uid://drow6xyndjjxu" path="res://Scenes/Animações/Animals/Crab.tscn" id="7_gqv40"]
-[ext_resource type="PackedScene" uid="uid://c0rk7ubtyg3so" path="res://Scenes/Animações/Animals/Fish_1.tscn" id="8_hste0"]
+[ext_resource type="Texture2D" uid="uid://b5ruu526orclv" path="res://assets/tiles/tf_B_atlantisA.png" id="1_u8qio"]
+[ext_resource type="Texture2D" uid="uid://bj02iw6djkf4p" path="res://assets/tiles/tf_A5_atlantisB.png" id="2_5a001"]
+[ext_resource type="Texture2D" uid="uid://b5whtqdup4vlo" path="res://assets/tiles/walls_floor (48x48).png" id="3_b8m0x"]
+[ext_resource type="PackedScene" uid="uid://dj5evx0a2mqmo" path="res://scenes/animacao/alga_animada.tscn" id="4_bnw48"]
+[ext_resource type="Texture2D" uid="uid://bas7ti8fryjpe" path="res://assets/tiles/tf_A5_atlantisA.png" id="4_x2ygb"]
+[ext_resource type="PackedScene" uid="uid://dhse2g6bs8dok" path="res://scenes/animacao/alga_luz.tscn" id="5_58ruv"]
+[ext_resource type="PackedScene" uid="uid://cla6361k7cj6o" path="res://scenes/animacao/alga_animada_02.tscn" id="6_bpjtg"]
+[ext_resource type="PackedScene" uid="uid://c0rk7ubtyg3so" path="res://scenes/animacao/peixe_01.tscn" id="7_dhm2k"]
+[ext_resource type="PackedScene" uid="uid://drow6xyndjjxu" path="res://scenes/animacao/caranguejo.tscn" id="8_bx66q"]
+[ext_resource type="PackedScene" uid="uid://dqt40lul4jryx" path="res://scenes/animacao/crab.tscn" id="9_nh587"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_kk8j6"]
 polygon = PackedVector2Array(-11.5, -9.5, -11.5, -11.5, -8.5, -11.5, -8.5, -14.5, 5.5, -14.5, 5.5, -11.5, 8.5, -11.5, 8.5, -9.5, 8.5, -9.5, 8.5, -11.5, 5.5, -11.5, 5.5, -14.5, -8.5, -14.5, -8.5, -11.5, -11.5, -11.5)
@@ -349,6 +350,7 @@ texture_region_size = Vector2i(48, 48)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7wtl2"]
 texture = ExtResource("2_5a001")
+separation = Vector2i(4, 0)
 texture_region_size = Vector2i(48, 48)
 1:0/0 = 0
 2:0/0 = 0
@@ -775,16 +777,13 @@ texture_region_size = Vector2i(48, 48)
 11:22/0 = 0
 12:22/0 = 0
 
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_qumw7"]
-resource_name = "Algaes"
-scenes/4/scene = ExtResource("4_r68sw")
-scenes/5/scene = ExtResource("5_aboys")
-scenes/6/scene = ExtResource("6_dp1rp")
-
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_lxpua"]
-resource_name = "Animals"
-scenes/1/scene = ExtResource("7_gqv40")
-scenes/2/scene = ExtResource("8_hste0")
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_aiop1"]
+scenes/1/scene = ExtResource("4_bnw48")
+scenes/2/scene = ExtResource("5_58ruv")
+scenes/3/scene = ExtResource("6_bpjtg")
+scenes/4/scene = ExtResource("7_dhm2k")
+scenes/5/scene = ExtResource("8_bx66q")
+scenes/6/scene = ExtResource("9_nh587")
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_pxex2"]
 polygon = PackedVector2Array(-24, 24, -24, 9.31382, -15.8053, -7.6204, -3.95132, -18.3454, 14.1118, -24, 24, -24, 12.9829, -24, -3.38684, -17.7809, -15.8053, -7.05592, -24, 12.7007)
@@ -1082,5 +1081,4 @@ sources/9 = SubResource("TileSetAtlasSource_w4cmy")
 sources/0 = SubResource("TileSetAtlasSource_melje")
 sources/1 = SubResource("TileSetAtlasSource_7wtl2")
 sources/2 = SubResource("TileSetAtlasSource_jkrru")
-sources/5 = SubResource("TileSetScenesCollectionSource_qumw7")
-sources/6 = SubResource("TileSetScenesCollectionSource_lxpua")
+sources/3 = SubResource("TileSetScenesCollectionSource_aiop1")
