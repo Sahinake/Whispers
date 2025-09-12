@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bp00idohjrobd"
-path="res://.godot/imported/light.jpg-45b344ec78bd389094f1678da59e2901.ctex"
+uid="uid://dmwyhpbmoj7wy"
+path="res://.godot/imported/ProgressBar - Hover.png-0276abdd67d45bc5322412256ef4fb88.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tiles/Flashlight/light.jpg"
-dest_files=["res://.godot/imported/light.jpg-45b344ec78bd389094f1678da59e2901.ctex"]
+source_file="res://Assets/Player/Bars/ProgressBar - Hover.png"
+dest_files=["res://.godot/imported/ProgressBar - Hover.png-0276abdd67d45bc5322412256ef4fb88.ctex"]
 
 [params]
 

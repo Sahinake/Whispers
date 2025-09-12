@@ -1,6 +1,6 @@
 [gd_scene load_steps=40 format=3 uid="uid://b6u2c7130mn3l"]
 
-[ext_resource type="Script" uid="uid://dbclh5ij2q4tj" path="res://Scenes/Scripts/player.gd" id="1_gmlin"]
+[ext_resource type="Script" uid="uid://dbclh5ij2q4tj" path="res://Scenes/scripts/player.gd" id="1_gmlin"]
 [ext_resource type="Texture2D" uid="uid://b0ka22ntfxfjy" path="res://Assets/Player/Half.png" id="2_xpcdj"]
 [ext_resource type="Texture2D" uid="uid://bbp7hh4ax1aem" path="res://Assets/Tiles/Flashlight/flashlight_texture.png" id="4_lvxji"]
 

@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cwr1by4kqynqg"]
+[gd_scene load_steps=10 format=3 uid="uid://cwr1by4kqynqg"]
 
 [ext_resource type="Script" uid="uid://cksj6w6wrmsr1" path="res://Scenes/Levels/game.gd" id="1_iukft"]
 [ext_resource type="PackedScene" uid="uid://b6u2c7130mn3l" path="res://Scenes/Player/player.tscn" id="2_gl6un"]
 [ext_resource type="PackedScene" uid="uid://cqe2af6sbeprw" path="res://Scenes/Bubbles/bubbles.tscn" id="3_b2bpf"]
-[ext_resource type="Shader" uid="uid://cwuirfvs10jof" path="res://Scenes/Scripts/Shaders/WaterShader.gdshader" id="4_7lihs"]
+[ext_resource type="Shader" uid="uid://cwuirfvs10jof" path="res://Scenes/scripts/shaders/WaterShader.gdshader" id="4_7lihs"]
 [ext_resource type="Texture2D" uid="uid://bdg40fy77b8g2" path="res://icon.svg" id="5_fgofq"]
+[ext_resource type="PackedScene" uid="uid://bo1d1sck661g2" path="res://Scenes/Player/player_ui.tscn" id="6_aug50"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_2irst"]
 frequency = 0.0034
@@ -35,6 +36,7 @@ follow_viewport_enabled = true
 
 [node name="Player" parent="Layer1" instance=ExtResource("2_gl6un")]
 position = Vector2(366, 370)
+ui_node_path = NodePath("../../PlayerUI")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Layer1/Player"]
 remote_path = NodePath("../../../Camera2D")
@@ -56,6 +58,8 @@ material = SubResource("ShaderMaterial_bf53h")
 position = Vector2(612, 492.25)
 scale = Vector2(9.5625, 7.68359)
 texture = ExtResource("5_fgofq")
+
+[node name="PlayerUI" parent="." instance=ExtResource("6_aug50")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(366, 370)
