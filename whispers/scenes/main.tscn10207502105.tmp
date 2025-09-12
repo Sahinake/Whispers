@@ -13,8 +13,8 @@
 [ext_resource type="AudioStream" uid="uid://b5xp1gsopv5a0" path="res://assets/Sounds/Menu/Echoes Music.mp3" id="7_85g3d"]
 [ext_resource type="AudioStream" uid="uid://b3306s1ibe1ps" path="res://assets/Sounds/Menu/Underwater Ambience.mp3" id="8_choun"]
 [ext_resource type="FontFile" uid="uid://d4jopgurro7tr" path="res://assets/Fonts/upheavtt.ttf" id="11_trceg"]
-[ext_resource type="AudioStream" uid="uid://b8aamj7gxj50g" path="res://assets/Sounds/Menu/Buttons/Button4.mp3" id="12_a8y0u"]
-[ext_resource type="AudioStream" uid="uid://cvv3bbf2pcani" path="res://assets/Sounds/Menu/Buttons/Button7.mp3" id="13_jkv2x"]
+[ext_resource type="AudioStream" uid="uid://fmn0mntrush8" path="res://assets/Sounds/Menu/Buttons/Button3.mp3" id="12_a8y0u"]
+[ext_resource type="AudioStream" uid="uid://b7vtghk7fu8me" path="res://assets/Sounds/Menu/Buttons/EnterButton.mp3" id="13_jkv2x"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_344ge"]
 frequency = 0.0034
@@ -132,13 +132,13 @@ alignment = 0
 position = Vector2(-7.62939e-06, 0)
 scale = Vector2(1, 1)
 stream = ExtResource("12_a8y0u")
-volume_db = 10.0
+volume_db = 5.0
 
 [node name="SelectSound" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(-7.62939e-06, 0)
 scale = Vector2(1, 1)
 stream = ExtResource("13_jkv2x")
-volume_db = 10.0
+volume_db = 5.0
 
 [node name="MusicMenuSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_85g3d")
