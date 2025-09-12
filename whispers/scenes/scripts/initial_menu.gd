@@ -69,7 +69,8 @@ func _on_button_pressed():
 		if select_sound.stream:
 			# aguarda o som tocar
 			await get_tree().create_timer(select_sound.stream.get_length()).timeout
-		get_tree().change_scene_to_file("res://Scenes/Game.tscn")
+			await fade_out_menu(1.0)
+			get_tree().change_scene_to_file("res://Scenes/Game.tscn")
 
 	elif b == $VBoxContainer/LoadGameButton:
 		if select_sound.stream:
@@ -97,3 +98,9 @@ func play_random_effect():
 	var wait_time = randf_range(5.0, 15.0)
 	await get_tree().create_timer(wait_time).timeout
 	play_random_effect()
+
+func fade_out_menu(duration := 0.5) -> void:
+	var fade_rect = $FadeOverlay
+	var tween = create_tween()
+	tween.tween_property(fade_rect, "color:a", 1.0, duration) # aumenta alpha para 1
+	await tween.finished
