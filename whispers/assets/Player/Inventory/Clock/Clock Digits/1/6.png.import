@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1w3u7m6iftq3"
-path="res://.godot/imported/InventoryBackground.png-bde92eb67318db73be8a78bdcb92d71e.ctex"
+uid="uid://dbw2o4ar0ewr5"
+path="res://.godot/imported/6.png-96d2fe50362ff84548ce3ded3cbe89f7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Player/InventoryBackground.png"
-dest_files=["res://.godot/imported/InventoryBackground.png-bde92eb67318db73be8a78bdcb92d71e.ctex"]
+source_file="res://Assets/Player/Inventory/Clock/Clock Digits/1/6.png"
+dest_files=["res://.godot/imported/6.png-96d2fe50362ff84548ce3ded3cbe89f7.ctex"]
 
 [params]
 

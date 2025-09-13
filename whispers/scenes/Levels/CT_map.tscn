@@ -25,7 +25,7 @@ tile_map_data = PackedByteArray("AAAFAAIAAAAHAAQAAAAEAAkAAAAGAAQAAAATAAQAAAABAAc
 tile_set = ExtResource("1_o3cds")
 
 [node name="AmbientLight" type="DirectionalLight2D" parent="."]
-energy = 1.1
+energy = 0.8
 blend_mode = 1
 
 [node name="Area2D" type="Area2D" parent="."]

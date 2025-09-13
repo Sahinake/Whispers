@@ -79,11 +79,11 @@ func open_inventory():
 	inventory_open = true
 	
 	# Pausa o Jogo
-	pause_node_tree($Layer1/Level)   # Pausa o mapa
-	pause_node_tree($Layer1/Player)  # Pausa o player se quiser
-	pause_node_tree($Layer2/Bubbles) # Pausa as bolhas
-	pause_node_tree($Layer2/Bubbles/BubbleSpawner) # Pausa as bolhas
-	pause_node_tree($Layer2/WaterShade) # Pausa o shader
+	pause_node_tree($Layer1/Level)
+	pause_node_tree($Layer1/Player)
+	pause_node_tree($Layer2/Bubbles)
+	pause_node_tree($Layer2/Bubbles/BubbleSpawner)
+	pause_node_tree($Layer2/WaterShade)
 
 	# Mostra o fundo escuro e o inventário
 	color_rect.modulate.a = 0
@@ -91,58 +91,96 @@ func open_inventory():
 	color_rect.visible = true
 	inventory_background.visible = true
 	
-	# Tween
-	var tween = create_tween()
-	tween.set_trans(Tween.TRANS_BACK)
-	tween.set_ease(Tween.EASE_OUT)
+	# Tween para fade-in do fundo
+	var tween_bg = create_tween()
+	tween_bg.set_trans(Tween.TRANS_BACK)
+	tween_bg.set_ease(Tween.EASE_OUT)
+	tween_bg.tween_property(color_rect, "modulate:a", 0.5, 0.6)
+	tween_bg.tween_property(inventory_background, "modulate:a", 0.5, 0.6)
+	await tween_bg.finished
 	
-	# Fade-in do ColorRect
-	tween.tween_property(color_rect, "modulate:a", 0.5, 0.6)
-	tween.tween_property(inventory_background, "modulate:a", 0.5, 0.6)
+	# Tween para animar o inventário
+	var tween_inv = create_tween()
+	tween_inv.set_trans(Tween.TRANS_BACK)
+	tween_inv.set_ease(Tween.EASE_OUT)
 	
-	await tween.finished
-	
-	var tween2 = create_tween()
-	tween2.set_trans(Tween.TRANS_BACK)
-	tween2.set_ease(Tween.EASE_OUT)
-	
-	# Inicializa posição e escala
-	var end_pos = get_viewport().get_visible_rect().size / 2
-	var start_pos = end_pos + Vector2(-200, 200)
-	
-	inventory.visible = true
+	var viewport_center = get_viewport().get_visible_rect().size / 2
+	var start_pos = viewport_center + Vector2(-200, 200)
 	inventory.position = start_pos
 	inventory.rotation_degrees = -30
 	inventory.scale = Vector2(0.5, 0.5)
+	inventory.visible = true
 	
-	tween2.tween_property(inventory, "position", end_pos, 0.8)
-	tween2.parallel().tween_property(inventory, "rotation_degrees", 0.0, 0.8)
-	tween2.parallel().tween_property(inventory, "scale", Vector2.ONE, 0.8)
+	tween_inv.tween_property(inventory, "position", viewport_center, 0.8)
+	tween_inv.parallel().tween_property(inventory, "rotation_degrees", 0.0, 0.8)
+	tween_inv.parallel().tween_property(inventory, "scale", Vector2.ONE, 0.8)
+	await tween_inv.finished
+	
+	# Inventário já está na tela (viewport_center)
+	var inventory_end_pos = get_viewport().get_visible_rect().size / 4
+
+	# Botões começam atrás do inventário (à direita)
+	var buttons = [inventory.save_tab, inventory.settings_tab]
+	for b in buttons:
+		var pos = b.position
+		pos.x = inventory_end_pos.x
+		pos.y = b.position.y            
+		b.position = pos
+
+	# Tween sequencial para os botões saindo para a esquerda
+	var delay = 0.0
+	for b in buttons:
+		var tween_btn = create_tween()
+		tween_btn.set_trans(Tween.TRANS_BACK)
+		tween_btn.set_ease(Tween.EASE_OUT)
+		
+		var end_pos = Vector2(-b.get_size().x - 30, b.position.y)  # fora da tela à esquerda
+		tween_btn.tween_interval(delay)
+		tween_btn.tween_property(b, "position", end_pos, 0.5)
+		
+		delay += 0.1  # cada botão some 0.1s depois do anterior
+
 
 func close_inventory():
 	inventory_open = false
 	
-	var end_pos = Vector2(-200, get_viewport().get_visible_rect().size.y + 200)
+	var buttons = [inventory.save_tab, inventory.settings_tab]
+	var inventory_pos = inventory.position  # posição atual do inventário
+	var delay = 0.0
+
+	# Botões voltando atrás do inventário (à direita)
+	for b in buttons:
+		var tween_btn = create_tween()
+		tween_btn.set_trans(Tween.TRANS_BACK)
+		tween_btn.set_ease(Tween.EASE_IN)
+		
+		var inventory_end_pos = get_viewport().get_visible_rect().size / 4
+		tween_btn.tween_interval(delay)
+		tween_btn.tween_property(b, "position", inventory_end_pos, 0.4)
+		
+		delay += 0.1  # um de cada vez
+		await tween_btn.finished
 	
-	var tween = create_tween()
-	tween.set_trans(Tween.TRANS_BACK)
-	tween.set_ease(Tween.EASE_IN)
+	# Tween do inventário e fade-out do fundo
+	var tween_inv = create_tween()
+	tween_inv.set_trans(Tween.TRANS_BACK)
+	tween_inv.set_ease(Tween.EASE_IN)
 	
-	# Fade-out do ColorRect
-	tween.tween_property(color_rect, "modulate:a", 0.0, 0.6)
-	tween.tween_property(inventory_background, "modulate:a", 0.0, 0.6)
+	var end_inv_pos = Vector2(-200, get_viewport().get_visible_rect().size.y + 200)
+	tween_inv.tween_property(inventory, "position", end_inv_pos, 0.6)
+	tween_inv.parallel().tween_property(inventory, "rotation_degrees", -30, 0.6)
+	tween_inv.parallel().tween_property(inventory, "scale", Vector2(0.5, 0.5), 0.6)
+	tween_inv.tween_property(color_rect, "modulate:a", 0.0, 0.3)
+	tween_inv.tween_property(inventory_background, "modulate:a", 0.0, 0.3)
 	
-	# Tween do inventário
-	tween.tween_property(inventory, "position", end_pos, 0.6)
-	tween.parallel().tween_property(inventory, "rotation_degrees", -30, 0.6)
-	tween.parallel().tween_property(inventory, "scale", Vector2(0.5, 0.5), 0.6)
+	await tween_inv.finished
 	
-	await tween.finished
+	# Esconde inventário e fundo
 	inventory.visible = false
 	color_rect.visible = false
 	inventory_background.visible = true
 	
-	# Despausar nodes
+	# Despausar nodes do jogo
 	unpause_node_tree($Layer1/Level)
 	unpause_node_tree($Layer1/Player)
 	unpause_node_tree($Layer2/Bubbles)
