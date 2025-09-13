@@ -1,8 +1,12 @@
 extends CharacterBody2D
 
 @export var speed: float = 250.0
+
 var sprite: AnimatedSprite2D
 var flashlight_on := true
+
+# sinal que avisa que o inventário deve abrir/fechar
+signal request_inventory_toggle
 
 # Recursos do jogador
 var oxygen := 100.0
@@ -71,7 +75,10 @@ func _input(event):
 	if event.is_action_pressed("toggle_lantern"):
 		flashlight_on = !flashlight_on
 		$PointLight2D.enabled = flashlight_on
-
+	
+	if event.is_action_pressed("ui_cancel"):
+		emit_signal("request_inventory_toggle")
+		
 # -------------------------------
 # Recursos do jogador
 # -------------------------------

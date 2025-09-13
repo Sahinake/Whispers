@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cwr1by4kqynqg"]
+[gd_scene load_steps=11 format=3 uid="uid://cwr1by4kqynqg"]
 
 [ext_resource type="Script" uid="uid://cksj6w6wrmsr1" path="res://Scenes/Levels/game.gd" id="1_iukft"]
 [ext_resource type="PackedScene" uid="uid://b6u2c7130mn3l" path="res://Scenes/Player/player.tscn" id="2_gl6un"]
@@ -6,7 +6,6 @@
 [ext_resource type="Shader" uid="uid://cwuirfvs10jof" path="res://Scenes/scripts/shaders/WaterShader.gdshader" id="4_7lihs"]
 [ext_resource type="Texture2D" uid="uid://bdg40fy77b8g2" path="res://icon.svg" id="5_fgofq"]
 [ext_resource type="PackedScene" uid="uid://bo1d1sck661g2" path="res://Scenes/Player/player_ui.tscn" id="6_aug50"]
-[ext_resource type="Texture2D" uid="uid://d1w3u7m6iftq3" path="res://Assets/Player/InventoryBackground.png" id="7_2irst"]
 [ext_resource type="PackedScene" uid="uid://cxu4ld8hpxo2o" path="res://Scenes/Inventory.tscn" id="7_fgofq"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_2irst"]
@@ -49,7 +48,10 @@ position = Vector2(363, 374)
 [node name="Layer2" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
-[node name="WaterShade" type="Sprite2D" parent="Layer2"]
+[node name="Layer3" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="WaterShade" type="Sprite2D" parent="Layer3"]
 top_level = true
 material = SubResource("ShaderMaterial_bf53h")
 position = Vector2(612, 492.25)
@@ -57,28 +59,11 @@ scale = Vector2(9.5625, 7.68359)
 texture = ExtResource("5_fgofq")
 
 [node name="PlayerUI" parent="." instance=ExtResource("6_aug50")]
-layer = 2
-
-[node name="Layer3" type="CanvasLayer" parent="."]
 layer = 3
 
-[node name="ColorRect" type="ColorRect" parent="Layer3"]
+[node name="Inventory" parent="PlayerUI" instance=ExtResource("7_fgofq")]
 visible = false
-offset_right = 1224.0
-offset_bottom = 754.0
-color = Color(0, 0, 0, 0.411765)
-
-[node name="InventoryBackground" type="TextureRect" parent="Layer3"]
-visible = false
-offset_left = 111.0
-offset_top = -92.0
-offset_right = 1112.0
-offset_bottom = 721.0
-texture = ExtResource("7_2irst")
-
-[node name="Inventory" parent="Layer3" instance=ExtResource("7_fgofq")]
-visible = false
-position = Vector2(613, 330)
+position = Vector2(577, 345)
 scale = Vector2(1.18555, 1.18555)
 
 [node name="Camera2D" type="Camera2D" parent="."]

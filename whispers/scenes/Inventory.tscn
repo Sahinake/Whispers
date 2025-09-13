@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxu4ld8hpxo2o"]
+
+[ext_resource type="Texture2D" uid="uid://d18g5imeglnap" path="res://Assets/Player/Inventory.png" id="1_k5gp2"]
+
+[node name="Inventory" type="Node2D"]
+
+[node name="InventorySprite" type="Sprite2D" parent="."]
+scale = Vector2(1.45703, 1.45703)
+texture = ExtResource("1_k5gp2")
