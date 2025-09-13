@@ -54,6 +54,8 @@ func pause_node_tree(node: Node):
 		node.stop()
 	if node is AnimatedSprite2D:
 		node.speed_scale = 0
+	if node is Timer:
+		node.stop()  # pausa o Timer
 	
 	for child in node.get_children():
 		pause_node_tree(child)
@@ -67,6 +69,8 @@ func unpause_node_tree(node: Node):
 		node.play()
 	if node is AnimatedSprite2D:
 		node.speed_scale = 1
+	if node is Timer:
+		node.start()  # reinicia o Timer
 	
 	for child in node.get_children():
 		unpause_node_tree(child)
@@ -76,8 +80,9 @@ func open_inventory():
 	
 	# Pausa o Jogo
 	pause_node_tree($Layer1/Level)   # Pausa o mapa
-	pause_node_tree($Layer1/Bubbles) # Pausa as bolhas
 	pause_node_tree($Layer1/Player)  # Pausa o player se quiser
+	pause_node_tree($Layer2/Bubbles) # Pausa as bolhas
+	pause_node_tree($Layer2/Bubbles/BubbleSpawner) # Pausa as bolhas
 	pause_node_tree($Layer2/WaterShade) # Pausa o shader
 
 	# Mostra o fundo escuro e o inventário
@@ -139,6 +144,7 @@ func close_inventory():
 	
 	# Despausar nodes
 	unpause_node_tree($Layer1/Level)
-	unpause_node_tree($Layer1/Bubbles)
 	unpause_node_tree($Layer1/Player)
+	unpause_node_tree($Layer2/Bubbles)
+	unpause_node_tree($Layer2/Bubbles/BubbleSpawner)
 	unpause_node_tree($Layer2/WaterShade)

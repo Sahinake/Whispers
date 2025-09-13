@@ -17,4 +17,4 @@ func _on_body_exited(body):
 func _process(delta):
 	if player_inside and Input.is_action_just_pressed("ui_accept"):
 		var game = get_tree().current_scene
-		game.load_level("res://Scenes/Levels/Atlantic_Map.tscn")
+		game.load_level("res://Scenes/Levels/Atlantic_Map_Open.tscn")

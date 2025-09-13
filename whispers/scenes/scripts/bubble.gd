@@ -9,6 +9,7 @@ var map_top := 0   							# topo do mapa
 
 var base_x := 0.0
 var time_passed := 0.0
+var start_frame: int = -1  # frame inicial que pode ser passado pelo spawner
 
 func _ready():
 	# Pega a câmera principal da cena
@@ -22,7 +23,10 @@ func _ready():
 		animation = animation_name
 		var total_frames = sprite_frames.get_frame_count(animation_name)
 		if total_frames > 0:
-			frame = randi() % total_frames  # escolhe um frame alaeatório
+			if start_frame >= 0 and start_frame < total_frames:
+				frame = start_frame
+			else:
+				frame = randi() % total_frames  # frame aleatório
 	
 	var viewport_size = get_viewport_rect().size
 	
@@ -42,9 +46,7 @@ func _ready():
 	var light = $PointLight2D
 	if light:
 		# Intensidade proporcional à opacidade
-		light.energy = 0.5 * modulate.a
-		# Escala proporcional ao tamanho da bolha
-		light.scale = Vector2.ONE * scale.x * 10   # ajuste visual do alcance
+		light.energy = 1.0
 
 func _process(delta):
 	time_passed += delta
