@@ -1,237 +1,40 @@
-[gd_scene load_steps=10 format=3 uid="uid://c0rk7ubtyg3so"]
+[gd_scene load_steps=4 format=3 uid="uid://c0rk7ubtyg3so"]
 
-[ext_resource type="Script" path="res://scenes/scripts/peixe.gd" id="1_v7d5g"]
-[ext_resource type="Texture2D" uid="uid://b4y1r3vup2wp" path="res://Assets/Tiles/Animals/Turning_fish_03.png" id="3_iyxa5"]
+[ext_resource type="Script" uid="uid://dnvecuj2llosk" path="res://Scenes/scripts/fish.gd" id="1_6lepv"]
+[ext_resource type="Texture2D" uid="uid://npfyl67weu0u" path="res://Assets/Tiles/Animals/peixe_virando_01.png" id="2_iyxa5"]
 
-[sub_resource type="Animation" id="Animation_iyxa5"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("3_iyxa5")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [5]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_v7d5g"]
-resource_name = "peixe_nadando_dir"
-length = 0.1
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("3_iyxa5")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [5]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_33xtd"]
-resource_name = "peixe_nadando_esq"
-length = 0.1
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("3_iyxa5")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [5]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [9]
-}
-
-[sub_resource type="Animation" id="Animation_n34id"]
-resource_name = "peixe_vira_dir"
-length = 0.7
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("3_iyxa5")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [5]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667, 0.533333, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
-}
-
-[sub_resource type="Animation" id="Animation_f5qig"]
-resource_name = "peixe_vira_esq"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("3_iyxa5")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [5]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667, 0.533333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_f5qig"]
+[sub_resource type="Curve2D" id="Curve2D_f5qig"]
 _data = {
-&"RESET": SubResource("Animation_iyxa5"),
-&"peixe_nadando_dir": SubResource("Animation_v7d5g"),
-&"peixe_nadando_esq": SubResource("Animation_33xtd"),
-&"peixe_vira_dir": SubResource("Animation_n34id"),
-&"peixe_vira_esq": SubResource("Animation_f5qig")
+"points": PackedVector2Array(0, 0, 0, 0, -75, 0, 0, 0, 0, 0, 93, -1, 0, 0, 0, 0, -75, 0)
 }
+point_count = 3
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_n34id"]
-radius = 5.0
+[node name="Node2D" type="Node2D"]
 
-[node name="FishScene" type="Node2D"]
+[node name="fish" type="Node2D" parent="."]
+script = ExtResource("1_6lepv")
 
-[node name="Fish" type="CharacterBody2D" parent="."]
-script = ExtResource("1_v7d5g")
+[node name="Path2D" type="Path2D" parent="fish"]
+curve = SubResource("Curve2D_f5qig")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Fish"]
-libraries = {
-&"": SubResource("AnimationLibrary_f5qig")
-}
-autoplay = "peixe_nadando_dir"
-speed_scale = 0.5
+[node name="PathFollow2D" type="PathFollow2D" parent="fish/Path2D"]
+position = Vector2(-75, 0)
+rotation = -0.00595231
+rotates = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Fish"]
-shape = SubResource("CircleShape2D_n34id")
+[node name="Sprite2D" type="Sprite2D" parent="fish/Path2D/PathFollow2D"]
+texture = ExtResource("2_iyxa5")
+hframes = 5
+vframes = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="Fish"]
-texture = ExtResource("3_iyxa5")
+[node name="Sprite2D2" type="Sprite2D" parent="fish/Path2D/PathFollow2D"]
+position = Vector2(-18.9104, -15.1128)
+texture = ExtResource("2_iyxa5")
+hframes = 5
+vframes = 2
+
+[node name="Sprite2D3" type="Sprite2D" parent="fish/Path2D/PathFollow2D"]
+position = Vector2(-18.0949, 15.8926)
+texture = ExtResource("2_iyxa5")
 hframes = 5
 vframes = 2

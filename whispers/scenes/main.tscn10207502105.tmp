@@ -1,0 +1,153 @@
+[gd_scene load_steps=20 format=3 uid="uid://ryxskbh0j8q2"]
+
+[ext_resource type="Script" uid="uid://clp8g286y4bdq" path="res://scenes/scripts/initial_menu.gd" id="1_8gbba"]
+[ext_resource type="AudioStream" uid="uid://dfy1sgwd4h6gx" path="res://assets/Sounds/Menu/Effects/Effect5.mp3" id="2_85g3d"]
+[ext_resource type="Texture2D" uid="uid://bamlrx4nm8pas" path="res://assets/Menu/Background2.png" id="2_tefeu"]
+[ext_resource type="AudioStream" uid="uid://ctdjkww247a5c" path="res://assets/Sounds/Menu/Effects/Effect1.mp3" id="2_trceg"]
+[ext_resource type="Shader" uid="uid://cwuirfvs10jof" path="res://scenes/scripts/shaders/WaterShader.gdshader" id="3_21xkr"]
+[ext_resource type="AudioStream" uid="uid://dg0gbwf3cpw88" path="res://assets/Sounds/Menu/Effects/Effect2.mp3" id="3_a8y0u"]
+[ext_resource type="Texture2D" uid="uid://bdg40fy77b8g2" path="res://icon.svg" id="4_6bp64"]
+[ext_resource type="AudioStream" uid="uid://dstyauupcptkb" path="res://assets/Sounds/Menu/Effects/Effect3.mp3" id="4_jkv2x"]
+[ext_resource type="AudioStream" uid="uid://btrf0rbul2vpb" path="res://assets/Sounds/Menu/Effects/Effect4.mp3" id="5_jbj1t"]
+[ext_resource type="Texture2D" uid="uid://dvct7l82sl3rt" path="res://assets/Menu/Tittle.png" id="5_tefeu"]
+[ext_resource type="AudioStream" uid="uid://b5xp1gsopv5a0" path="res://assets/Sounds/Menu/Echoes Music.mp3" id="7_85g3d"]
+[ext_resource type="AudioStream" uid="uid://b3306s1ibe1ps" path="res://assets/Sounds/Menu/Underwater Ambience.mp3" id="8_choun"]
+[ext_resource type="FontFile" uid="uid://d4jopgurro7tr" path="res://assets/Fonts/upheavtt.ttf" id="11_trceg"]
+[ext_resource type="AudioStream" uid="uid://fmn0mntrush8" path="res://assets/Sounds/Menu/Buttons/Button3.mp3" id="12_a8y0u"]
+[ext_resource type="AudioStream" uid="uid://b7vtghk7fu8me" path="res://assets/Sounds/Menu/Buttons/EnterButton.mp3" id="13_jkv2x"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_344ge"]
+frequency = 0.0034
+fractal_type = 2
+fractal_gain = 0.98
+fractal_weighted_strength = 0.57
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vcsgt"]
+seamless = true
+seamless_blend_skirt = 0.6
+noise = SubResource("FastNoiseLite_344ge")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ynf5e"]
+shader = ExtResource("3_21xkr")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/fast_noise = SubResource("NoiseTexture2D_vcsgt")
+shader_parameter/speed = Vector2(0.03, 0.07)
+shader_parameter/wave_strength = 2.0
+
+[sub_resource type="Theme" id="Theme_jjvhh"]
+default_font = ExtResource("11_trceg")
+default_font_size = 20
+
+[node name="InitialMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8gbba")
+random_sounds = Array[AudioStream]([ExtResource("2_trceg"), ExtResource("3_a8y0u"), ExtResource("4_jkv2x"), ExtResource("5_jbj1t"), ExtResource("2_85g3d")])
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(0.601359, 0.601359)
+texture = ExtResource("2_tefeu")
+expand_mode = 1
+
+[node name="CanvasModulate" type="CanvasModulate" parent="CanvasLayer"]
+color = Color(0.628315, 0.628315, 0.628315, 1)
+
+[node name="WaterShade" type="Sprite2D" parent="CanvasLayer"]
+top_level = true
+material = SubResource("ShaderMaterial_ynf5e")
+position = Vector2(577.75, 328.5)
+scale = Vector2(9.01953, 5.13281)
+texture = ExtResource("4_6bp64")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+visible = false
+offset_left = 36.0
+offset_top = 5.0
+offset_right = 1352.0
+offset_bottom = 883.0
+scale = Vector2(0.394056, 0.394056)
+texture = ExtResource("5_tefeu")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -502.0
+offset_top = 355.0
+offset_right = -360.0
+offset_bottom = -162.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.7, 1.7)
+alignment = 1
+
+[node name="NewGameButton" type="Button" parent="VBoxContainer"]
+modulate = Color(0.772412, 0.763133, 0.72888, 1)
+layout_mode = 2
+theme = SubResource("Theme_jjvhh")
+theme_type_variation = &"FlatButton"
+text = "New Game"
+alignment = 0
+icon_alignment = 2
+expand_icon = true
+
+[node name="LoadGameButton" type="Button" parent="VBoxContainer"]
+modulate = Color(0.772549, 0.764706, 0.729412, 1)
+layout_mode = 2
+theme = SubResource("Theme_jjvhh")
+theme_type_variation = &"FlatButton"
+text = "Load Game"
+alignment = 0
+
+[node name="Settings" type="Button" parent="VBoxContainer"]
+modulate = Color(0.772549, 0.764706, 0.729412, 1)
+layout_mode = 2
+theme = SubResource("Theme_jjvhh")
+theme_type_variation = &"FlatButton"
+text = "Settings"
+alignment = 0
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+modulate = Color(0.772549, 0.764706, 0.729412, 1)
+layout_mode = 2
+theme = SubResource("Theme_jjvhh")
+theme_type_variation = &"FlatButton"
+text = "Exit"
+alignment = 0
+
+[node name="UISound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-7.62939e-06, 0)
+scale = Vector2(1, 1)
+stream = ExtResource("12_a8y0u")
+volume_db = 5.0
+
+[node name="SelectSound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-7.62939e-06, 0)
+scale = Vector2(1, 1)
+stream = ExtResource("13_jkv2x")
+volume_db = 5.0
+
+[node name="MusicMenuSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_85g3d")
+
+[node name="WaterMenuSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_choun")
+volume_db = 0.5
+
+[node name="Effects" type="Node2D" parent="."]
+
+[node name="EffectsSound" type="AudioStreamPlayer2D" parent="Effects"]
+volume_db = 5.0

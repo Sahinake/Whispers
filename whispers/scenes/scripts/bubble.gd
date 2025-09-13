@@ -12,7 +12,7 @@ var time_passed := 0.0
 
 func _ready():
 	# Pega a câmera principal da cena
-	var camera = get_tree().get_root().get_node("CTScene/Camera2D")
+	var camera = get_tree().get_root().get_node("Game/Camera2D")
 	
 	if camera == null:
 		push_error("Nenhuma câmera encontrada!")
@@ -38,13 +38,13 @@ func _ready():
 	scale = Vector2.ONE * randf_range(0.5, 1.5)
 	modulate.a = randf_range(0.6, 1.0)
 	
-	# Luz da bolha
+	# Configura luz da bolha
 	var light = $PointLight2D
 	if light:
-		# intensidade aleatória para cada bolha
-		light.energy = 0.5
-		# escala proporcional ao tamanho da bolha
-		light.scale = Vector2.ONE * scale.x * 10
+		# Intensidade proporcional à opacidade
+		light.energy = 0.5 * modulate.a
+		# Escala proporcional ao tamanho da bolha
+		light.scale = Vector2.ONE * scale.x * 10   # ajuste visual do alcance
 
 func _process(delta):
 	time_passed += delta
@@ -60,7 +60,7 @@ func _process(delta):
 	rotation = sin(time_passed * frequency * 1.2) * 0.1
 
 	# Remove bolha ao passar da parte de cima da tela
-	var camera = get_tree().get_root().get_node("CT_Scene/Camera2D")
+	var camera = get_tree().get_root().get_node("Game/Camera2D")
 	
 	# remove bolha quando passar do topo do mapa
 	if global_position.y < map_top:
