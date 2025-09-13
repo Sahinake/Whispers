@@ -156,7 +156,7 @@ metadata/_edit_lock_ = true
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 scale = Vector2(4.125, 4.125)
-color = Color(0.54902, 0.980392, 1, 0.490196)
+color = Color(0.84796, 0.994401, 1, 0.490196)
 shadow_filter = 2
 shadow_filter_smooth = 0.3
 texture = SubResource("GradientTexture2D_nyqok")

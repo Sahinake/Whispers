@@ -7,6 +7,7 @@ extends Node2D
 @onready var inventory_background = $Layer3/InventoryBackground
 
 var inventory_open := false
+var current_level_name := ""  # guarda o nome do nível atual
 
 func _ready():
 	load_level("res://Scenes/Levels/CT_map.tscn")
@@ -32,14 +33,28 @@ func load_level(path: String):
 	var scene = load(path).instantiate()
 	level_container.add_child(scene)
 
+	# Guarda o nome do nível atual
+	current_level_name = path.get_file().get_basename()  # ex: "CT_map"
+	
 	# Posiciona o player no ponto inicial (se houver um marcador na fase)
 	var spawn = find_spawn(scene)
 	if spawn:
 		player.global_position = spawn.global_position
 	else:
 		player.global_position = Vector2.ZERO
+	
+	# Desativa Bubbles e WaterShade se não for CT_map
+	if current_level_name != "CT_map":
+		$Layer2/Bubbles.visible = true
+		$Layer2/WaterShade.visible = true
+	else:
+		$Layer2/Bubbles.visible = false
+		$Layer2/WaterShade.visible = false
 
 func _on_player_request_inventory_toggle():
+	if current_level_name != "CT_map":
+		return  # não abre inventário em outros mapas
+	
 	if inventory_open:
 		close_inventory()
 	else:
@@ -145,7 +160,6 @@ func close_inventory():
 	inventory_open = false
 	
 	var buttons = [inventory.save_tab, inventory.settings_tab]
-	var inventory_pos = inventory.position  # posição atual do inventário
 	var delay = 0.0
 
 	# Botões voltando atrás do inventário (à direita)
