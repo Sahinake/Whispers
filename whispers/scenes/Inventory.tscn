@@ -1,9 +1,41 @@
-[gd_scene load_steps=2 format=3 uid="uid://cxu4ld8hpxo2o"]
+[gd_scene load_steps=7 format=3 uid="uid://cxu4ld8hpxo2o"]
 
-[ext_resource type="Texture2D" uid="uid://d18g5imeglnap" path="res://Assets/Player/Inventory.png" id="1_k5gp2"]
+[ext_resource type="Texture2D" uid="uid://d0vt6eh71kl2h" path="res://Assets/Player/Inventory/Side Tabs/SaveTab1.png" id="1_2hjaa"]
+[ext_resource type="Script" uid="uid://bckao7e53618q" path="res://Scenes/Scripts/inventory.gd" id="1_f1uin"]
+[ext_resource type="Texture2D" uid="uid://d18g5imeglnap" path="res://Assets/Player/Inventory/Inventory.png" id="1_k5gp2"]
+[ext_resource type="Texture2D" uid="uid://bl0li4s6f64nq" path="res://Assets/Player/Inventory/Side Tabs/SettingsTab1.png" id="3_4ne0y"]
+[ext_resource type="Texture2D" uid="uid://dgrx8d45ghudb" path="res://Assets/Player/Inventory/Side Tabs/SaveTab3.png" id="4_fih0l"]
+[ext_resource type="Texture2D" uid="uid://cfnh8gyj0dyrq" path="res://Assets/Player/Inventory/Side Tabs/SettingsTab3.png" id="7_tqkc6"]
 
-[node name="Inventory" type="Node2D"]
+[node name="Inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_f1uin")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = -294.0
+offset_top = -49.0
+offset_right = -246.0
+offset_bottom = 51.0
+
+[node name="SaveTab" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_pressed = true
+texture_normal = ExtResource("1_2hjaa")
+texture_focused = ExtResource("4_fih0l")
+
+[node name="SettingsTab" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_4ne0y")
+texture_focused = ExtResource("7_tqkc6")
 
 [node name="InventorySprite" type="Sprite2D" parent="."]
 scale = Vector2(1.45703, 1.45703)
 texture = ExtResource("1_k5gp2")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

@@ -1,7 +1,7 @@
 [gd_scene load_steps=24 format=3 uid="uid://be3befjd56utq"]
 
 [ext_resource type="Texture2D" uid="uid://bddelotvp4pc" path="res://Assets/Tiles/Bubbles_TileSheet.png" id="1_nyqok"]
-[ext_resource type="Script" uid="uid://c2vwh7umi5cpg" path="res://Scenes/scripts/bubble.gd" id="2_jfwrf"]
+[ext_resource type="Script" uid="uid://c2vwh7umi5cpg" path="res://Scenes/Scripts/bubble.gd" id="2_jfwrf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fs0b5"]
 atlas = ExtResource("1_nyqok")
@@ -141,7 +141,7 @@ animations = [{
 offsets = PackedFloat32Array(0, 0.552632, 0.754386, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0.277528, 0.277528, 0.277528, 1, 0.162066, 0.162066, 0.162066, 1, 0, 0, 0, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_b4vvx"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nyqok"]
 gradient = SubResource("Gradient_pm753")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
@@ -156,8 +156,8 @@ metadata/_edit_lock_ = true
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 scale = Vector2(4.125, 4.125)
-color = Color(0.54902, 0.980392, 1, 0.490196)
+color = Color(0.84796, 0.994401, 1, 0.490196)
 shadow_filter = 2
 shadow_filter_smooth = 0.3
-texture = SubResource("GradientTexture2D_b4vvx")
+texture = SubResource("GradientTexture2D_nyqok")
 texture_scale = 0.5
