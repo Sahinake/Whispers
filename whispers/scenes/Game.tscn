@@ -1,13 +1,19 @@
-[gd_scene load_steps=12 format=3 uid="uid://cwr1by4kqynqg"]
+[gd_scene load_steps=18 format=3 uid="uid://cwr1by4kqynqg"]
 
 [ext_resource type="Script" uid="uid://cksj6w6wrmsr1" path="res://Scenes/Scripts/game.gd" id="1_iukft"]
 [ext_resource type="PackedScene" uid="uid://b6u2c7130mn3l" path="res://Scenes/Player/player.tscn" id="2_gl6un"]
+[ext_resource type="AudioStream" uid="uid://ctdjkww247a5c" path="res://Assets/Sounds/Menu/Effects/Effect1.mp3" id="2_wxwew"]
+[ext_resource type="AudioStream" uid="uid://dg0gbwf3cpw88" path="res://Assets/Sounds/Menu/Effects/Effect2.mp3" id="3_acvyw"]
 [ext_resource type="PackedScene" uid="uid://cqe2af6sbeprw" path="res://Scenes/Bubbles/bubbles.tscn" id="3_b2bpf"]
 [ext_resource type="Shader" uid="uid://cwuirfvs10jof" path="res://Scenes/Scripts/Shaders/WaterShader.gdshader" id="4_7lihs"]
+[ext_resource type="AudioStream" uid="uid://dstyauupcptkb" path="res://Assets/Sounds/Menu/Effects/Effect3.mp3" id="4_alh3a"]
+[ext_resource type="AudioStream" uid="uid://btrf0rbul2vpb" path="res://Assets/Sounds/Menu/Effects/Effect4.mp3" id="5_4q8tf"]
 [ext_resource type="Texture2D" uid="uid://bdg40fy77b8g2" path="res://icon.svg" id="5_fgofq"]
 [ext_resource type="PackedScene" uid="uid://bo1d1sck661g2" path="res://Scenes/Player/player_ui.tscn" id="6_aug50"]
+[ext_resource type="AudioStream" uid="uid://dfy1sgwd4h6gx" path="res://Assets/Sounds/Menu/Effects/Effect5.mp3" id="6_x3xnh"]
 [ext_resource type="Texture2D" uid="uid://d1w3u7m6iftq3" path="res://Assets/Player/Inventory/InventoryBackground.png" id="7_2irst"]
 [ext_resource type="PackedScene" uid="uid://cxu4ld8hpxo2o" path="res://Scenes/Inventory.tscn" id="7_fgofq"]
+[ext_resource type="AudioStream" uid="uid://b3306s1ibe1ps" path="res://Assets/Sounds/Menu/Underwater Ambience.mp3" id="9_bf53h"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_2irst"]
 frequency = 0.0034
@@ -29,6 +35,7 @@ shader_parameter/wave_strength = 2.0
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_iukft")
+random_sounds = Array[AudioStream]([ExtResource("2_wxwew"), ExtResource("3_acvyw"), ExtResource("4_alh3a"), ExtResource("5_4q8tf"), ExtResource("6_x3xnh")])
 
 [node name="Layer1" type="CanvasLayer" parent="."]
 layer = 0
@@ -54,6 +61,15 @@ material = SubResource("ShaderMaterial_bf53h")
 position = Vector2(612, 492.25)
 scale = Vector2(9.5625, 7.68359)
 texture = ExtResource("5_fgofq")
+
+[node name="WaterMenuSound" type="AudioStreamPlayer" parent="Layer2"]
+stream = ExtResource("9_bf53h")
+volume_db = 0.5
+
+[node name="Effects" type="Node2D" parent="Layer2"]
+
+[node name="EffectsSound" type="AudioStreamPlayer" parent="Layer2/Effects"]
+volume_db = 5.0
 
 [node name="PlayerUI" parent="." instance=ExtResource("6_aug50")]
 layer = 2

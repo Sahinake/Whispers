@@ -5,6 +5,12 @@ extends Node2D
 @onready var inventory = $Layer3/Inventory
 @onready var color_rect = $Layer3/ColorRect
 @onready var inventory_background = $Layer3/InventoryBackground
+@onready var water = $Layer2/WaterMenuSound
+@onready var effect_player = $Layer2/Effects/EffectsSound
+@export var random_sounds : Array[AudioStream] = []
+
+@export var water_volume_db := 5.0
+@export var effects_volume_db := -2.5
 
 var inventory_open := false
 var current_level_name := ""  # guarda o nome do nível atual
@@ -47,10 +53,37 @@ func load_level(path: String):
 	if current_level_name != "CT_map":
 		$Layer2/Bubbles.visible = true
 		$Layer2/WaterShade.visible = true
+		if current_level_name == "Atlantic_Map_Open":
+			start_sounds()
+		
 	else:
 		$Layer2/Bubbles.visible = false
 		$Layer2/WaterShade.visible = false
 
+func start_sounds():
+	# aplica volumes
+	water.volume_db = water_volume_db
+	effect_player.volume_db = effects_volume_db
+	
+	# habilita loop no player
+	if water.stream:
+		water.stream.loop = true
+		water.play()
+
+	play_random_effect()
+
+func play_random_effect():
+	if random_sounds.is_empty():
+		return
+
+	var sound = random_sounds[randi() % random_sounds.size()]
+	effect_player.stream = sound
+	effect_player.play()
+
+	var wait_time = randf_range(5.0, 15.0)
+	await get_tree().create_timer(wait_time).timeout
+	play_random_effect()
+	
 func _on_player_request_inventory_toggle():
 	if current_level_name != "CT_map":
 		return  # não abre inventário em outros mapas

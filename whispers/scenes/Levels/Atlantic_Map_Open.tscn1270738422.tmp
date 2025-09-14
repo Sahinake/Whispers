@@ -1,13 +1,22 @@
-[gd_scene load_steps=4 format=4 uid="uid://bgqhb3am6eukx"]
+[gd_scene load_steps=11 format=4 uid="uid://bgqhb3am6eukx"]
 
 [ext_resource type="TileSet" uid="uid://dukwad64niofq" path="res://Assets/Tiles/TileMap.tres" id="1_5eucg"]
+[ext_resource type="Script" uid="uid://s3deweggo5o0" path="res://Scenes/Scripts/atlantic_map_open_root.gd" id="1_ncd3o"]
 [ext_resource type="Script" uid="uid://dxrekm8r82q2w" path="res://Scenes/Scripts/Atlantic_Map_Open.gd" id="2_5eucg"]
+[ext_resource type="AudioStream" uid="uid://ctdjkww247a5c" path="res://Assets/Sounds/Menu/Effects/Effect1.mp3" id="2_7gusf"]
+[ext_resource type="AudioStream" uid="uid://dg0gbwf3cpw88" path="res://Assets/Sounds/Menu/Effects/Effect2.mp3" id="3_1b7l3"]
+[ext_resource type="AudioStream" uid="uid://b3306s1ibe1ps" path="res://Assets/Sounds/Menu/Underwater Ambience.mp3" id="3_p5yka"]
+[ext_resource type="AudioStream" uid="uid://dstyauupcptkb" path="res://Assets/Sounds/Menu/Effects/Effect3.mp3" id="4_xuhnt"]
+[ext_resource type="AudioStream" uid="uid://btrf0rbul2vpb" path="res://Assets/Sounds/Menu/Effects/Effect4.mp3" id="5_t1ij2"]
+[ext_resource type="AudioStream" uid="uid://dfy1sgwd4h6gx" path="res://Assets/Sounds/Menu/Effects/Effect5.mp3" id="6_qpvcm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5kcor"]
 size = Vector2(146.5, 38)
 
 [node name="AtlanticMapOpen" type="Node2D"]
 position = Vector2(-51, 198)
+script = ExtResource("1_ncd3o")
+random_sounds = Array[AudioStream]([ExtResource("2_7gusf"), ExtResource("3_1b7l3"), ExtResource("4_xuhnt"), ExtResource("5_t1ij2"), ExtResource("6_qpvcm")])
 
 [node name="Ground" type="TileMapLayer" parent="."]
 use_parent_material = true
@@ -47,3 +56,12 @@ shape = SubResource("RectangleShape2D_5kcor")
 
 [node name="SpawnPoint" type="Node2D" parent="."]
 position = Vector2(647, 71)
+
+[node name="WaterMenuSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_p5yka")
+volume_db = 0.5
+
+[node name="Effects" type="Node2D" parent="."]
+
+[node name="EffectsSound" type="AudioStreamPlayer2D" parent="Effects"]
+volume_db = 5.0

@@ -8,9 +8,9 @@ extends Control
 
 @export var random_sounds : Array[AudioStream] = []
 
-@export var music_volume_db := 1.0  
-@export var water_volume_db := 3.0   
-@export var effects_volume_db := -0.5
+@export var music_volume_db := 0.0  
+@export var water_volume_db := 2.0   
+@export var effects_volume_db := -2.5
 
 var current_button : Button = null
 
@@ -50,7 +50,7 @@ func _ready():
 
 	play_random_effect()
 
-# === som de foco ===
+# som de foco
 func _on_button_focus(button):
 	if button != current_button:
 		current_button = button

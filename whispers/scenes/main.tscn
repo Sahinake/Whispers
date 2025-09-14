@@ -127,26 +127,24 @@ theme_type_variation = &"FlatButton"
 text = "Exit"
 alignment = 0
 
-[node name="UISound" type="AudioStreamPlayer2D" parent="."]
-position = Vector2(-7.62939e-06, 0)
+[node name="UISound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_36rkl")
 volume_db = 10.0
 
-[node name="SelectSound" type="AudioStreamPlayer2D" parent="."]
-position = Vector2(-7.62939e-06, 0)
+[node name="SelectSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_fs0b5")
 volume_db = 10.0
 
-[node name="MusicMenuSound" type="AudioStreamPlayer2D" parent="."]
+[node name="MusicMenuSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_ma7h6")
 
-[node name="WaterMenuSound" type="AudioStreamPlayer2D" parent="."]
+[node name="WaterMenuSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_e2s0e")
 volume_db = 0.5
 
 [node name="Effects" type="Node2D" parent="."]
 
-[node name="EffectsSound" type="AudioStreamPlayer2D" parent="Effects"]
+[node name="EffectsSound" type="AudioStreamPlayer" parent="Effects"]
 volume_db = 5.0
 
 [node name="FadeOverlay" type="ColorRect" parent="."]
