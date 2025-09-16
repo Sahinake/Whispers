@@ -93,8 +93,7 @@ Exemplo:
 git checkout develop
 git fetch
 git pull
-git branch develop/descrição-da-implementação
-git checkout develop/descrição-da-implementação
+git checkout -b feature/descrição-da-implementação
 
 # Criando Commits
 git add -A
@@ -121,3 +120,4 @@ git clone https://github.com/Sahinake/Whispers.git
  - Implementar sonar e armas
 
  - Polimento e ambientação
+
