@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cwr1by4kqynqg"]
+[gd_scene load_steps=19 format=3 uid="uid://cwr1by4kqynqg"]
 
 [ext_resource type="Script" uid="uid://cksj6w6wrmsr1" path="res://Scenes/Scripts/game.gd" id="1_iukft"]
 [ext_resource type="PackedScene" uid="uid://b6u2c7130mn3l" path="res://Scenes/Player/player.tscn" id="2_gl6un"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://dfy1sgwd4h6gx" path="res://Assets/Sounds/Menu/Effects/Effect5.mp3" id="6_x3xnh"]
 [ext_resource type="Texture2D" uid="uid://d1w3u7m6iftq3" path="res://Assets/Player/Inventory/InventoryBackground.png" id="7_2irst"]
 [ext_resource type="PackedScene" uid="uid://cxu4ld8hpxo2o" path="res://Scenes/Inventory.tscn" id="7_fgofq"]
+[ext_resource type="PackedScene" uid="uid://ttkefanoi1bc" path="res://Scenes/Enemy.tscn" id="8_acvyw"]
 [ext_resource type="AudioStream" uid="uid://b3306s1ibe1ps" path="res://Assets/Sounds/Menu/Underwater Ambience.mp3" id="9_bf53h"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_2irst"]
@@ -49,6 +50,11 @@ ui_node_path = NodePath("../../PlayerUI")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Layer1/Player"]
 remote_path = NodePath("../../../Camera2D")
+
+[node name="Enemy" parent="Layer1" node_paths=PackedStringArray("target_to_chase") instance=ExtResource("8_acvyw")]
+position = Vector2(459, 253)
+scale = Vector2(0.5, 0.5)
+target_to_chase = NodePath("../Player")
 
 [node name="Layer2" type="CanvasLayer" parent="."]
 

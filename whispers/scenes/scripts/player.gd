@@ -1,9 +1,11 @@
 extends CharacterBody2D
 
 @export var speed: float = 250.0
+@onready var light_area: Area2D = $Flashlight/FlashlightArea
+@onready var light_polygon: CollisionPolygon2D = $Flashlight/FlashlightArea/FlashlightPolygon
 
 var sprite: AnimatedSprite2D
-var flashlight_on := true
+var flashlight_on := false
 
 # sinal que avisa que o inventário deve abrir/fechar
 signal request_inventory_toggle
@@ -39,7 +41,7 @@ func _physics_process(delta):
 	_update_animation(input_vector)
 
 	# Faz a lanterna seguir o mouse
-	$PointLight2D.rotation = (get_global_mouse_position() - global_position).angle()
+	$Flashlight.rotation = (get_global_mouse_position() - global_position).angle()
 
 	# Atualiza recursos
 	_update_resources(delta)
@@ -74,7 +76,8 @@ func _update_animation(input_vector: Vector2):
 func _input(event):
 	if event.is_action_pressed("toggle_lantern"):
 		flashlight_on = !flashlight_on
-		$PointLight2D.enabled = flashlight_on
+		$Flashlight.enabled = flashlight_on
+		light_polygon.disabled = !flashlight_on
 	
 	if event.is_action_pressed("ui_cancel"):
 		emit_signal("request_inventory_toggle")
