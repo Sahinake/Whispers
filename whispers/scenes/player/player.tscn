@@ -304,7 +304,7 @@ script = ExtResource("4_p47bc")
 [node name="lightArea" type="Area2D" parent="light"]
 
 [node name="lightPolygon" type="CollisionPolygon2D" parent="light/lightArea"]
-polygon = PackedVector2Array(6.99666, -1.89536, 98.3215, -32.0322, 105.318, -20.7763, 108.264, -6.61559, 106.423, 19.5273, 99.058, 26.063)
+polygon = PackedVector2Array(0, 0, 105, -30, 105, 30)
 disabled = true
 
 [connection signal="body_entered" from="light/lightArea" to="light" method="_on_light_area_body_entered"]

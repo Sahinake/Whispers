@@ -15,9 +15,9 @@ script = ExtResource("1_4x8xn")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_dcrlu")
 
-[node name="detect_light" type="Area2D" parent="."]
+[node name="hitbox" type="Area2D" parent="."]
 
-[node name="CollisionLight" type="CollisionShape2D" parent="detect_light"]
+[node name="CollisionHit" type="CollisionShape2D" parent="hitbox"]
 modulate = Color(1, 1, 0, 1)
 shape = SubResource("RectangleShape2D_4x8xn")
 
@@ -34,6 +34,4 @@ debug_enabled = true
 wait_time = 0.5
 autostart = true
 
-[connection signal="area_entered" from="detect_light" to="." method="_on_detect_light_area_entered"]
-[connection signal="area_exited" from="detect_light" to="." method="_on_detect_light_area_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
