@@ -9,10 +9,11 @@ var map_top := 0   							# topo do mapa
 
 var base_x := 0.0
 var time_passed := 0.0
+var start_frame: int = -1  # frame inicial que pode ser passado pelo spawner
 
 func _ready():
 	# Pega a câmera principal da cena
-	var camera = get_tree().get_root().get_node("CTScene/Camera2D")
+	camera = get_tree().get_root().get_node("Game/Camera2D")
 	
 	if camera == null:
 		push_error("Nenhuma câmera encontrada!")
@@ -22,7 +23,10 @@ func _ready():
 		animation = animation_name
 		var total_frames = sprite_frames.get_frame_count(animation_name)
 		if total_frames > 0:
-			frame = randi() % total_frames  # escolhe um frame alaeatório
+			if start_frame >= 0 and start_frame < total_frames:
+				frame = start_frame
+			else:
+				frame = randi() % total_frames  # frame aleatório
 	
 	var viewport_size = get_viewport_rect().size
 	
@@ -38,13 +42,11 @@ func _ready():
 	scale = Vector2.ONE * randf_range(0.5, 1.5)
 	modulate.a = randf_range(0.6, 1.0)
 	
-	# Luz da bolha
+	# Configura luz da bolha
 	var light = $PointLight2D
 	if light:
-		# intensidade aleatória para cada bolha
+		# Intensidade proporcional à opacidade
 		light.energy = 0.5
-		# escala proporcional ao tamanho da bolha
-		light.scale = Vector2.ONE * scale.x * 10
 
 func _process(delta):
 	time_passed += delta
@@ -60,7 +62,7 @@ func _process(delta):
 	rotation = sin(time_passed * frequency * 1.2) * 0.1
 
 	# Remove bolha ao passar da parte de cima da tela
-	var camera = get_tree().get_root().get_node("CT_Scene/Camera2D")
+	camera = get_tree().get_root().get_node("Game/Camera2D")
 	
 	# remove bolha quando passar do topo do mapa
 	if global_position.y < map_top:

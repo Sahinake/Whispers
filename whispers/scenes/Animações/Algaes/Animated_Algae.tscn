@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://dj5evx0a2mqmo"]
+
+[ext_resource type="Texture2D" uid="uid://cws7mldbi5wng" path="res://Assets/Tiles/Algaes/Animated_algae_01.png" id="1_a6tjd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6tjd"]
+atlas = ExtResource("1_a6tjd")
+region = Rect2(0, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j74io"]
+atlas = ExtResource("1_a6tjd")
+region = Rect2(48, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c78io"]
+atlas = ExtResource("1_a6tjd")
+region = Rect2(96, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6oa8"]
+atlas = ExtResource("1_a6tjd")
+region = Rect2(144, 0, 48, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_004dc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6tjd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j74io")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c78io")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6oa8")
+}],
+"loop": true,
+"name": &"alga",
+"speed": 5.0
+}]
+
+[node name="AnimatedAlgae" type="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(636, 543)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D"]
+position = Vector2(-635, -567)
+sprite_frames = SubResource("SpriteFrames_004dc")
+animation = &"alga"
+autoplay = "alga"
+frame_progress = 0.399639

@@ -1,8 +1,9 @@
-[gd_scene load_steps=38 format=3 uid="uid://b6u2c7130mn3l"]
+[gd_scene load_steps=41 format=3 uid="uid://b6u2c7130mn3l"]
 
 [ext_resource type="Script" uid="uid://dbclh5ij2q4tj" path="res://Scenes/Scripts/player.gd" id="1_gmlin"]
 [ext_resource type="Texture2D" uid="uid://b0ka22ntfxfjy" path="res://Assets/Player/Half.png" id="2_xpcdj"]
-[ext_resource type="Texture2D" uid="uid://bbp7hh4ax1aem" path="res://Assets/Tiles/Flashlight_Texture.png" id="4_lvxji"]
+[ext_resource type="Texture2D" uid="uid://bbp7hh4ax1aem" path="res://Assets/Tiles/Flashlight/flashlight_texture.png" id="4_lvxji"]
+[ext_resource type="Script" uid="uid://dhl0m0hagu3si" path="res://scenes/scripts/light.gd" id="4_mtuoh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mtuoh"]
 atlas = ExtResource("2_xpcdj")
@@ -272,28 +273,53 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wva7c"]
-size = Vector2(24.0496, 550.894)
+size = Vector2(33.5428, 853.886)
+
+[sub_resource type="Gradient" id="Gradient_xpcdj"]
+offsets = PackedFloat32Array(0, 0.24031, 0.348837, 0.573643, 0.744186)
+colors = PackedColorArray(1, 1, 1, 1, 0.43617, 0.43617, 0.43617, 1, 0.37234, 0.37234, 0.37234, 1, 0.130319, 0.130319, 0.130319, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mtuoh"]
+gradient = SubResource("Gradient_xpcdj")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_gmlin")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5q8fn")
-animation = &"walk_up"
+animation = &"idle_down"
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2.29676e-05, 27)
+position = Vector2(-0.5, 32.5)
 rotation = -3.14159
 scale = Vector2(1.58007, 0.0363046)
 shape = SubResource("RectangleShape2D_wva7c")
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="Light" type="PointLight2D" parent="."]
+position = Vector2(0, 13)
+scale = Vector2(2.89453, 2.89453)
+texture = SubResource("GradientTexture2D_mtuoh")
+
+[node name="Flashlight" type="PointLight2D" parent="."]
 position = Vector2(0, -23.78)
 scale = Vector2(2.71558, 2.7541)
+enabled = false
 color = Color(0.321569, 1, 0.658824, 0.65098)
 shadow_enabled = true
 shadow_filter = 2
 shadow_filter_smooth = 0.3
 texture = ExtResource("4_lvxji")
 offset = Vector2(111, 0)
+script = ExtResource("4_mtuoh")
+
+[node name="FlashlightArea" type="Area2D" parent="Flashlight"]
+
+[node name="FlashlightPolygon" type="CollisionPolygon2D" parent="Flashlight/FlashlightArea"]
+polygon = PackedVector2Array(0, 0, 105, -30, 105, 30)
+disabled = true
+
+[connection signal="body_entered" from="Flashlight/FlashlightArea" to="Flashlight" method="_on_flashlight_area_body_entered"]
+[connection signal="body_exited" from="Flashlight/FlashlightArea" to="Flashlight" method="_on_flashlight_area_body_exited"]
