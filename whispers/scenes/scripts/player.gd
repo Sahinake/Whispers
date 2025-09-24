@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @export var speed: float = 250.0
+@export var run_multiplier: float = 1.5   # multiplicador da corrida
 @onready var light_area: Area2D = $Flashlight/FlashlightArea
 @onready var light_polygon: CollisionPolygon2D = $Flashlight/FlashlightArea/FlashlightPolygon
 
@@ -34,7 +35,11 @@ func _physics_process(delta):
 	input_vector.x = Input.get_axis("ui_left", "ui_right")
 	input_vector.y = Input.get_axis("ui_up", "ui_down")
 	
-	velocity = input_vector.normalized() * speed
+	var current_speed = speed
+	if Input.is_action_pressed("run"):   # precisa mapear "run" no Input Map como Shift
+		current_speed *= run_multiplier
+		
+	velocity = input_vector.normalized() * current_speed
 	move_and_slide()
 
 	# Atualiza animação
