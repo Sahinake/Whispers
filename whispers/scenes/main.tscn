@@ -1,11 +1,20 @@
-[gd_scene load_steps=12 format=3 uid="uid://ryxskbh0j8q2"]
+[gd_scene load_steps=20 format=3 uid="uid://ryxskbh0j8q2"]
 
-[ext_resource type="Script" uid="uid://clp8g286y4bdq" path="res://scenes/scripts/initial_menu.gd" id="1_8gbba"]
-[ext_resource type="Texture2D" uid="uid://b7tmfwctu31fw" path="res://assets/Menu/Background.png" id="2_jjvhh"]
-[ext_resource type="FontFile" uid="uid://i52ggsec0scu" path="res://assets/Fonts/PixelSerif_16px_v02.ttf" id="3_8gbba"]
-[ext_resource type="Shader" uid="uid://cwuirfvs10jof" path="res://scenes/scripts/shaders/WaterShader.gdshader" id="3_21xkr"]
-[ext_resource type="Texture2D" uid="uid://bdg40fy77b8g2" path="res://icon.svg" id="4_6bp64"]
-[ext_resource type="Texture2D" uid="uid://bwmtqs7l3qpyj" path="res://assets/Menu/Sussurros Mágicos e Ancorados.png" id="5_21xkr"]
+[ext_resource type="Script" uid="uid://clp8g286y4bdq" path="res://scenes/scripts/initial_menu.gd" id="1_3p2gp"]
+[ext_resource type="AudioStream" uid="uid://ctdjkww247a5c" path="res://assets/Sounds/Menu/Effects/Effect1.mp3" id="2_cvmbd"]
+[ext_resource type="AudioStream" uid="uid://dg0gbwf3cpw88" path="res://assets/Sounds/Menu/Effects/Effect2.mp3" id="3_ft6cd"]
+[ext_resource type="AudioStream" uid="uid://dstyauupcptkb" path="res://assets/Sounds/Menu/Effects/Effect3.mp3" id="4_bb450"]
+[ext_resource type="AudioStream" uid="uid://btrf0rbul2vpb" path="res://assets/Sounds/Menu/Effects/Effect4.mp3" id="5_nfivy"]
+[ext_resource type="AudioStream" uid="uid://dfy1sgwd4h6gx" path="res://assets/Sounds/Menu/Effects/Effect5.mp3" id="6_1nqs0"]
+[ext_resource type="Texture2D" uid="uid://bamlrx4nm8pas" path="res://assets/Menu/Background2.png" id="7_1iba3"]
+[ext_resource type="Shader" uid="uid://cwuirfvs10jof" path="res://scenes/scripts/shaders/WaterShader.gdshader" id="8_yxlcp"]
+[ext_resource type="Texture2D" uid="uid://bdg40fy77b8g2" path="res://icon.svg" id="9_ebg2g"]
+[ext_resource type="Texture2D" uid="uid://dvct7l82sl3rt" path="res://assets/Menu/Tittle.png" id="10_2ofn6"]
+[ext_resource type="FontFile" uid="uid://d4jopgurro7tr" path="res://assets/Fonts/upheavtt.ttf" id="11_xa025"]
+[ext_resource type="AudioStream" uid="uid://b8aamj7gxj50g" path="res://assets/Sounds/Menu/Buttons/Button4.mp3" id="12_36rkl"]
+[ext_resource type="AudioStream" uid="uid://cvv3bbf2pcani" path="res://assets/Sounds/Menu/Buttons/Button7.mp3" id="13_fs0b5"]
+[ext_resource type="AudioStream" uid="uid://b5xp1gsopv5a0" path="res://assets/Sounds/Menu/Echoes Music.mp3" id="14_ma7h6"]
+[ext_resource type="AudioStream" uid="uid://b3306s1ibe1ps" path="res://assets/Sounds/Menu/Underwater Ambience.mp3" id="15_e2s0e"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_344ge"]
 frequency = 0.0034
@@ -19,17 +28,15 @@ seamless_blend_skirt = 0.6
 noise = SubResource("FastNoiseLite_344ge")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ynf5e"]
-shader = ExtResource("3_21xkr")
+shader = ExtResource("8_yxlcp")
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/fast_noise = SubResource("NoiseTexture2D_vcsgt")
 shader_parameter/speed = Vector2(0.03, 0.07)
 shader_parameter/wave_strength = 2.0
 
 [sub_resource type="Theme" id="Theme_jjvhh"]
-default_font = ExtResource("3_8gbba")
-default_font_size = 16
-
-[sub_resource type="Theme" id="Theme_kry3j"]
+default_font = ExtResource("11_xa025")
+default_font_size = 20
 
 [node name="InitialMenu" type="Control"]
 layout_mode = 3
@@ -39,7 +46,8 @@ anchor_bottom = 1.0
 offset_bottom = 9.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_8gbba")
+script = ExtResource("1_3p2gp")
+random_sounds = Array[AudioStream]([ExtResource("2_cvmbd"), ExtResource("3_ft6cd"), ExtResource("4_bb450"), ExtResource("5_nfivy"), ExtResource("6_1nqs0")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -48,7 +56,7 @@ layer = -1
 offset_right = 1920.0
 offset_bottom = 1080.0
 scale = Vector2(0.601359, 0.601359)
-texture = ExtResource("2_jjvhh")
+texture = ExtResource("7_1iba3")
 expand_mode = 1
 
 [node name="CanvasModulate" type="CanvasModulate" parent="CanvasLayer"]
@@ -57,17 +65,18 @@ color = Color(0.628315, 0.628315, 0.628315, 1)
 [node name="WaterShade" type="Sprite2D" parent="CanvasLayer"]
 top_level = true
 material = SubResource("ShaderMaterial_ynf5e")
-position = Vector2(577.75, 328.5)
+position = Vector2(578, 317)
 scale = Vector2(9.01953, 5.13281)
-texture = ExtResource("4_6bp64")
+texture = ExtResource("9_ebg2g")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
-offset_left = 254.0
-offset_top = -27.0
-offset_right = 2053.0
-offset_bottom = 1172.0
+offset_left = 36.0
+offset_top = 5.0
+offset_right = 1352.0
+offset_bottom = 883.0
 scale = Vector2(0.394056, 0.394056)
-texture = ExtResource("5_21xkr")
+texture = ExtResource("10_2ofn6")
+expand_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -75,35 +84,72 @@ anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -100.0
-offset_top = 404.0
-offset_right = 41.9999
-offset_bottom = -117.0
+offset_left = -502.0
+offset_top = 341.0
+offset_right = -364.0
+offset_bottom = -148.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.7, 1.7)
 alignment = 1
 
 [node name="NewGameButton" type="Button" parent="VBoxContainer"]
-modulate = Color(0.695924, 0.522187, 0.0958757, 1)
+modulate = Color(0.772412, 0.763133, 0.72888, 1)
 layout_mode = 2
 theme = SubResource("Theme_jjvhh")
+theme_type_variation = &"FlatButton"
 text = "New Game"
+alignment = 0
+icon_alignment = 2
+expand_icon = true
 
 [node name="LoadGameButton" type="Button" parent="VBoxContainer"]
-modulate = Color(0.694118, 0.521569, 0.0941176, 1)
+modulate = Color(0.772549, 0.764706, 0.729412, 1)
 layout_mode = 2
+theme = SubResource("Theme_jjvhh")
+theme_type_variation = &"FlatButton"
 text = "Load Game"
+alignment = 0
 
 [node name="Settings" type="Button" parent="VBoxContainer"]
-modulate = Color(0.694118, 0.521569, 0.0941176, 1)
+modulate = Color(0.772549, 0.764706, 0.729412, 1)
 layout_mode = 2
-theme = SubResource("Theme_kry3j")
+theme = SubResource("Theme_jjvhh")
+theme_type_variation = &"FlatButton"
 text = "Settings"
+alignment = 0
 
 [node name="Exit" type="Button" parent="VBoxContainer"]
-modulate = Color(0.694118, 0.521569, 0.0941176, 1)
+modulate = Color(0.772549, 0.764706, 0.729412, 1)
 layout_mode = 2
+theme = SubResource("Theme_jjvhh")
+theme_type_variation = &"FlatButton"
 text = "Exit"
+alignment = 0
 
-[node name="MenuSound" type="AudioStreamPlayer2D" parent="."]
+[node name="UISound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_36rkl")
+volume_db = 10.0
+
+[node name="SelectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_fs0b5")
+volume_db = 10.0
+
+[node name="MusicMenuSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_ma7h6")
+
+[node name="WaterMenuSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_e2s0e")
+volume_db = 0.5
+
+[node name="Effects" type="Node2D" parent="."]
+
+[node name="EffectsSound" type="AudioStreamPlayer" parent="Effects"]
+volume_db = 5.0
+
+[node name="FadeOverlay" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1155.0
+offset_bottom = 650.0
+color = Color(0, 0, 0, 0)

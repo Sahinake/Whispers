@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c0rk7ubtyg3so"]
 
-[ext_resource type="Script" path="res://Scenes/Scripts/fish.gd" id="1_6lepv"]
+[ext_resource type="Script" uid="uid://dnvecuj2llosk" path="res://Scenes/Scripts/fish.gd" id="1_6lepv"]
 [ext_resource type="Texture2D" uid="uid://npfyl67weu0u" path="res://Assets/Tiles/Animals/peixe_virando_01.png" id="2_iyxa5"]
 
 [sub_resource type="Curve2D" id="Curve2D_f5qig"]

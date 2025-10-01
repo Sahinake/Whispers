@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://dqt40lul4jryx"]
 
-[ext_resource type="Script" uid="uid://b1mct8t0ks42f" path="res://Scenes/Scripts/crab.gd" id="1_jchyf"]
-[ext_resource type="Texture2D" uid="uid://ctrm44qgyf1nd" path="res://Assets/Tiles/Animals/caranguejo.png" id="2_tx6qd"]
+[ext_resource type="Script" uid="uid://b1mct8t0ks42f" path="res://scenes/scripts/crab.gd" id="1_jchyf"]
+[ext_resource type="Texture2D" uid="uid://ctrm44qgyf1nd" path="res://assets/tiles/Animals/caranguejo.png" id="2_tx6qd"]
 
 [sub_resource type="Curve2D" id="Curve2D_sck70"]
 _data = {

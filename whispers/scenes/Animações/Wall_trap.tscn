@@ -1,0 +1,79 @@
+[gd_scene load_steps=10 format=3 uid="uid://8cy8f64q80vm"]
+
+[ext_resource type="Texture2D" uid="uid://rhjciyw8d7ac" path="res://assets/tiles/Traps/hole.png" id="1_nkkhk"]
+[ext_resource type="Script" uid="uid://cy8rhe63jug54" path="res://scenes/scripts/see.gd" id="1_xb2ba"]
+[ext_resource type="Texture2D" uid="uid://b2gellnwjii1n" path="res://assets/tiles/Traps/lance.png" id="2_xb2ba"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nkkhk"]
+size = Vector2(20, 223)
+
+[sub_resource type="Curve2D" id="Curve2D_vwy31"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 177.592)
+}
+point_count = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwy31"]
+atlas = ExtResource("2_xb2ba")
+region = Rect2(0, 0, 5, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xb2ba"]
+atlas = ExtResource("2_xb2ba")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6vp38"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vwy31")
+}],
+"loop": false,
+"name": &"off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xb2ba")
+}],
+"loop": false,
+"name": &"on",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xb2ba"]
+size = Vector2(11, 17)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="See" type="Area2D" parent="."]
+script = ExtResource("1_xb2ba")
+
+[node name="Hole" type="Sprite2D" parent="See"]
+position = Vector2(-1, 70)
+texture = ExtResource("1_nkkhk")
+
+[node name="See" type="CollisionShape2D" parent="See"]
+position = Vector2(0, 101.5)
+shape = SubResource("RectangleShape2D_nkkhk")
+
+[node name="Path2D" type="Path2D" parent="See"]
+position = Vector2(0, -22)
+scale = Vector2(1, 1.28947)
+curve = SubResource("Curve2D_vwy31")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="See/Path2D"]
+rotation = 1.5708
+loop = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="See/Path2D/PathFollow2D"]
+position = Vector2(25, -1.09278e-06)
+rotation = -1.5708
+sprite_frames = SubResource("SpriteFrames_6vp38")
+animation = &"on"
+autoplay = "off"
+
+[node name="Hit" type="Area2D" parent="See/Path2D/PathFollow2D/AnimatedSprite2D"]
+
+[node name="Hit" type="CollisionShape2D" parent="See/Path2D/PathFollow2D/AnimatedSprite2D/Hit"]
+position = Vector2(-0.5, -16.5)
+shape = SubResource("RectangleShape2D_xb2ba")
