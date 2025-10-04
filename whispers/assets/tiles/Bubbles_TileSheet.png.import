@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bddelotvp4pc"
-path="res://.godot/imported/Bubbles_TileSheet.png-3719b286430073c797ea613530040994.ctex"
+path="res://.godot/imported/Bubbles_TileSheet.png-ba3c2103310ec797f9c947cfdf047ce8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tiles/Bubbles_TileSheet.png"
-dest_files=["res://.godot/imported/Bubbles_TileSheet.png-3719b286430073c797ea613530040994.ctex"]
+source_file="res://assets/tiles/Bubbles_TileSheet.png"
+dest_files=["res://.godot/imported/Bubbles_TileSheet.png-ba3c2103310ec797f9c947cfdf047ce8.ctex"]
 
 [params]
 

@@ -13,13 +13,13 @@ extends CharacterBody2D
 @onready var nav_chase : NavigationAgent2D = $NavigationAgent2D
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var timer: Timer = $Timer
-@onready var luz : PointLight2D
+@onready var detection: bool = false
+@onready var hitbox: Area2D = $hitbox
 
 var speed = 250
 var dir
 var start_pos
-var detection: bool = false
-var can_attack: bool = true   # controla cooldown
+var can_attack: bool = false   # verifica se está na área de ataque
 var waiting: bool = false   # controla se está parado esperando
 
 enum State {IDLE, CHASE, BACK, ATTACK}
@@ -29,8 +29,6 @@ func _ready() -> void:
 	start_pos = global_position
 	dir = Vector2.ZERO
 	current_state = State.IDLE
-	luz = target_to_chase.get_node("Flashlight")
-	luz.enemy_spotted.connect(_on_light_detect)
 	
 	# Inicializa o primeiro ponto de patrulha
 	_set_random_patrol_point()
@@ -45,6 +43,7 @@ func _physics_process(delta: float) -> void:
 	match current_state:
 		State.IDLE:
 			if detection:
+				hitbox.monitoring = true
 				current_state = State.CHASE
 			elif !waiting:
 				# pega a posição final do ponto de patrulha
@@ -62,10 +61,7 @@ func _physics_process(delta: float) -> void:
 					patrol_wait_timer.start(randf_range(2.0, 3.0))
 				else:
 					# anda até o ponto
-					dir = (nav_chase.get_next_path_position() - global_position).normalized()
-					velocity = dir * (speed * 0.5)
-					_update_flip()
-					sprite.play("walk")
+					nav_movement(dir, speed*0.5)
 
 		State.CHASE:
 			var dist = (target_to_chase.global_position - global_position).length()
@@ -76,14 +72,12 @@ func _physics_process(delta: float) -> void:
 				velocity = Vector2.ZERO
 				sprite.play("idle")
 				patrol_wait_timer.start(randf_range(1.0, 2.0))
+				hitbox.monitoring = false
 				current_state = State.IDLE
-			elif dist <= attack_range and can_attack:
+			elif can_attack:
 				current_state = State.ATTACK
 			else:
-				dir = to_local(nav_chase.get_next_path_position()).normalized()
-				velocity = dir * speed
-				_update_flip()
-				sprite.play("walk")
+				nav_movement(dir, speed)
 
 		State.BACK:
 			if detection:
@@ -96,8 +90,8 @@ func _physics_process(delta: float) -> void:
 		State.ATTACK:
 			velocity = Vector2.ZERO
 			_update_flip(true)
-			if sprite.animation != "attack":
-				sprite.play("attack")
+			#if sprite.animation != "attack":
+			sprite.play("attack")
 
 	move_and_slide()
 	
@@ -124,7 +118,7 @@ func _on_animation_finished():
 
 func _on_frame_changed():
 	# aplica o dano no frame 3 da animação "attack"
-	if sprite.animation == "attack" and sprite.frame == 3:
+	if sprite.animation == "attack" and sprite.frame == 2:
 		_do_attack()
 		
 # escolhe um ponto aleatório dentro do raio
@@ -139,20 +133,17 @@ func _set_random_patrol_point():
 # ----------------------------------------
 func _do_attack():
 	if can_attack:
-		if global_position.distance_to(target_to_chase.global_position) <= attack_range:
-			# chama função do player para reduzir vida
-			if target_to_chase.has_method("change_oxygen"):
-				target_to_chase.change_oxygen(-attack_damage)
-		can_attack = false
-		attack_cd_timer.start(attack_cooldown)
+	#if global_position.distance_to(target_to_chase.global_position) <= attack_range:
+		# chama função do player para reduzir vida
+		if target_to_chase.has_method("change_oxygen"):
+			target_to_chase.change_oxygen(-attack_damage)
+		#can_attack = false
+		#attack_cd_timer.start(attack_cooldown)
 
 # ----------------------------------------
 # DETECÇÃO E MOVIMENTO
 # ----------------------------------------
 
-func _on_light_detect(light):
-	detection = light
-			
 func _on_timer_timeout() -> void:
 	movement()
 
@@ -162,5 +153,33 @@ func _on_patrol_wait_timeout() -> void:
 	_set_random_patrol_point()
 
 
-func _on_attack_cooldown_timeout() -> void:
-	can_attack = true
+
+#func _on_attack_cooldown_timeout() -> void:
+#	can_attack = true
+
+func nav_movement(direction, spd):
+	direction = to_local(nav_chase.get_next_path_position()).normalized()
+	var new_velocity = direction * spd
+	if nav_chase.avoidance_enabled:
+		nav_chase.set_velocity(new_velocity)
+	else:
+		_on_navigation_agent_2d_velocity_computed(new_velocity)
+	_update_flip()
+	if current_state == State.IDLE:
+		sprite.play("walk")
+	else:
+		sprite.play("chase")
+	
+
+func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
+	velocity = safe_velocity
+
+
+func _on_hitbox_body_entered(body: Node2D) -> void:
+	if body.name == "Player":
+		can_attack = true
+
+
+func _on_hitbox_body_exited(body: Node2D) -> void:
+	if body.name == "Player":
+		can_attack = false	

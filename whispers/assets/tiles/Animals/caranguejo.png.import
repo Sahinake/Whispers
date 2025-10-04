@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ctrm44qgyf1nd"
-path="res://.godot/imported/caranguejo.png-b5875a37e0593be720c7cdb4258a1669.ctex"
+path="res://.godot/imported/caranguejo.png-c329e71e8f26669b46e700eacb6aae53.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tiles/Animals/caranguejo.png"
-dest_files=["res://.godot/imported/caranguejo.png-b5875a37e0593be720c7cdb4258a1669.ctex"]
+source_file="res://assets/tiles/Animals/caranguejo.png"
+dest_files=["res://.godot/imported/caranguejo.png-c329e71e8f26669b46e700eacb6aae53.ctex"]
 
 [params]
 

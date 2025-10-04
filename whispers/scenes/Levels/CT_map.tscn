@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=4 uid="uid://dx6kq64qhkiu8"]
 
-[ext_resource type="TileSet" uid="uid://dukwad64niofq" path="res://Assets/Tiles/TileMap.tres" id="1_o3cds"]
-[ext_resource type="Script" uid="uid://3e0t5i3eaui" path="res://Scenes/Scripts/CT_Exit_Area.gd" id="2_5kcor"]
+[ext_resource type="TileSet" uid="uid://dukwad64niofq" path="res://assets/tiles/TileMap.tres" id="1_o3cds"]
+[ext_resource type="Script" uid="uid://3e0t5i3eaui" path="res://scenes/scripts/CT_Exit_Area.gd" id="2_5kcor"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5kcor"]
 size = Vector2(132, 59)

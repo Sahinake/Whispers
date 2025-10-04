@@ -1,7 +1,23 @@
-[gd_scene load_steps=18 format=3 uid="uid://ttkefanoi1bc"]
+[gd_scene load_steps=22 format=3 uid="uid://ttkefanoi1bc"]
 
-[ext_resource type="Script" uid="uid://cj0x1y686w80l" path="res://Scenes/Scripts/enemy.gd" id="1_wovta"]
-[ext_resource type="Texture2D" uid="uid://c86l3suylc56p" path="res://Assets/Tiles/Enemies/Cacodaemon Sprite Sheet.png" id="2_wovta"]
+[ext_resource type="Script" uid="uid://cj0x1y686w80l" path="res://scenes/scripts/enemy.gd" id="1_wovta"]
+[ext_resource type="Texture2D" uid="uid://c86l3suylc56p" path="res://assets/tiles/Enemies/Cacodaemon Sprite Sheet.png" id="2_wovta"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55jtl"]
+atlas = ExtResource("2_wovta")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpr68"]
+atlas = ExtResource("2_wovta")
+region = Rect2(128, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ft8do"]
+atlas = ExtResource("2_wovta")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wwv6"]
+atlas = ExtResource("2_wovta")
+region = Rect2(320, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xeo28"]
 atlas = ExtResource("2_wovta")
@@ -55,6 +71,23 @@ region = Rect2(320, 0, 64, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_55jtl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpr68")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ft8do")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5wwv6")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_xeo28")
 }, {
 "duration": 1.0,
@@ -73,7 +106,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_uoxpr")
 }],
 "loop": false,
-"name": &"attack",
+"name": &"chase",
 "speed": 5.0
 }, {
 "frames": [{
@@ -123,25 +156,29 @@ animations = [{
 "speed": 6.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4x8xn"]
-size = Vector2(139.5, 128)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_55jtl"]
+radius = 60.0
+height = 150.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4x8xn"]
 radius = 27.0
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
 script = ExtResource("1_wovta")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_qlal6")
 animation = &"attack"
+frame = 3
+frame_progress = 1.0
 
 [node name="hitbox" type="Area2D" parent="."]
+monitoring = false
 
 [node name="CollisionHit" type="CollisionShape2D" parent="hitbox"]
-modulate = Color(1, 1, 0, 1)
-shape = SubResource("RectangleShape2D_4x8xn")
+self_modulate = Color(1, 1, 0, 1)
+shape = SubResource("CapsuleShape2D_55jtl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_4x8xn")
@@ -150,6 +187,9 @@ shape = SubResource("CircleShape2D_4x8xn")
 path_desired_distance = 5.0
 target_desired_distance = 5.0
 path_postprocessing = 1
+avoidance_enabled = true
+radius = 50.0
+max_speed = 250.0
 debug_enabled = true
 
 [node name="Timer" type="Timer" parent="."]
@@ -163,6 +203,8 @@ one_shot = true
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_frame_changed"]
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="hitbox" to="." method="_on_hitbox_body_exited"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
 [connection signal="timeout" from="PatrolWait" to="." method="_on_patrol_wait_timeout"]
