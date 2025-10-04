@@ -1,6 +1,6 @@
 [gd_scene load_steps=37 format=3 uid="uid://bkpsccum4qsi6"]
 
-[ext_resource type="Script" uid="uid://buvaj0kc7nrd8" path="res://scenes/ghost.gd" id="1_s5pdv"]
+[ext_resource type="Script" uid="uid://buvaj0kc7nrd8" path="res://scenes/scripts/ghost.gd" id="1_s5pdv"]
 [ext_resource type="Texture2D" uid="uid://hxg746ne1ri2" path="res://assets/tiles/Enemies/Sprites_Skeleton-Mage/Death_64x64.png" id="1_xrxcc"]
 [ext_resource type="Texture2D" uid="uid://d2ytu76ow8qtg" path="res://assets/tiles/Enemies/Sprites_Skeleton-Mage/Attack_2_64x64.png" id="2_s5pdv"]
 [ext_resource type="Texture2D" uid="uid://bw8jbn4h0ok4r" path="res://assets/tiles/Enemies/Sprites_Skeleton-Mage/Walk_64x64.png" id="3_75fd3"]
@@ -397,9 +397,6 @@ shape = SubResource("CapsuleShape2D_55jtl")
 path_desired_distance = 5.0
 target_desired_distance = 5.0
 path_postprocessing = 1
-avoidance_enabled = true
-radius = 50.0
-max_speed = 250.0
 debug_enabled = true
 
 [node name="PathUpdate" type="Timer" parent="."]

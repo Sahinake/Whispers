@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://ttkefanoi1bc"]
 
-[ext_resource type="Script" uid="uid://cj0x1y686w80l" path="res://scenes/scripts/enemy.gd" id="1_wovta"]
+[ext_resource type="Script" uid="uid://cj0x1y686w80l" path="res://scenes/scripts/cacodaemon.gd" id="1_wovta"]
 [ext_resource type="Texture2D" uid="uid://c86l3suylc56p" path="res://assets/tiles/Enemies/Cacodaemon Sprite Sheet.png" id="2_wovta"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_55jtl"]
@@ -192,7 +192,7 @@ radius = 50.0
 max_speed = 250.0
 debug_enabled = true
 
-[node name="Timer" type="Timer" parent="."]
+[node name="PathUpdate" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
 
@@ -206,5 +206,5 @@ one_shot = true
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="hitbox" to="." method="_on_hitbox_body_exited"]
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="PathUpdate" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="PatrolWait" to="." method="_on_patrol_wait_timeout"]
