@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cwr1by4kqynqg"]
+[gd_scene load_steps=28 format=3 uid="uid://cwr1by4kqynqg"]
 
 [ext_resource type="Script" uid="uid://cksj6w6wrmsr1" path="res://Scenes/Scripts/game.gd" id="1_iukft"]
 [ext_resource type="PackedScene" uid="uid://b6u2c7130mn3l" path="res://Scenes/Player/player.tscn" id="2_gl6un"]
@@ -13,10 +13,12 @@
 [ext_resource type="AudioStream" uid="uid://dfy1sgwd4h6gx" path="res://Assets/Sounds/Menu/Effects/Effect5.mp3" id="6_x3xnh"]
 [ext_resource type="AudioStream" uid="uid://kawx0t5bwndw" path="res://Assets/Sounds/Menu/Effects/Effect6.mp3" id="7_8r6kd"]
 [ext_resource type="PackedScene" uid="uid://cxu4ld8hpxo2o" path="res://Scenes/Inventory.tscn" id="7_fgofq"]
-[ext_resource type="PackedScene" uid="uid://ttkefanoi1bc" path="res://Scenes/Enemy.tscn" id="8_acvyw"]
 [ext_resource type="AudioStream" uid="uid://b3306s1ibe1ps" path="res://Assets/Sounds/Menu/Underwater Ambience.mp3" id="9_bf53h"]
 [ext_resource type="AudioStream" uid="uid://qut4gb0vspqy" path="res://Assets/Sounds/Menu/Effects/Effect8.mp3" id="9_rajel"]
 [ext_resource type="AudioStream" uid="uid://hjfjhqprm77t" path="res://Assets/Sounds/Menu/Effects/Effect9.mp3" id="10_vvhu1"]
+[ext_resource type="PackedScene" uid="uid://ttkefanoi1bc" path="res://Scenes/Enemies/Cacodeamon.tscn" id="11_vvhu1"]
+[ext_resource type="PackedScene" uid="uid://bkpsccum4qsi6" path="res://Scenes/Enemies/Ghost.tscn" id="12_lbihj"]
+[ext_resource type="Script" uid="uid://crnlqdls3mo65" path="res://scenes/scripts/ghost.gd" id="13_lbihj"]
 [ext_resource type="AudioStream" uid="uid://0cqoqgjs3tuj" path="res://Assets/Sounds/Menu/Heartbeat.mp3" id="18_vvhu1"]
 [ext_resource type="AudioStream" uid="uid://bni17k53of18d" path="res://Assets/Sounds/Menu/Breathing.mp3" id="19_lbihj"]
 [ext_resource type="Texture2D" uid="uid://d1w3u7m6iftq3" path="res://Assets/Player/Inventory/InventoryBackground.png" id="19_rajel"]
@@ -65,8 +67,13 @@ ui_node_path = NodePath("../../PlayerUI")
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Layer1/Player"]
 remote_path = NodePath("../../../Camera2D")
 
-[node name="Enemy" parent="Layer1" node_paths=PackedStringArray("target_to_chase") instance=ExtResource("8_acvyw")]
-position = Vector2(459, 280)
+[node name="Cacodeamon" parent="Layer1" node_paths=PackedStringArray("target_to_chase") instance=ExtResource("11_vvhu1")]
+position = Vector2(262, 357)
+target_to_chase = NodePath("../Player")
+
+[node name="Ghost" parent="Layer1" node_paths=PackedStringArray("target_to_chase") instance=ExtResource("12_lbihj")]
+position = Vector2(950, 350)
+script = ExtResource("13_lbihj")
 target_to_chase = NodePath("../Player")
 
 [node name="Layer2" type="CanvasLayer" parent="."]

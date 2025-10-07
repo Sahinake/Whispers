@@ -316,6 +316,7 @@ offset = Vector2(111, 0)
 script = ExtResource("4_mtuoh")
 
 [node name="FlashlightArea" type="Area2D" parent="Flashlight"]
+collision_mask = 5
 
 [node name="FlashlightPolygon" type="CollisionPolygon2D" parent="Flashlight/FlashlightArea"]
 polygon = PackedVector2Array(0, 0, 105, -30, 105, 30)

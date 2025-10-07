@@ -21,6 +21,10 @@ window/stretch/mode="canvas_items"
 window/snap/snap_2d_vertices_to_pixel=false
 window/snap/snap_2d_transforms_to_pixel=false
 
+[global_group]
+
+enemies=""
+
 [gui]
 
 theme/custom_font="uid://i52ggsec0scu"

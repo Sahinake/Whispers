@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://8cy8f64q80vm"]
 
-[ext_resource type="Texture2D" uid="uid://c1bis6nrt4qlr" path="res://assets/tiles/Traps/hole.png" id="1_nkkhk"]
-[ext_resource type="Script" uid="uid://bu7e8uqvri5a2" path="res://scenes/scripts/see.gd" id="1_xb2ba"]
-[ext_resource type="Texture2D" uid="uid://dhb3irsixionv" path="res://assets/tiles/Traps/lance.png" id="2_xb2ba"]
+[ext_resource type="Texture2D" uid="uid://c1bis6nrt4qlr" path="res://Assets/Tiles/Traps/Hole.png" id="1_nkkhk"]
+[ext_resource type="Script" uid="uid://bu7e8uqvri5a2" path="res://Scenes/Scripts/see.gd" id="1_xb2ba"]
+[ext_resource type="Texture2D" uid="uid://dhb3irsixionv" path="res://Assets/Tiles/Traps/Lance.png" id="2_xb2ba"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nkkhk"]
 size = Vector2(20, 223)
