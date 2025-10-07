@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bkpsccum4qsi6"]
+[gd_scene load_steps=40 format=3 uid="uid://bkpsccum4qsi6"]
 
 [ext_resource type="Script" uid="uid://buvaj0kc7nrd8" path="res://scenes/scripts/ghost.gd" id="1_s5pdv"]
 [ext_resource type="Texture2D" uid="uid://hxg746ne1ri2" path="res://assets/tiles/Enemies/Sprites_Skeleton-Mage/Death_64x64.png" id="1_xrxcc"]
@@ -107,7 +107,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"arise",
-"speed": 5.0
+"speed": 2.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -170,6 +170,18 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_i23y6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1wlvx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjfvf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ni46")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stpnr")
 }],
 "loop": false,
 "name": &"stop",
@@ -179,8 +191,8 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_s5pdv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_55jtl"]
-radius = 29.0
-height = 60.0
+radius = 60.0
+height = 120.0
 
 [sub_resource type="Animation" id="Animation_75fd3"]
 length = 0.001
@@ -221,13 +233,37 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(0, 8)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.666667)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimatedSprite2D:animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"arise"]
+}
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xrxcc"]
 
 [sub_resource type="Animation" id="Animation_s5pdv"]
 resource_name = "arise"
-length = 0.80002
-step = 0.2
+length = 2.00005
+step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -247,7 +283,7 @@ tracks/1/path = NodePath("AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.393528, 0.6),
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
@@ -334,10 +370,78 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 1, 2, 3]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.666667), Color(1, 1, 1, 0.333333), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_75fd3"]
+
+[sub_resource type="Animation" id="Animation_3ni46"]
+resource_name = "idle"
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"arise"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:shape")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CircleShape2D_75fd3")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 8)]
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s5pdv"]
 
 [sub_resource type="Animation" id="Animation_stpnr"]
 resource_name = "stop"
-length = 0.60002
+length = 1.40002
 step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -358,10 +462,34 @@ tracks/1/path = NodePath("AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.599296, 0.8, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2]
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:shape")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.00214, 1.20108),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [SubResource("CapsuleShape2D_s5pdv"), SubResource("CircleShape2D_s5pdv")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.00214, 1.20108),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 8)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_stpnr"]
@@ -370,6 +498,7 @@ _data = {
 &"arise": SubResource("Animation_s5pdv"),
 &"attack": SubResource("Animation_xrxcc"),
 &"chase": SubResource("Animation_qsnke"),
+&"idle": SubResource("Animation_3ni46"),
 &"stop": SubResource("Animation_stpnr")
 }
 
@@ -379,6 +508,7 @@ collision_mask = 0
 script = ExtResource("1_s5pdv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.666667)
 sprite_frames = SubResource("SpriteFrames_pas7m")
 animation = &"arise"
 
@@ -387,7 +517,6 @@ position = Vector2(0, 8)
 shape = SubResource("CircleShape2D_s5pdv")
 
 [node name="hitbox" type="Area2D" parent="."]
-monitoring = false
 
 [node name="CollisionHit" type="CollisionShape2D" parent="hitbox"]
 self_modulate = Color(1, 1, 0, 1)
@@ -410,3 +539,15 @@ one_shot = true
 libraries = {
 &"": SubResource("AnimationLibrary_stpnr")
 }
+autoplay = "idle"
+
+[node name="Sleep" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="hitbox" to="." method="_on_hitbox_body_exited"]
+[connection signal="timeout" from="PathUpdate" to="." method="_on_path_update_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="Sleep" to="." method="_on_sleep_timeout"]

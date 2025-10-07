@@ -31,12 +31,7 @@ func nav_movement(direction, spd):
 		nav_chase.set_velocity(new_velocity)
 	else:
 		_on_navigation_agent_2d_velocity_computed(new_velocity)
-	_update_flip()
-	if current_state == State.IDLE:
-		sprite.play("idle")
-	else:
-		sprite.play("chase")
-		
+
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
 	velocity = safe_velocity

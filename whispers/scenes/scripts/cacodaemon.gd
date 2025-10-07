@@ -47,6 +47,9 @@ func _physics_process(delta: float) -> void:
 				else:
 					# anda até o ponto
 					nav_movement(dir, speed*0.5)
+					_update_flip()
+					sprite.play("idle")
+					
 
 		State.CHASE:
 			var dist = (target_to_chase.global_position - global_position).length()
@@ -63,6 +66,8 @@ func _physics_process(delta: float) -> void:
 				current_state = State.ATTACK
 			else:
 				nav_movement(dir, speed)
+				_update_flip()
+				sprite.play("chase")
 
 		State.BACK:
 			if detection:
