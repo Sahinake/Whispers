@@ -160,3 +160,6 @@ func _update_sanity_effects(delta):
 	# Zoom da câmera
 	if camera:
 		camera.zoom = lerp(base_zoom, max_zoom, t)
+
+func take_damage_trap(amount: float):
+		oxygen = clamp(oxygen + amount,0,100)
