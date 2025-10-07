@@ -5,6 +5,17 @@ extends CharacterBody2D
 @onready var light_area: Area2D = $Flashlight/FlashlightArea
 @onready var light_polygon: CollisionPolygon2D = $Flashlight/FlashlightArea/FlashlightPolygon
 
+@export var camera_path: NodePath
+var camera: Camera2D = null
+@export var sanity_overlay_path: NodePath
+@onready var sanity_overlay: ColorRect = null
+var sanity_shader: ShaderMaterial = null
+
+# Efeitos de sanidade
+@export var base_zoom: Vector2 = Vector2(1.0, 1.0)      # Zoom normal da câmera
+@export var max_zoom: Vector2 = Vector2(1.4, 1.4)        # Zoom máximo quando sanidade = 0
+@export var overlay_max_alpha: float = 0.5               # Intensidade máxima do vermelho
+
 var sprite: AnimatedSprite2D
 var flashlight_on := false
 
@@ -28,6 +39,16 @@ func _ready():
 	# Inicializa referência à UI
 	if ui_node_path != null:
 		ui = get_node(ui_node_path)
+		
+	# Inicializa a câmera se o caminho foi configurado
+	if camera_path != null:
+		camera = get_node(camera_path)
+		
+	# Inicializa o overlay de sanidade se o caminho foi configurado
+	if sanity_overlay_path != null:
+		sanity_overlay = get_node(sanity_overlay_path)
+		if sanity_overlay.material:
+			sanity_shader = sanity_overlay.material as ShaderMaterial
 
 func _physics_process(delta):
 	# Movimento do player
@@ -54,6 +75,9 @@ func _physics_process(delta):
 	# Atualiza UI
 	if ui != null:
 		ui.update_ui(oxygen, sanity, flashlight)
+		
+	# Atualiza efeitos visuais da sanidade
+	_update_sanity_effects(delta)
 
 func _update_animation(input_vector: Vector2):
 	var mouse_dir = (get_global_mouse_position() - global_position).normalized()
@@ -86,7 +110,22 @@ func _input(event):
 	
 	if event.is_action_pressed("ui_cancel"):
 		emit_signal("request_inventory_toggle")
-		
+	
+	if event.is_action_pressed("oxygen_increase"):
+		change_oxygen(5)
+		print("Oxigênio:", oxygen)
+
+	if event.is_action_pressed("oxygen_decrease"):
+		change_oxygen(-5)
+		print("Oxigênio:", oxygen)
+
+	if event.is_action_pressed("sanity_increase"):
+		change_sanity(5)
+		print("Sanidade:", sanity)
+
+	if event.is_action_pressed("sanity_decrease"):
+		change_sanity(-5)
+		print("Sanidade:", sanity)
 # -------------------------------
 # Recursos do jogador
 # -------------------------------
@@ -111,3 +150,13 @@ func change_sanity(amount: float):
 
 func change_flashlight(amount: float):
 	flashlight = clamp(flashlight + amount, 0, 100)
+
+func _update_sanity_effects(delta):
+	if sanity_overlay == null or sanity_shader == null:
+		return
+
+	var t = 1.0 - sanity / 100.0  # 0 = sanidade alta, 1 = sanidade baixa
+
+	# Zoom da câmera
+	if camera:
+		camera.zoom = lerp(base_zoom, max_zoom, t)

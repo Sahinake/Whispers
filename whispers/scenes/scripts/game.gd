@@ -7,10 +7,22 @@ extends Node2D
 @onready var inventory_background = $Layer3/InventoryBackground
 @onready var water = $Layer2/WaterMenuSound
 @onready var effect_player = $Layer2/Effects/EffectsSound
+@onready var breathing_player = $Layer2/Effects/Breathing
+@onready var heartbeat_player = $Layer2/Effects/Heartbeat
 @export var random_sounds : Array[AudioStream] = []
 
-@export var water_volume_db := 5.0
-@export var effects_volume_db := -2.5
+@export var water_volume_db := 3.0
+@export var effects_volume_db := -10.0
+@export var breathing_min_db := -40.0
+@export var breathing_max_db := 0.0
+@export var heartbeat_min_db := -35.0
+@export var heartbeat_max_db := 0.0
+
+# === Variáveis globais do batimento ===
+var heartbeat_interval := 0.8  # segundos por batida (~75 BPM)
+var heartbeat_timer := 0.0
+var heartbeat_phase := 0.0
+
 
 var inventory_open := false
 var current_level_name := ""  # guarda o nome do nível atual
@@ -20,6 +32,19 @@ func _ready():
 	
 	# Conecta o sinal do player
 	player.connect("request_inventory_toggle", Callable(self, "_on_player_request_inventory_toggle"))
+	
+	# inicia sons contínuos (mutados inicialmente)
+	breathing_player.volume_db = breathing_min_db
+	heartbeat_player.volume_db = heartbeat_min_db
+	breathing_player.play()
+	heartbeat_player.play()
+	
+func _process(delta):
+	if not player:
+		return
+
+	update_breathing_sound()
+	update_heartbeat_sound(delta)
 	
 func find_spawn(node: Node) -> Node2D:
 	if node.name == "SpawnPoint":
@@ -233,3 +258,56 @@ func close_inventory():
 	unpause_node_tree($Layer2/Bubbles)
 	unpause_node_tree($Layer2/Bubbles/BubbleSpawner)
 	unpause_node_tree($Layer2/WaterShade)
+
+func update_breathing_sound():
+	if not breathing_player.stream:
+		return
+	# Supondo que o oxigênio vai de 0 a 100
+	var oxy = clamp(player.oxygen, 0, 100)
+	# Quanto menor o oxigênio, mais alto o som
+	var t = 1.0 - (oxy / 100.0)
+
+	# Volume aumenta conforme o oxigênio diminui
+	var volume = lerp(breathing_min_db, breathing_max_db, t)
+	breathing_player.volume_db = volume
+
+	# Pitch também aumenta (sensação de desespero)
+	breathing_player.pitch_scale = lerp(1.0, 1.2, t)
+
+func update_heartbeat_sound(delta):
+	if not heartbeat_player.stream:
+		return
+
+	var sanity = clamp(player.sanity, 0, 100)
+	var t = 1.0 - (sanity / 100.0)
+
+	# Volume e pitch do coração
+	var volume = lerp(heartbeat_min_db, heartbeat_max_db, t)
+	heartbeat_player.volume_db = volume
+	heartbeat_player.pitch_scale = lerp(1.0, 1.3, t)
+	# Lê o volume atual do coração e reduz o volume dos efeitos conforme ele aumenta
+	var heartbeat_db = heartbeat_player.volume_db
+	var d = inverse_lerp(heartbeat_min_db, heartbeat_max_db, heartbeat_db)
+	var volume_db = lerp(0.0, -25.0, d)  # -25dB no batimento máximo
+	effect_player.volume_db = volume_db
+	water.volume_db = volume_db
+
+	# Intervalo entre batidas varia com a sanidade
+	heartbeat_interval = lerp(1.2, 0.5, t)
+
+	# Atualiza temporizador e fase
+	heartbeat_timer += delta
+	if heartbeat_timer >= heartbeat_interval:
+		heartbeat_timer -= heartbeat_interval
+		heartbeat_phase = 0.0
+	else:
+		heartbeat_phase = heartbeat_timer / heartbeat_interval
+
+	# Pulso suave e sincronizado com o coração
+	var pulse_value = pow(sin(heartbeat_phase * PI), 1)
+
+	# === Atualiza shader da sanidade ===
+	if player.sanity_shader:
+		player.sanity_shader.set_shader_parameter("intensity", clamp(t * pulse_value/2, 0.0, 1.0))
+		player.sanity_shader.set_shader_parameter("darken_factor", lerp(0.3, 0.9, t))
+		player.sanity_shader.set_shader_parameter("pulse_value", pulse_value)
