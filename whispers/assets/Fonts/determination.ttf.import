@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://v822dm31q6vv"
-path="res://.godot/imported/determination.ttf-4783f505f0a7f5e17d0719e93f0150c7.fontdata"
+path="res://.godot/imported/determination.ttf-fd3f288920a6d35c29e68f9aea783f11.fontdata"
 
 [deps]
 
-source_file="res://Assets/Fonts/determination.ttf"
-dest_files=["res://.godot/imported/determination.ttf-4783f505f0a7f5e17d0719e93f0150c7.fontdata"]
+source_file="res://assets/Fonts/determination.ttf"
+dest_files=["res://.godot/imported/determination.ttf-fd3f288920a6d35c29e68f9aea783f11.fontdata"]
 
 [params]
 
@@ -21,6 +21,7 @@ msdf_pixel_range=8
 msdf_size=48
 allow_system_fallback=true
 force_autohinter=false
+modulate_color_glyphs=false
 hinting=1
 subpixel_positioning=4
 keep_rounding_remainders=true

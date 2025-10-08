@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://cy2ckag4hrb5r"
-path="res://.godot/imported/Analog Whispers FREE.ttf-dc22f5eda3e6b07cba95cc3e8b037a96.fontdata"
+path="res://.godot/imported/Analog Whispers FREE.ttf-b03afa4c258fb52894d73287a0e1248f.fontdata"
 
 [deps]
 
-source_file="res://Assets/Fonts/Analog Whispers FREE.ttf"
-dest_files=["res://.godot/imported/Analog Whispers FREE.ttf-dc22f5eda3e6b07cba95cc3e8b037a96.fontdata"]
+source_file="res://assets/Fonts/Analog Whispers FREE.ttf"
+dest_files=["res://.godot/imported/Analog Whispers FREE.ttf-b03afa4c258fb52894d73287a0e1248f.fontdata"]
 
 [params]
 
@@ -21,6 +21,7 @@ msdf_pixel_range=8
 msdf_size=48
 allow_system_fallback=true
 force_autohinter=false
+modulate_color_glyphs=false
 hinting=1
 subpixel_positioning=4
 keep_rounding_remainders=true
