@@ -1,5 +1,7 @@
 extends EnemyBase
 
+const curse_inst = preload("res://curse.tscn")
+
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var can_fade: bool = true
 @onready var damage: float = 10.0
@@ -10,37 +12,33 @@ extends EnemyBase
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	_update_flip()
 	match current_state:
 		State.IDLE:
 			var dist = (target_to_chase.global_position - global_position).length()
 			if dist < 250 && sleeping && !detection:
-				_update_flip()
 				animation_player.play("arise")
 		State.CHASE:
+			dir = to_local(nav_chase.get_next_path_position()).normalized()
 			if can_fade:
 				if detection:
 					current_state = State.BACK
 				elif can_attack:
 					current_state = State.ATTACK
 				else:
-					_update_flip()
 					animation_player.play("chase")
 			else:
 				if can_attack:
 					velocity = Vector2.ZERO
-					_update_flip()
 					animation_player.play_backwards("chase")
 				else:	
-					dir = to_local(nav_chase.get_next_path_position()).normalized()
 					velocity = dir * speed
 					
 		State.ATTACK:
 			velocity = Vector2.ZERO
-			_update_flip()
 			animation_player.play("attack")
 		
 		State.BACK:
-			_update_flip()
 			animation_player.play("stop")
 	move_and_slide()
 
@@ -74,7 +72,13 @@ func _on_path_update_timeout() -> void:
 func _on_animated_sprite_2d_frame_changed() -> void:
 	if animation_player.current_animation == "attack" and sprite.frame == 4:
 		do_attack(1, damage)
+		create_curse()
 
 
 func _on_sleep_timeout() -> void:
 	sleeping =  true
+
+func create_curse():
+	var curse = curse_inst.instantiate()
+	get_parent().call_deferred("add_child", curse)
+	curse.global_position = target_to_chase.global_position

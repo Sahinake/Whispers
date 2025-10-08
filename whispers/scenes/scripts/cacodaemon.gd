@@ -68,14 +68,6 @@ func _physics_process(delta: float) -> void:
 				nav_movement(dir, speed)
 				_update_flip()
 				sprite.play("chase")
-
-		State.BACK:
-			if detection:
-				current_state = State.CHASE
-			elif nav_chase.is_navigation_finished():
-				current_state = State.IDLE
-			dir = to_local(nav_chase.get_next_path_position()).normalized()
-			velocity = dir * speed
 			
 		State.ATTACK:
 			velocity = Vector2.ZERO
