@@ -3,21 +3,23 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ctrm44qgyf1nd"
-path="res://.godot/imported/caranguejo.png-b5875a37e0593be720c7cdb4258a1669.ctex"
+path="res://.godot/imported/caranguejo.png-c329e71e8f26669b46e700eacb6aae53.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tiles/Animals/caranguejo.png"
-dest_files=["res://.godot/imported/caranguejo.png-b5875a37e0593be720c7cdb4258a1669.ctex"]
+source_file="res://assets/tiles/Animals/caranguejo.png"
+dest_files=["res://.godot/imported/caranguejo.png-c329e71e8f26669b46e700eacb6aae53.ctex"]
 
 [params]
 
 compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
@@ -25,6 +27,10 @@ mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
+process/channel_remap/red=0
+process/channel_remap/green=1
+process/channel_remap/blue=2
+process/channel_remap/alpha=3
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

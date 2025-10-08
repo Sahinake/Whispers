@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://0cqoqgjs3tuj"
-path="res://.godot/imported/Heartbeat.mp3-2021a5f6c4ef8b094571fa95e2091bdf.mp3str"
+path="res://.godot/imported/Heartbeat.mp3-83d77a0a71a4fdf1f14e6aeaec8f1506.mp3str"
 
 [deps]
 
-source_file="res://Assets/Sounds/Menu/Heartbeat.mp3"
-dest_files=["res://.godot/imported/Heartbeat.mp3-2021a5f6c4ef8b094571fa95e2091bdf.mp3str"]
+source_file="res://assets/Sounds/Menu/Heartbeat.mp3"
+dest_files=["res://.godot/imported/Heartbeat.mp3-83d77a0a71a4fdf1f14e6aeaec8f1506.mp3str"]
 
 [params]
 
