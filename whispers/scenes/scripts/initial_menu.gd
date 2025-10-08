@@ -10,7 +10,7 @@ extends Control
 
 @export var music_volume_db := 0.0  
 @export var water_volume_db := 2.0   
-@export var effects_volume_db := -2.5
+@export var effects_volume_db := -20.0
 
 var current_button : Button = null
 
@@ -49,6 +49,7 @@ func _ready():
 		water.play()
 
 	play_random_effect()
+	await fade_in_menu(1.0) # 1 segundo de fade-in
 
 # som de foco
 func _on_button_focus(button):
@@ -103,4 +104,12 @@ func fade_out_menu(duration := 0.5) -> void:
 	var fade_rect = $FadeOverlay
 	var tween = create_tween()
 	tween.tween_property(fade_rect, "color:a", 1.0, duration) # aumenta alpha para 1
+	await tween.finished
+	
+func fade_in_menu(duration := 0.5) -> void:
+	var fade_rect = $FadeOverlay
+	# começa opaco
+	fade_rect.color.a = 1.0
+	var tween = create_tween()
+	tween.tween_property(fade_rect, "color:a", 0.0, duration) # clareia a tela
 	await tween.finished

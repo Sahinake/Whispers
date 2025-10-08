@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://bni17k53of18d"
-path="res://.godot/imported/Breathing.mp3-3f31492911f1a09139940e8add8207f3.mp3str"
+path="res://.godot/imported/Breathing.mp3-41eb853f23c9eb2a39a3cd6ff8faa9e9.mp3str"
 
 [deps]
 
-source_file="res://assets/Sounds/Menu/Breathing.mp3"
-dest_files=["res://.godot/imported/Breathing.mp3-3f31492911f1a09139940e8add8207f3.mp3str"]
+source_file="res://Assets/Sounds/Menu/Breathing.mp3"
+dest_files=["res://.godot/imported/Breathing.mp3-41eb853f23c9eb2a39a3cd6ff8faa9e9.mp3str"]
 
 [params]
 

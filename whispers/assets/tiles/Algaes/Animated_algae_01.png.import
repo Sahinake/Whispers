@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cws7mldbi5wng"
-path="res://.godot/imported/Animated_algae_01.png-c2e63d6efa54073cf3e867e355fe7ee9.ctex"
+path="res://.godot/imported/Animated_algae_01.png-06942b0a9d1a7038b53cceea437a5526.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tiles/Algaes/Animated_algae_01.png"
-dest_files=["res://.godot/imported/Animated_algae_01.png-c2e63d6efa54073cf3e867e355fe7ee9.ctex"]
+source_file="res://Assets/Tiles/Algaes/Animated_algae_01.png"
+dest_files=["res://.godot/imported/Animated_algae_01.png-06942b0a9d1a7038b53cceea437a5526.ctex"]
 
 [params]
 

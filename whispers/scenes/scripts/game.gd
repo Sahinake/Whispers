@@ -12,7 +12,7 @@ extends Node2D
 @export var random_sounds : Array[AudioStream] = []
 
 @export var water_volume_db := 3.0
-@export var effects_volume_db := -10.0
+@export var effects_volume_db := -20.0
 @export var breathing_min_db := -40.0
 @export var breathing_max_db := 0.0
 @export var heartbeat_min_db := -35.0
@@ -36,6 +36,10 @@ func _ready():
 	# inicia sons contínuos (mutados inicialmente)
 	breathing_player.volume_db = breathing_min_db
 	heartbeat_player.volume_db = heartbeat_min_db
+	# aplica volumes
+	water.volume_db = water_volume_db
+	effect_player.volume_db = effects_volume_db
+	
 	breathing_player.play()
 	heartbeat_player.play()
 	
@@ -56,6 +60,12 @@ func find_spawn(node: Node) -> Node2D:
 	return null
 
 func load_level(path: String):
+	var fade_rect = $Layer3/FadeRect
+	# Fade out
+	var tween = create_tween()
+	tween.tween_property(fade_rect, "modulate:a", 1.0, 0.8)
+	await tween.finished
+		
 	# Remove nível antigo (se existir)
 	for child in level_container.get_children():
 		child.queue_free()
@@ -80,16 +90,19 @@ func load_level(path: String):
 		$Layer2/WaterShade.visible = true
 		if current_level_name == "Atlantic_Map_Open":
 			start_sounds()
+		elif current_level_name == "Level_One":
+			start_sounds()
 		
 	else:
 		$Layer2/Bubbles.visible = false
 		$Layer2/WaterShade.visible = false
-
-func start_sounds():
-	# aplica volumes
-	water.volume_db = water_volume_db
-	effect_player.volume_db = effects_volume_db
-	
+		
+	# Fade in
+	var tween_in = create_tween()
+	tween_in.tween_property(fade_rect, "modulate:a", 0.0, 0.8)
+	await tween_in.finished
+		
+func start_sounds():	
 	# habilita loop no player
 	if water.stream:
 		water.stream.loop = true
