@@ -143,6 +143,14 @@ func _input(event):
 		change_flashlight(-5)
 		print("Lanterna:", flashlight)
 		
+	# No player.gd, em _input
+	if event.is_action_pressed("interact"):
+		for body in $CollectArea.get_overlapping_areas():
+			if body.is_in_group("energic_algae"):
+				body.collect(self)
+				break
+
+		
 # -------------------------------
 # Recursos do jogador
 # -------------------------------

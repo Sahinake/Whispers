@@ -1,9 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhse2g6bs8dok"]
+[gd_scene load_steps=5 format=3 uid="uid://dhse2g6bs8dok"]
 
 [ext_resource type="Texture2D" uid="uid://e2vn34per1oh" path="res://Assets/Tiles/Algaes/Energic_algae.png" id="1_7vw2a"]
+[ext_resource type="Script" uid="uid://bxd2ll2721p53" path="res://Scenes/Scripts/energic_algae.gd" id="1_30tc5"]
 [ext_resource type="Texture2D" uid="uid://bp00idohjrobd" path="res://Assets/Tiles/Flashlight/light.jpg" id="2_t3332"]
 
-[node name="alga luz" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_30tc5"]
+radius = 58.420887
+
+[node name="alga luz" type="Area2D" groups=["energic_algae"]]
+script = ExtResource("1_30tc5")
 
 [node name="AlgaLuz" type="Sprite2D" parent="."]
 position = Vector2(-5, -19)
@@ -58,3 +63,6 @@ scale = Vector2(2.20889, 1.69778)
 color = Color(0.901961, 0.901961, 0.227451, 0.658824)
 shadow_enabled = true
 texture = ExtResource("2_t3332")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["energic_algae"]]
+shape = SubResource("CircleShape2D_30tc5")

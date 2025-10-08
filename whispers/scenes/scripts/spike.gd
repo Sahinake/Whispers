@@ -23,12 +23,10 @@ func _on_body_entered(body: Node) -> void:
 		player_inside = true
 		start_trap_animation()
 		animation_playing = true
-		anim.animation_finished.connect(_on_AnimatedSprite2D_animation_finished)
 
 func _on_body_exited(body: Node) -> void:
 	if body.is_in_group("Player"):
 		player_inside = false
-		anim.animation_finished.connect(_on_AnimatedSprite2D_animation_finished)
 		animation_playing = false
 		#anim.play("idle")
 		# Não faz nada aqui, a animação continuará até o final
