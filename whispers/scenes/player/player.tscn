@@ -313,7 +313,6 @@ scale = Vector2(2.71558, 2.7541)
 enabled = false
 color = Color(0.321569, 1, 0.658824, 0.65098)
 shadow_enabled = true
-shadow_filter = 2
 shadow_filter_smooth = 0.3
 texture = ExtResource("4_lvxji")
 offset = Vector2(111, 0)

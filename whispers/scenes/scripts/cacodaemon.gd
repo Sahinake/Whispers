@@ -3,7 +3,7 @@ extends EnemyBase
 
 @export var attack_range: float = 50.0       # distância para atacar
 @export var attack_damage: float = 10.0      # dano no player
-@export var attack_cooldown: float = 2.0     # tempo de cooldown do ataque
+@export var attack_cooldown: float = 0.0     # tempo de cooldown do ataque
 @onready var attack_cd_timer: Timer = $AttackCooldown  # cria um Timer separado para o cooldown
 
 @export var patrol_radius: float = 200.0      			# raio da patrulha

@@ -57,12 +57,5 @@ color = Color(0.673339, 0.665951, 7.70092e-07, 0.298039)
 shadow_enabled = true
 texture = ExtResource("3_t0ei5")
 
-[node name="PointLight2D7" type="PointLight2D" parent="AlgaLuz"]
-position = Vector2(7.50002, 12)
-scale = Vector2(2.20889, 1.69778)
-color = Color(0.901961, 0.901961, 0.227451, 0.658824)
-shadow_enabled = true
-texture = ExtResource("3_t0ei5")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["energic_algae"]]
 shape = SubResource("CircleShape2D_30tc5")
