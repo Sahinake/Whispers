@@ -9,6 +9,8 @@ enum State {IDLE, CHASE, BACK, ATTACK}
 @onready var hitbox: Area2D = $hitbox
 @onready var nav_chase: NavigationAgent2D = $NavigationAgent2D
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+
+
 @onready var path_update: Timer = $PathUpdate
 @onready var detection: bool = false
 @onready var can_attack: bool = false

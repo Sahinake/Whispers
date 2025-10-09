@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cwr1by4kqynqg"]
+[gd_scene load_steps=29 format=3 uid="uid://cwr1by4kqynqg"]
 
 [ext_resource type="Script" uid="uid://cksj6w6wrmsr1" path="res://Scenes/Scripts/game.gd" id="1_iukft"]
 [ext_resource type="PackedScene" uid="uid://b6u2c7130mn3l" path="res://Scenes/Player/player.tscn" id="2_gl6un"]
@@ -20,6 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://0cqoqgjs3tuj" path="res://Assets/Sounds/Menu/Heartbeat.mp3" id="18_vvhu1"]
 [ext_resource type="AudioStream" uid="uid://bni17k53of18d" path="res://Assets/Sounds/Menu/Breathing.mp3" id="19_lbihj"]
 [ext_resource type="Texture2D" uid="uid://d1w3u7m6iftq3" path="res://Assets/Player/Inventory/InventoryBackground.png" id="19_rajel"]
+[ext_resource type="Texture2D" uid="uid://du7v6voleg3go" path="res://Assets/Runa.png" id="20_vvhu1"]
 [ext_resource type="Shader" uid="uid://d4nj7rxgau02" path="res://Scenes/Scripts/Shaders/SanityShader.gdshader" id="21_rajel"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_2irst"]
@@ -49,6 +50,8 @@ shader_parameter/pulse_value = 0.0
 [sub_resource type="LabelSettings" id="LabelSettings_vvhu1"]
 font_size = 22
 shadow_size = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_lbihj"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_iukft")
@@ -117,6 +120,22 @@ offset_right = 1116.0
 offset_bottom = 624.0
 text = "Pressione ENTER"
 label_settings = SubResource("LabelSettings_vvhu1")
+
+[node name="RuneIcon" type="TextureRect" parent="PlayerUI"]
+visible = false
+offset_left = 904.0
+offset_top = 590.0
+offset_right = 944.0
+offset_bottom = 630.0
+texture = ExtResource("20_vvhu1")
+
+[node name="MessageLabelAltar" type="Label" parent="PlayerUI"]
+offset_left = 586.0
+offset_top = 608.0
+offset_right = 626.0
+offset_bottom = 621.0
+scale = Vector2(1.28, 1.28)
+label_settings = SubResource("LabelSettings_lbihj")
 
 [node name="Layer3" type="CanvasLayer" parent="."]
 layer = 3

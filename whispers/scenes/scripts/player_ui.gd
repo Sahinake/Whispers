@@ -4,6 +4,8 @@ extends CanvasLayer
 @onready var sanity_bar = $SanityBar
 @onready var flashlight_bar = $FlashlightBar
 
+@onready var rune_icon = $RuneIcon  # coloque o caminho correto
+
 # Atualiza a UI com os valores recebidos do jogador
 func update_ui(oxygen: float, sanity: float, flashlight: float) -> void:
 	# Oxigênio: vermelho -> verde
@@ -14,3 +16,6 @@ func update_ui(oxygen: float, sanity: float, flashlight: float) -> void:
 
 	# Lanterna: branco -> azul
 	flashlight_bar.value = flashlight
+
+func show_rune_icon():
+	rune_icon.visible = true

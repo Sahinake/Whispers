@@ -36,6 +36,8 @@ var oxygen := 100.0
 var sanity := 100.0
 var flashlight := 100.0
 
+var has_rune := false
+
 # Referência à UI do jogador
 @export var ui_node_path: NodePath
 var ui: CanvasLayer = null
@@ -150,6 +152,14 @@ func _input(event):
 			if body.is_in_group("energic_algae"):
 				body.collect(self)
 				break
+			# coleta runa especial
+			elif body.is_in_group("runas"):
+				body.collect(self)
+				has_rune = true
+				break
+			elif body.is_in_group("altar"):
+				body.try_activate(self)
+				break
 
 		
 # -------------------------------
@@ -168,6 +178,10 @@ func _update_resources(delta):
 		# Recupera oxigênio e sanidade na base
 		oxygen = clamp(oxygen + 10 * delta, 0, 100)
 		sanity = clamp(sanity + 5 * delta, 0, 100)
+		
+		if has_rune:
+			is_game_over = true
+			
 	else:
 		# Oxigênio sempre diminui
 		var oxygen_decay = base_oxygen_decay

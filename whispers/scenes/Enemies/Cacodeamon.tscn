@@ -161,7 +161,7 @@ radius = 60.0
 height = 150.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4x8xn"]
-radius = 27.0
+radius = 20.0
 
 [node name="Cacodeamon" type="CharacterBody2D" groups=["enemies"]]
 script = ExtResource("1_wovta")
