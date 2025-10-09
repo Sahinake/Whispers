@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://dx6kq64qhkiu8"]
+[gd_scene load_steps=10 format=4 uid="uid://dx6kq64qhkiu8"]
 
 [ext_resource type="TileSet" uid="uid://dukwad64niofq" path="res://Assets/Tiles/TileMap.tres" id="1_o3cds"]
 [ext_resource type="Script" uid="uid://3e0t5i3eaui" path="res://Scenes/Scripts/CT_Exit_Area.gd" id="2_5kcor"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://rx1qwijebr6x" path="res://Scenes/Animações/Animals/Fish_2.tscn" id="5_hhtpt"]
 [ext_resource type="PackedScene" uid="uid://7h2adk2v4tii" path="res://Scenes/Animações/Animals/Fish_3.tscn" id="6_3juj7"]
 [ext_resource type="PackedScene" uid="uid://b2tvbsoo7vx8d" path="res://Scenes/Animações/Animals/Fish_4.tscn" id="7_gil65"]
-[ext_resource type="PackedScene" uid="uid://dhse2g6bs8dok" path="res://Scenes/Animações/Algaes/Runas.tscn" id="9_hhtpt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5kcor"]
 size = Vector2(132, 59)
@@ -81,6 +80,3 @@ position = Vector2(344, 572)
 
 [node name="Node2D4" parent="CanvasLayer/Fishes" instance=ExtResource("7_gil65")]
 position = Vector2(585, 151)
-
-[node name="Runa" parent="." instance=ExtResource("9_hhtpt")]
-position = Vector2(715, 252)

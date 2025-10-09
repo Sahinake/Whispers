@@ -2,6 +2,7 @@ extends Area2D
 
 @onready var sprite: AnimatedSprite2D = $"../Altar2"  # nó do sprite do altar
 @onready var message_label: Label = get_tree().root.get_node("Game/PlayerUI/MessageLabelAltar")
+@onready var putting_rune: AudioStreamPlayer2D = $"../PuttingRuna"
 
 # Tempo até o fim do jogo após colocar a runa
 @export var end_delay := 3.0  
@@ -20,6 +21,7 @@ func try_activate(player):
 	_show_message("A runa se encaixa perfeitamente...")
 	
 	if "activated" in sprite.sprite_frames.get_animation_names():
+		putting_rune.play()  # toca o som do ataque
 		sprite.play("activated")
 		
 	await get_tree().create_timer(end_delay).timeout

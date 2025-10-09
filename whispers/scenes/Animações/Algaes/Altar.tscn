@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dp0skxyi5omll"]
+[gd_scene load_steps=9 format=3 uid="uid://dp0skxyi5omll"]
 
 [ext_resource type="Script" uid="uid://qac2uishhdhk" path="res://Scenes/Scripts/altar.gd" id="1_it4hm"]
 [ext_resource type="Texture2D" uid="uid://b5ruu526orclv" path="res://Assets/Tiles/Atlantis Map/tf_B_atlantisA.png" id="2_it4hm"]
+[ext_resource type="AudioStream" uid="uid://ctqja8866an41" path="res://Assets/Sounds/putting_runa.mp3" id="3_8bfo6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_la0xc"]
 atlas = ExtResource("2_it4hm")
@@ -54,3 +55,6 @@ shape = SubResource("CircleShape2D_30tc5")
 position = Vector2(-2.9999995, 1.4210855e-14)
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_it4hm")
+
+[node name="PuttingRuna" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_8bfo6")
