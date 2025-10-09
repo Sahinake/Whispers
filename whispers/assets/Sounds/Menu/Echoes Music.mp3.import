@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://b5xp1gsopv5a0"
-path="res://.godot/imported/Echoes Music.mp3-f5ecb607d7ee23a5be8707b95dcb2dbb.mp3str"
+path="res://.godot/imported/Echoes Music.mp3-2eeb377e5a83fc43bbed5d01cff1fa45.mp3str"
 
 [deps]
 
-source_file="res://Assets/Sounds/Menu/Echoes Music.mp3"
-dest_files=["res://.godot/imported/Echoes Music.mp3-f5ecb607d7ee23a5be8707b95dcb2dbb.mp3str"]
+source_file="res://assets/Sounds/Menu/Echoes Music.mp3"
+dest_files=["res://.godot/imported/Echoes Music.mp3-2eeb377e5a83fc43bbed5d01cff1fa45.mp3str"]
 
 [params]
 

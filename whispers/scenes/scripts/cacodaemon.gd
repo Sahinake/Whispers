@@ -53,7 +53,7 @@ func _physics_process(delta: float) -> void:
 
 		State.CHASE:
 			var dist = (target_to_chase.global_position - global_position).length()
-			if !detection && dist > 300:
+			if !detection && dist > 500:
 				# quando perde o player, atualiza ponto de patrulha
 				start_pos = global_position
 				waiting = true

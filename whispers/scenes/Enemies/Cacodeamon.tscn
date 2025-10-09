@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=3 uid="uid://ttkefanoi1bc"]
 
 [ext_resource type="Script" uid="uid://cyxqsi456lnfu" path="res://scenes/scripts/cacodaemon.gd" id="1_wovta"]
-[ext_resource type="Texture2D" uid="uid://c86l3suylc56p" path="res://Assets/Tiles/Enemies/Cacodaemon Sprite Sheet.png" id="2_wovta"]
+[ext_resource type="Texture2D" uid="uid://c86l3suylc56p" path="res://assets/tiles/Enemies/Cacodaemon Sprite Sheet.png" id="2_wovta"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_55jtl"]
 atlas = ExtResource("2_wovta")
@@ -192,9 +192,6 @@ max_speed = 250.0
 [node name="PathUpdate" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
-
-[node name="AttackCooldown" type="Timer" parent="."]
-one_shot = true
 
 [node name="PatrolWait" type="Timer" parent="."]
 

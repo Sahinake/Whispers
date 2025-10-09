@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://rvqloglyh7bk"
-path="res://.godot/imported/6.png-d7d2a0bdecd24137d90006543c180521.ctex"
+path="res://.godot/imported/6.png-52d8e19620399fe905beccf2e1545f76.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Player/Inventory/Power Hub/6.png"
-dest_files=["res://.godot/imported/6.png-d7d2a0bdecd24137d90006543c180521.ctex"]
+source_file="res://assets/Player/Inventory/Power Hub/6.png"
+dest_files=["res://.godot/imported/6.png-52d8e19620399fe905beccf2e1545f76.ctex"]
 
 [params]
 

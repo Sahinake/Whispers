@@ -1,9 +1,9 @@
 [gd_scene load_steps=41 format=3 uid="uid://b6u2c7130mn3l"]
 
-[ext_resource type="Script" uid="uid://dbclh5ij2q4tj" path="res://Scenes/Scripts/player.gd" id="1_gmlin"]
-[ext_resource type="Texture2D" uid="uid://b0ka22ntfxfjy" path="res://Assets/Player/Half.png" id="2_xpcdj"]
-[ext_resource type="Texture2D" uid="uid://bbp7hh4ax1aem" path="res://Assets/Tiles/Flashlight/flashlight_texture.png" id="4_lvxji"]
-[ext_resource type="Script" uid="uid://dhl0m0hagu3si" path="res://Scenes/Scripts/light.gd" id="4_mtuoh"]
+[ext_resource type="Script" uid="uid://dbclh5ij2q4tj" path="res://scenes/scripts/player.gd" id="1_gmlin"]
+[ext_resource type="Texture2D" uid="uid://b0ka22ntfxfjy" path="res://assets/Player/Half.png" id="2_xpcdj"]
+[ext_resource type="Texture2D" uid="uid://bbp7hh4ax1aem" path="res://assets/tiles/Flashlight/flashlight_texture.png" id="4_lvxji"]
+[ext_resource type="Script" uid="uid://dhl0m0hagu3si" path="res://scenes/scripts/light.gd" id="4_mtuoh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mtuoh"]
 atlas = ExtResource("2_xpcdj")
