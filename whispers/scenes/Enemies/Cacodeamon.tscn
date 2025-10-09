@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://ttkefanoi1bc"]
 
-[ext_resource type="Script" uid="uid://cyxqsi456lnfu" path="res://scenes/scripts/cacodaemon.gd" id="1_wovta"]
+[ext_resource type="Script" uid="uid://cyxqsi456lnfu" path="res://Scenes/Scripts/cacodaemon.gd" id="1_wovta"]
 [ext_resource type="Texture2D" uid="uid://c86l3suylc56p" path="res://Assets/Tiles/Enemies/Cacodaemon Sprite Sheet.png" id="2_wovta"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_55jtl"]

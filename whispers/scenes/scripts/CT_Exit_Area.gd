@@ -3,6 +3,7 @@ extends Area2D
 var player_inside = false
 var fade_speed := 2.0  # Velocidade do fade
 @onready var message_label = get_tree().root.get_node("Game/PlayerUI/MessageLabel") 
+var in_base = true
 
 
 func _ready():
@@ -26,3 +27,4 @@ func _process(delta):
 	if player_inside and Input.is_action_just_pressed("ui_accept"):
 		var game = get_tree().current_scene
 		game.load_level("res://Scenes/Levels/Level_One.tscn")
+		in_base = false

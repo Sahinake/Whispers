@@ -69,9 +69,8 @@ ui_node_path = NodePath("../../PlayerUI")
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Layer1/Player"]
 remote_path = NodePath("../../../Camera2D")
 
-[node name="Ghost" parent="Layer1" node_paths=PackedStringArray("target_to_chase") instance=ExtResource("12_lbihj")]
+[node name="Ghost" parent="Layer1" instance=ExtResource("12_lbihj")]
 position = Vector2(950, 350)
-target_to_chase = NodePath("../Player")
 
 [node name="Layer2" type="CanvasLayer" parent="."]
 

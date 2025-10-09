@@ -24,6 +24,7 @@ var base_oxygen_decay := 0.1  # taxa normal de oxigênio por segundo
 
 var sprite: AnimatedSprite2D
 var flashlight_on := false
+@export var run_oxygen_multiplier := 2.0    # Oxigênio decai mais rápido correndo
 
 # sinal que avisa que o inventário deve abrir/fechar
 signal request_inventory_toggle
@@ -157,56 +158,70 @@ func _input(event):
 func _update_resources(delta):
 	if is_game_over:
 		return   # não atualiza mais recursos depois do Game Over
-		
-	# Oxigênio sempre diminui
-	var oxygen_decay = base_oxygen_decay
 	
-	# Oxigênio diminui sempre
-	if sanity <= 0.0:
-		# Se sanidade zerada, oxigênio cai mais rápido
-		oxygen_decay *= 2.5
-
-	oxygen = clamp(oxygen - oxygen_decay * delta, 0, 100)
+	var game = get_tree().current_scene  # raiz = Game
+	if game == null:
+		return
 	
-	if flashlight_on:
-		# Se a lanterna está ligada → perde bateria
-		flashlight = clamp(flashlight - 0.5 * delta, 0, 100)
-		
-		# Se acabar a bateria, desliga automaticamente
-		if flashlight <= 0.0:
-			flashlight = 0.0
-			flashlight_on = false
-			$Flashlight.enabled = false
-			light_polygon.disabled = true
-		else:
-			if flashlight <= flashlight_low_threshold:
-				# decrementa o tempo para a próxima mudança
-				next_blink_time -= delta
-				
-				if next_blink_time <= 0.0:
-					# sorteia uma nova intensidade aleatória entre 0.3 e 1.0
-					$Flashlight.energy = randf_range(0.3, 1.0)
-					# define o tempo até a próxima piscada (ex: entre 0.3 e 1.5 segundos)
-					next_blink_time = randf_range(0.3, 1.5)
-			else:
-				$Flashlight.energy = 1.0
-				# reseta o timer quando a bateria não está baixa
-				next_blink_time = 0.0
-				
-		# Mas a sanidade aumenta (segurança na luz)
-		sanity = clamp(sanity + 0.1 * delta, 0, 100)
+	# Checa se current_level_name existe no Game
+	if "current_level_name" in game and game.current_level_name == "CT_map":
+		# Recupera oxigênio e sanidade na base
+		oxygen = clamp(oxygen + 10 * delta, 0, 100)
+		sanity = clamp(sanity + 5 * delta, 0, 100)
 	else:
-		# Se a lanterna está desligada → a sanidade cai
-		sanity = clamp(sanity - 0.2 * delta, 0, 100)
+		# Oxigênio sempre diminui
+		var oxygen_decay = base_oxygen_decay
+		
+		# Oxigênio diminui sempre
+		if sanity <= 0.0:
+			# Se sanidade zerada, oxigênio cai mais rápido
+			oxygen_decay *= 2.5
 
-	# cálculo de oxigênio...
-	if oxygen <= 0.0 and not is_game_over:
-		is_game_over = true
-		# Congela o player
-		set_process(false)
-		set_physics_process(false)
-		# Troca para a cena Game Over
-		get_tree().change_scene_to_file("res://Scenes/GameOver.tscn")
+		oxygen = clamp(oxygen - oxygen_decay * delta, 0, 100)
+	
+		if flashlight_on:
+			# Se a lanterna está ligada → perde bateria
+			flashlight = clamp(flashlight - 0.5 * delta, 0, 100)
+			
+			# Se acabar a bateria, desliga automaticamente
+			if flashlight <= 0.0:
+				flashlight = 0.0
+				flashlight_on = false
+				$Flashlight.enabled = false
+				light_polygon.disabled = true
+			else:
+				if flashlight <= flashlight_low_threshold:
+					# decrementa o tempo para a próxima mudança
+					next_blink_time -= delta
+					
+					if next_blink_time <= 0.0:
+						# sorteia uma nova intensidade aleatória entre 0.3 e 1.0
+						$Flashlight.energy = randf_range(0.3, 1.0)
+						# define o tempo até a próxima piscada (ex: entre 0.3 e 1.5 segundos)
+						next_blink_time = randf_range(0.3, 1.5)
+				else:
+					$Flashlight.energy = 1.0
+					# reseta o timer quando a bateria não está baixa
+					next_blink_time = 0.0
+					
+			# Mas a sanidade aumenta (segurança na luz)
+			sanity = clamp(sanity + 0.1 * delta, 0, 100)
+		else:
+			# Se a lanterna está desligada → a sanidade cai
+			sanity = clamp(sanity - 0.2 * delta, 0, 100)
+		
+		# Se estiver correndo, oxigênio diminui mais rápido
+		if Input.is_action_pressed("run"):
+			oxygen_decay *= run_oxygen_multiplier
+			
+		# cálculo de oxigênio...
+		if oxygen <= 0.0 and not is_game_over:
+			is_game_over = true
+			# Congela o player
+			set_process(false)
+			set_physics_process(false)
+			# Troca para a cena Game Over
+			get_tree().change_scene_to_file("res://Scenes/GameOver.tscn")
 		
 func change_oxygen(amount: float):
 	oxygen = clamp(oxygen + amount, 0, 100)
