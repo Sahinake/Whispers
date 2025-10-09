@@ -1,6 +1,6 @@
 extends Area2D
 
-@onready var sprite: AnimatedSprite2D = $Altar  # nó do sprite do altar
+@onready var sprite: AnimatedSprite2D = $"../Altar2"  # nó do sprite do altar
 @onready var message_label: Label = get_tree().root.get_node("Game/PlayerUI/MessageLabelAltar")
 
 # Tempo até o fim do jogo após colocar a runa
@@ -18,6 +18,12 @@ func try_activate(player):
 
 	activated = true
 	_show_message("A runa se encaixa perfeitamente...")
+	
+	if sprite.has_animation("activated"):
+		sprite.play("activated")
+	else:
+		sprite.frame = 1  # fallback: muda o frame manualmente
+		sprite.stop()
 
 	await get_tree().create_timer(end_delay).timeout
 	get_tree().change_scene_to_file("res://Scenes/WonScene.tscn")
