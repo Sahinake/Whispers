@@ -24,7 +24,7 @@ var base_oxygen_decay := 0.1  # taxa normal de oxigênio por segundo
 
 var sprite: AnimatedSprite2D
 var flashlight_on := false
-@export var run_oxygen_multiplier := 2.0    # Oxigênio decai mais rápido correndo
+@export var run_oxygen_multiplier := 10.0    # Oxigênio decai mais rápido correndo
 
 # sinal que avisa que o inventário deve abrir/fechar
 signal request_inventory_toggle
@@ -190,7 +190,11 @@ func _update_resources(delta):
 		if sanity <= 0.0:
 			# Se sanidade zerada, oxigênio cai mais rápido
 			oxygen_decay *= 2.5
-
+		
+		# Se o jogador está correndo, oxigênio decai ainda mais rápido
+		if Input.is_action_pressed("run"):
+			oxygen_decay *= run_oxygen_multiplier
+	
 		oxygen = clamp(oxygen - oxygen_decay * delta, 0, 100)
 	
 		if flashlight_on:
@@ -224,10 +228,6 @@ func _update_resources(delta):
 			# Se a lanterna está desligada → a sanidade cai
 			sanity = clamp(sanity - 0.2 * delta, 0, 100)
 		
-		# Se estiver correndo, oxigênio diminui mais rápido
-		if Input.is_action_pressed("run"):
-			oxygen_decay *= run_oxygen_multiplier
-			
 		# cálculo de oxigênio...
 		if oxygen <= 0.0 and not is_game_over:
 			is_game_over = true
