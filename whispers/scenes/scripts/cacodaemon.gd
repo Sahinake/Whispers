@@ -1,6 +1,5 @@
 extends EnemyBase
 
-
 @export var attack_range: float = 50.0       # distância para atacar
 @export var attack_damage: float = 10.0      # dano no player
 @export var attack_cooldown: float = 0.0     # tempo de cooldown do ataque
@@ -8,10 +7,11 @@ extends EnemyBase
 
 @export var patrol_radius: float = 200.0      			# raio da patrulha
 @onready var patrol_wait_timer: Timer = $PatrolWait   	# adicione um Timer extra na cena para a pausa
+@onready var attack_sound: AudioStreamPlayer2D = $CacodeamonSound
+
 
 var start_pos
 var waiting: bool = false   # controla se está parado esperando
-
 
 func _ready() -> void:
 	start_pos = global_position
@@ -49,8 +49,6 @@ func _physics_process(delta: float) -> void:
 					nav_movement(dir, speed*0.5)
 					_update_flip()
 					sprite.play("idle")
-					
-
 		State.CHASE:
 			var dist = (target_to_chase.global_position - global_position).length()
 			if !detection && dist > 400:
@@ -107,6 +105,7 @@ func _on_frame_changed():
 	# aplica o dano no frame 3 da animação "attack"
 	if sprite.animation == "attack" and sprite.frame == 2:
 		do_attack(0, attack_damage)
+		attack_sound.play()  # toca o som do ataque
 		
 # escolhe um ponto aleatório dentro do raio
 func _set_random_patrol_point():
@@ -123,7 +122,7 @@ func _set_random_patrol_point():
 func _on_timer_timeout() -> void:
 	movement()
 
-
 func _on_patrol_wait_timeout() -> void:
 	waiting = false
 	_set_random_patrol_point()
+	

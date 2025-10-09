@@ -1,7 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://ttkefanoi1bc"]
+[gd_scene load_steps=23 format=3 uid="uid://ttkefanoi1bc"]
 
 [ext_resource type="Script" uid="uid://cyxqsi456lnfu" path="res://Scenes/Scripts/cacodaemon.gd" id="1_wovta"]
 [ext_resource type="Texture2D" uid="uid://c86l3suylc56p" path="res://Assets/Tiles/Enemies/Cacodaemon Sprite Sheet.png" id="2_wovta"]
+[ext_resource type="AudioStream" uid="uid://c1a8nnmk4io8c" path="res://Assets/Sounds/Enemies/CacodeamonAttack.mp3" id="3_eec6l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_55jtl"]
 atlas = ExtResource("2_wovta")
@@ -166,15 +167,15 @@ radius = 20.0
 [node name="Cacodeamon" type="CharacterBody2D" groups=["enemies"]]
 script = ExtResource("1_wovta")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_qlal6")
 animation = &"walk"
 
-[node name="hitbox" type="Area2D" parent="."]
+[node name="HitBox" type="Area2D" parent="."]
 monitoring = false
 
-[node name="CollisionHit" type="CollisionShape2D" parent="hitbox"]
+[node name="CollisionHit" type="CollisionShape2D" parent="HitBox"]
 self_modulate = Color(1, 1, 0, 1)
 shape = SubResource("CapsuleShape2D_55jtl")
 
@@ -198,10 +199,14 @@ one_shot = true
 
 [node name="PatrolWait" type="Timer" parent="."]
 
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]
-[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_frame_changed"]
-[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
-[connection signal="body_exited" from="hitbox" to="." method="_on_hitbox_body_exited"]
+[node name="CacodeamonSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_eec6l")
+volume_db = -5.0
+
+[connection signal="animation_finished" from="Sprite" to="." method="_on_animation_finished"]
+[connection signal="frame_changed" from="Sprite" to="." method="_on_frame_changed"]
+[connection signal="body_entered" from="HitBox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="HitBox" to="." method="_on_hitbox_body_exited"]
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
 [connection signal="timeout" from="PathUpdate" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="PatrolWait" to="." method="_on_patrol_wait_timeout"]

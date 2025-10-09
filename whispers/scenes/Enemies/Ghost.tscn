@@ -1,10 +1,11 @@
-[gd_scene load_steps=40 format=3 uid="uid://bkpsccum4qsi6"]
+[gd_scene load_steps=41 format=3 uid="uid://bkpsccum4qsi6"]
 
 [ext_resource type="Script" uid="uid://crnlqdls3mo65" path="res://Scenes/Scripts/ghost.gd" id="1_s5pdv"]
 [ext_resource type="Texture2D" uid="uid://ds6p48kgbghqo" path="res://Assets/Tiles/Enemies/Ghost/Death_64x64.png" id="1_xrxcc"]
 [ext_resource type="Texture2D" uid="uid://dn1p62ihg8gp7" path="res://Assets/Tiles/Enemies/Ghost/Attack_2_64x64.png" id="2_s5pdv"]
 [ext_resource type="Texture2D" uid="uid://bajd583mr1s88" path="res://Assets/Tiles/Enemies/Ghost/Walk_64x64.png" id="3_75fd3"]
 [ext_resource type="Texture2D" uid="uid://c271tk7qsql1c" path="res://Assets/Tiles/Enemies/Ghost/Idle_64x64.png" id="4_qsnke"]
+[ext_resource type="AudioStream" uid="uid://beskgj1nf3wfd" path="res://Assets/Sounds/Enemies/GhostAttack.mp3" id="6_mq6ye"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_stpnr"]
 atlas = ExtResource("1_xrxcc")
@@ -200,7 +201,7 @@ step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -236,7 +237,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AnimatedSprite2D:self_modulate")
+tracks/3/path = NodePath("Sprite:self_modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -248,7 +249,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("AnimatedSprite2D:animation")
+tracks/4/path = NodePath("Sprite:animation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -267,7 +268,7 @@ step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/path = NodePath("Sprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -279,7 +280,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/path = NodePath("Sprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -320,7 +321,7 @@ step = 0.142857
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/path = NodePath("Sprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -332,7 +333,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/path = NodePath("Sprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -349,7 +350,7 @@ step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/path = NodePath("Sprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -361,7 +362,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/path = NodePath("Sprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -373,7 +374,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("AnimatedSprite2D:self_modulate")
+tracks/2/path = NodePath("Sprite:self_modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -391,7 +392,7 @@ step = 1.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/path = NodePath("Sprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -403,7 +404,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/path = NodePath("Sprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -446,7 +447,7 @@ step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/path = NodePath("Sprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -458,7 +459,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/path = NodePath("Sprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -494,7 +495,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("AnimatedSprite2D:self_modulate")
+tracks/4/path = NodePath("Sprite:self_modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -520,7 +521,7 @@ collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_s5pdv")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.666667)
 sprite_frames = SubResource("SpriteFrames_pas7m")
 animation = &"arise"
@@ -529,9 +530,9 @@ animation = &"arise"
 position = Vector2(0, 8)
 shape = SubResource("CircleShape2D_s5pdv")
 
-[node name="hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="."]
 
-[node name="CollisionHit" type="CollisionShape2D" parent="hitbox"]
+[node name="CollisionHit" type="CollisionShape2D" parent="Hitbox"]
 self_modulate = Color(1, 1, 0, 1)
 shape = SubResource("CapsuleShape2D_55jtl")
 
@@ -557,9 +558,13 @@ autoplay = "idle"
 wait_time = 2.0
 one_shot = true
 
-[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
-[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
-[connection signal="body_exited" from="hitbox" to="." method="_on_hitbox_body_exited"]
+[node name="GhostSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_mq6ye")
+volume_db = -5.0
+
+[connection signal="frame_changed" from="Sprite" to="." method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]
 [connection signal="timeout" from="PathUpdate" to="." method="_on_path_update_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="Sleep" to="." method="_on_sleep_timeout"]

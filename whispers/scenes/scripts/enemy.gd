@@ -6,9 +6,9 @@ enum State {IDLE, CHASE, BACK, ATTACK}
 @onready var target_to_chase : CharacterBody2D = get_tree().get_first_node_in_group("Player")
 @export var speed: float = 350.0
 
-@onready var hitbox: Area2D = $hitbox
+@onready var hitbox: Area2D = $HitBox
 @onready var nav_chase: NavigationAgent2D = $NavigationAgent2D
-@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var sprite: AnimatedSprite2D = $Sprite
 
 
 @onready var path_update: Timer = $PathUpdate

@@ -1,5 +1,6 @@
 extends EnemyBase
 
+@onready var attack_sound: AudioStreamPlayer2D = $GhostSound
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var can_fade: bool = true
 @onready var damage: float = 10.0
@@ -70,6 +71,7 @@ func _on_path_update_timeout() -> void:
 func _on_animated_sprite_2d_frame_changed() -> void:
 	if animation_player.current_animation == "attack" and sprite.frame == 4:
 		do_attack(1, damage)
+		attack_sound.play()  # toca o som do ataque
 
 func _on_sleep_timeout() -> void:
 	sleeping =  true
