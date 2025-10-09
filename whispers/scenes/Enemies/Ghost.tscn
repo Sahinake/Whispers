@@ -530,9 +530,9 @@ animation = &"arise"
 position = Vector2(0, 8)
 shape = SubResource("CircleShape2D_s5pdv")
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="HitBox" type="Area2D" parent="."]
 
-[node name="CollisionHit" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionHit" type="CollisionShape2D" parent="HitBox"]
 self_modulate = Color(1, 1, 0, 1)
 shape = SubResource("CapsuleShape2D_55jtl")
 
@@ -563,8 +563,8 @@ stream = ExtResource("6_mq6ye")
 volume_db = -5.0
 
 [connection signal="frame_changed" from="Sprite" to="." method="_on_animated_sprite_2d_frame_changed"]
-[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
-[connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]
+[connection signal="body_entered" from="HitBox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="HitBox" to="." method="_on_hitbox_body_exited"]
 [connection signal="timeout" from="PathUpdate" to="." method="_on_path_update_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="Sleep" to="." method="_on_sleep_timeout"]

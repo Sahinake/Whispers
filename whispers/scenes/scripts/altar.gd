@@ -19,12 +19,9 @@ func try_activate(player):
 	activated = true
 	_show_message("A runa se encaixa perfeitamente...")
 	
-	if sprite.has_animation("activated"):
+	if "activated" in sprite.sprite_frames.get_animation_names():
 		sprite.play("activated")
-	else:
-		sprite.frame = 1  # fallback: muda o frame manualmente
-		sprite.stop()
-
+		
 	await get_tree().create_timer(end_delay).timeout
 	get_tree().change_scene_to_file("res://Scenes/WonScene.tscn")
 
