@@ -1,18 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://c0rk7ubtyg3so"]
+[gd_scene load_steps=4 format=3 uid="uid://7h2adk2v4tii"]
 
-[ext_resource type="Script" uid="uid://dnvecuj2llosk" path="res://Scenes/Scripts/fish.gd" id="1_6lepv"]
-[ext_resource type="Texture2D" uid="uid://do4bk2e0dmqem" path="res://Assets/Tiles/Animals/fish1Texture.png" id="2_6lepv"]
+[ext_resource type="Script" uid="uid://dnvecuj2llosk" path="res://Scenes/Scripts/fish.gd" id="1_5de30"]
+[ext_resource type="Texture2D" uid="uid://yohjyndmc7t0" path="res://Assets/Tiles/Animals/fish3Texture.png" id="2_5de30"]
 
 [sub_resource type="Curve2D" id="Curve2D_f5qig"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -75, 0, 6.168691, 0.38554192, -6.168691, -0.38554192, 137, -2, 0, 0, 0, 0, -75, 0)
+"points": PackedVector2Array(0, 0, 0, 0, -75, 0, 12.446107, 0.1275711, -12.446107, -0.1275711, 139, 0, 0, 0, 0, 0, -75, 0)
 }
 point_count = 3
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Fish" type="Node2D" parent="."]
-script = ExtResource("1_6lepv")
+script = ExtResource("1_5de30")
 
 [node name="Path2D" type="Path2D" parent="Fish"]
 curve = SubResource("Curve2D_f5qig")
@@ -25,14 +25,14 @@ rotates = false
 [node name="Fish1" type="Sprite2D" parent="Fish/Path2D/PathFollow2D"]
 position = Vector2(9.536743e-07, 4.7683716e-07)
 scale = Vector2(0.63148284, 0.63148284)
-texture = ExtResource("2_6lepv")
+texture = ExtResource("2_5de30")
 
 [node name="Fish2" type="Sprite2D" parent="Fish/Path2D/PathFollow2D"]
-position = Vector2(-38.850502, -25.231697)
+position = Vector2(-59.85608, -24.35671)
 scale = Vector2(0.451, 0.451)
-texture = ExtResource("2_6lepv")
+texture = ExtResource("2_5de30")
 
 [node name="Fish3" type="Sprite2D" parent="Fish/Path2D/PathFollow2D"]
-position = Vector2(-36.08865, 14.785452)
+position = Vector2(-45.177773, 29.731613)
 scale = Vector2(0.3432237, 0.3432237)
-texture = ExtResource("2_6lepv")
+texture = ExtResource("2_5de30")

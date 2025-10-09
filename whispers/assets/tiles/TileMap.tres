@@ -1,9 +1,10 @@
-[gd_resource type="TileSet" load_steps=52 format=3 uid="uid://dukwad64niofq"]
+[gd_resource type="TileSet" load_steps=55 format=3 uid="uid://dukwad64niofq"]
 
 [ext_resource type="Texture2D" uid="uid://b5ruu526orclv" path="res://Assets/Tiles/Atlantis Map/tf_B_atlantisA.png" id="1_aboys"]
 [ext_resource type="Texture2D" uid="uid://bj02iw6djkf4p" path="res://Assets/Tiles/Atlantis Map/tf_A5_atlantisB.png" id="2_dp1rp"]
 [ext_resource type="Texture2D" uid="uid://b5whtqdup4vlo" path="res://Assets/Tiles/walls_floor (48x48).png" id="3_b8m0x"]
 [ext_resource type="PackedScene" uid="uid://dj5evx0a2mqmo" path="res://Scenes/Animações/Algaes/Animated_Algae.tscn" id="4_bnw48"]
+[ext_resource type="PackedScene" uid="uid://b2tvbsoo7vx8d" path="res://Scenes/Animações/Animals/Fish_4.tscn" id="4_lxpua"]
 [ext_resource type="PackedScene" uid="uid://dhse2g6bs8dok" path="res://Scenes/Animações/Algaes/Runas.tscn" id="5_dp1rp"]
 [ext_resource type="PackedScene" uid="uid://cla6361k7cj6o" path="res://Scenes/Animações/Algaes/Animated_Algae_2.tscn" id="6_bpjtg"]
 [ext_resource type="PackedScene" uid="uid://c0rk7ubtyg3so" path="res://Scenes/Animações/Animals/Fish_1.tscn" id="7_dhm2k"]
@@ -11,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://dqt40lul4jryx" path="res://Scenes/Animações/Animals/Crab.tscn" id="8_bx66q"]
 [ext_resource type="PackedScene" uid="uid://8cy8f64q80vm" path="res://Scenes/Traps/Wall_trap.tscn" id="8_gqv40"]
 [ext_resource type="Texture2D" uid="uid://bas7ti8fryjpe" path="res://Assets/Tiles/Atlantis Map/tf_A5_atlantisA.png" id="10_hste0"]
+[ext_resource type="PackedScene" uid="uid://rx1qwijebr6x" path="res://Scenes/Animações/Animals/Fish_2.tscn" id="11_56fpu"]
+[ext_resource type="PackedScene" uid="uid://7h2adk2v4tii" path="res://Scenes/Animações/Animals/Fish_3.tscn" id="12_y7e8v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_melje"]
 texture = ExtResource("1_aboys")
@@ -583,6 +586,9 @@ scenes/4/scene = ExtResource("8_bx66q")
 scenes/5/scene = ExtResource("7_dp1rp")
 scenes/6/scene = ExtResource("8_gqv40")
 scenes/7/scene = ExtResource("7_dhm2k")
+scenes/8/scene = ExtResource("11_56fpu")
+scenes/9/scene = ExtResource("12_y7e8v")
+scenes/10/scene = ExtResource("4_lxpua")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r68sw"]
 texture = ExtResource("2_dp1rp")
