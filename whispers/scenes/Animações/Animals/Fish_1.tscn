@@ -1,40 +1,38 @@
 [gd_scene load_steps=4 format=3 uid="uid://c0rk7ubtyg3so"]
 
 [ext_resource type="Script" uid="uid://dnvecuj2llosk" path="res://Scenes/Scripts/fish.gd" id="1_6lepv"]
-[ext_resource type="Texture2D" uid="uid://npfyl67weu0u" path="res://Assets/Tiles/Animals/peixe_virando_01.png" id="2_iyxa5"]
+[ext_resource type="Texture2D" uid="uid://do4bk2e0dmqem" path="res://Assets/Tiles/Animals/fish1Texture.png" id="2_6lepv"]
 
 [sub_resource type="Curve2D" id="Curve2D_f5qig"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -75, 0, 0, 0, 0, 0, 93, -1, 0, 0, 0, 0, -75, 0)
+"points": PackedVector2Array(0, 0, 0, 0, -75, 0, 6.168691, 0.38554192, -6.168691, -0.38554192, 188, 0, 0, 0, 0, 0, -75, 0)
 }
 point_count = 3
 
 [node name="Node2D" type="Node2D"]
 
-[node name="fish" type="Node2D" parent="."]
+[node name="Fish" type="Node2D" parent="."]
 script = ExtResource("1_6lepv")
 
-[node name="Path2D" type="Path2D" parent="fish"]
+[node name="Path2D" type="Path2D" parent="Fish"]
 curve = SubResource("Curve2D_f5qig")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="fish/Path2D"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Fish/Path2D"]
 position = Vector2(-75, 0)
 rotation = -0.00595231
 rotates = false
 
-[node name="Sprite2D" type="Sprite2D" parent="fish/Path2D/PathFollow2D"]
-texture = ExtResource("2_iyxa5")
-hframes = 5
-vframes = 2
+[node name="Fish1" type="Sprite2D" parent="Fish/Path2D/PathFollow2D"]
+position = Vector2(9.536743e-07, 4.7683716e-07)
+scale = Vector2(0.63148284, 0.63148284)
+texture = ExtResource("2_6lepv")
 
-[node name="Sprite2D2" type="Sprite2D" parent="fish/Path2D/PathFollow2D"]
-position = Vector2(-18.9104, -15.1128)
-texture = ExtResource("2_iyxa5")
-hframes = 5
-vframes = 2
+[node name="Fish2" type="Sprite2D" parent="Fish/Path2D/PathFollow2D"]
+position = Vector2(-38.850502, -25.231697)
+scale = Vector2(0.451, 0.451)
+texture = ExtResource("2_6lepv")
 
-[node name="Sprite2D3" type="Sprite2D" parent="fish/Path2D/PathFollow2D"]
-position = Vector2(-18.0949, 15.8926)
-texture = ExtResource("2_iyxa5")
-hframes = 5
-vframes = 2
+[node name="Fish3" type="Sprite2D" parent="Fish/Path2D/PathFollow2D"]
+position = Vector2(-36.08865, 14.785452)
+scale = Vector2(0.3432237, 0.3432237)
+texture = ExtResource("2_6lepv")

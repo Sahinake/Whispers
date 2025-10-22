@@ -1,19 +1,42 @@
 extends CharacterBody2D
 
 @export var speed: float = 250.0
+@export var run_multiplier: float = 1.5   # multiplicador da corrida
 @onready var light_area: Area2D = $Flashlight/FlashlightArea
 @onready var light_polygon: CollisionPolygon2D = $Flashlight/FlashlightArea/FlashlightPolygon
 
+@export var camera_path: NodePath
+var camera: Camera2D = null
+@export var sanity_overlay_path: NodePath
+@onready var sanity_overlay: ColorRect = null
+var sanity_shader: ShaderMaterial = null
+
+# Efeitos de sanidade
+@export var base_zoom: Vector2 = Vector2(1.0, 1.0)      # Zoom normal da câmera
+@export var max_zoom: Vector2 = Vector2(1.4, 1.4)        # Zoom máximo quando sanidade = 0
+@export var overlay_max_alpha: float = 0.5               # Intensidade máxima do vermelho
+
+# Limite para efeito de luz fraca
+@export var flashlight_low_threshold := 20.0
+@export var flashlight_blink_speed := 5.0 # Hz do piscar
+var next_blink_time := 0.0
+var base_oxygen_decay := 0.1  # taxa normal de oxigênio por segundo
+
 var sprite: AnimatedSprite2D
 var flashlight_on := false
+@export var run_oxygen_multiplier := 10.0    # Oxigênio decai mais rápido correndo
 
 # sinal que avisa que o inventário deve abrir/fechar
 signal request_inventory_toggle
+var is_game_over := false 
+var waiting_for_input := false
 
 # Recursos do jogador
 var oxygen := 100.0
 var sanity := 100.0
 var flashlight := 100.0
+
+var has_rune := false
 
 # Referência à UI do jogador
 @export var ui_node_path: NodePath
@@ -27,6 +50,16 @@ func _ready():
 	# Inicializa referência à UI
 	if ui_node_path != null:
 		ui = get_node(ui_node_path)
+		
+	# Inicializa a câmera se o caminho foi configurado
+	if camera_path != null:
+		camera = get_node(camera_path)
+		
+	# Inicializa o overlay de sanidade se o caminho foi configurado
+	if sanity_overlay_path != null:
+		sanity_overlay = get_node(sanity_overlay_path)
+		if sanity_overlay.material:
+			sanity_shader = sanity_overlay.material as ShaderMaterial
 
 func _physics_process(delta):
 	# Movimento do player
@@ -34,7 +67,11 @@ func _physics_process(delta):
 	input_vector.x = Input.get_axis("ui_left", "ui_right")
 	input_vector.y = Input.get_axis("ui_up", "ui_down")
 	
-	velocity = input_vector.normalized() * speed
+	var current_speed = speed
+	if Input.is_action_pressed("run"):   # precisa mapear "run" no Input Map como Shift
+		current_speed *= run_multiplier
+		
+	velocity = input_vector.normalized() * current_speed
 	move_and_slide()
 
 	# Atualiza animação
@@ -49,6 +86,9 @@ func _physics_process(delta):
 	# Atualiza UI
 	if ui != null:
 		ui.update_ui(oxygen, sanity, flashlight)
+		
+	# Atualiza efeitos visuais da sanidade
+	_update_sanity_effects(delta)
 
 func _update_animation(input_vector: Vector2):
 	var mouse_dir = (get_global_mouse_position() - global_position).normalized()
@@ -81,23 +121,122 @@ func _input(event):
 	
 	if event.is_action_pressed("ui_cancel"):
 		emit_signal("request_inventory_toggle")
+	
+	if event.is_action_pressed("oxygen_increase"):
+		change_oxygen(5)
+		print("Oxigênio:", oxygen)
+
+	if event.is_action_pressed("oxygen_decrease"):
+		change_oxygen(-5)
+		print("Oxigênio:", oxygen)
+
+	if event.is_action_pressed("sanity_increase"):
+		change_sanity(5)
+		print("Sanidade:", sanity)
+
+	if event.is_action_pressed("sanity_decrease"):
+		change_sanity(-5)
+		print("Sanidade:", sanity)
+		
+	if event.is_action_pressed("flashlight_increase"):
+		change_flashlight(5)
+		print("Lanterna:", flashlight)
+		
+	if event.is_action_pressed("flashlight_decrease"):
+		change_flashlight(-5)
+		print("Lanterna:", flashlight)
+		
+	# No player.gd, em _input
+	if event.is_action_pressed("interact"):
+		for body in $CollectArea.get_overlapping_areas():
+			if body.is_in_group("energic_algae"):
+				body.collect(self)
+				break
+			# coleta runa especial
+			elif body.is_in_group("runas"):
+				body.collect(self)
+				has_rune = true
+				break
+			elif body.is_in_group("altar"):
+				body.try_activate(self)
+				break
+
 		
 # -------------------------------
 # Recursos do jogador
 # -------------------------------
 func _update_resources(delta):
-	# Oxigênio sempre diminui
-	oxygen = clamp(oxygen - 0.1 * delta, 0, 100)
+	if is_game_over:
+		return   # não atualiza mais recursos depois do Game Over
 	
-	if flashlight_on:
-		# Se a lanterna está ligada → perde bateria
-		flashlight = clamp(flashlight - 0.5 * delta, 0, 100)
-		# Mas a sanidade aumenta (segurança na luz)
-		sanity = clamp(sanity + 0.1 * delta, 0, 100)
+	var game = get_tree().current_scene  # raiz = Game
+	if game == null:
+		return
+	
+	# Checa se current_level_name existe no Game
+	if "current_level_name" in game and game.current_level_name == "CT_map":
+		# Recupera oxigênio e sanidade na base
+		oxygen = clamp(oxygen + 10 * delta, 0, 100)
+		sanity = clamp(sanity + 5 * delta, 0, 100)
+		
+		if has_rune:
+			is_game_over = true
+			
 	else:
-		# Se a lanterna está desligada → a sanidade cai
-		sanity = clamp(sanity - 0.2 * delta, 0, 100)
-
+		# Oxigênio sempre diminui
+		var oxygen_decay = base_oxygen_decay
+		
+		# Oxigênio diminui sempre
+		if sanity <= 0.0:
+			# Se sanidade zerada, oxigênio cai mais rápido
+			oxygen_decay *= 2.5
+		
+		# Se o jogador está correndo, oxigênio decai ainda mais rápido
+		if Input.is_action_pressed("run"):
+			oxygen_decay *= run_oxygen_multiplier
+	
+		oxygen = clamp(oxygen - oxygen_decay * delta, 0, 100)
+	
+		if flashlight_on:
+			# Se a lanterna está ligada → perde bateria
+			flashlight = clamp(flashlight - 0.5 * delta, 0, 100)
+			
+			# Se acabar a bateria, desliga automaticamente
+			if flashlight <= 0.0:
+				flashlight = 0.0
+				flashlight_on = false
+				$Flashlight.enabled = false
+				light_polygon.disabled = true
+			else:
+				if flashlight <= flashlight_low_threshold:
+					# decrementa o tempo para a próxima mudança
+					next_blink_time -= delta
+					
+					if next_blink_time <= 0.0:
+						# sorteia uma nova intensidade aleatória entre 0.3 e 1.0
+						$Flashlight.energy = randf_range(0.3, 1.0)
+						# define o tempo até a próxima piscada (ex: entre 0.3 e 1.5 segundos)
+						next_blink_time = randf_range(0.3, 1.5)
+				else:
+					$Flashlight.energy = 1.0
+					# reseta o timer quando a bateria não está baixa
+					next_blink_time = 0.0
+					
+			# Mas a sanidade aumenta (segurança na luz)
+			sanity = clamp(sanity + 0.1 * delta, 0, 100)
+		else:
+			# Se a lanterna está desligada → a sanidade cai
+			sanity = clamp(sanity - 0.2 * delta, 0, 100)
+		
+		# cálculo de oxigênio...
+		if oxygen <= 0.0 and not is_game_over:
+			is_game_over = true
+			# Congela o player
+			set_process(false)
+			set_physics_process(false)
+			# Troca para a cena Game Over
+			get_tree().change_scene_to_file("res://Scenes/GameOver.tscn")
+		
 func change_oxygen(amount: float):
 	oxygen = clamp(oxygen + amount, 0, 100)
 
@@ -106,3 +245,32 @@ func change_sanity(amount: float):
 
 func change_flashlight(amount: float):
 	flashlight = clamp(flashlight + amount, 0, 100)
+
+func _update_sanity_effects(delta):
+	if sanity_overlay == null or sanity_shader == null:
+		return
+
+	var t = 1.0 - sanity / 100.0  # 0 = sanidade alta, 1 = sanidade baixa
+
+	# Zoom da câmera
+	if camera:
+		camera.zoom = lerp(base_zoom, max_zoom, t)
+
+func take_damage_trap(amount: float):
+		oxygen = clamp(oxygen + amount,0,100)
+		
+func _reset_player_variables():
+	oxygen = 100.0
+	sanity = 100.0
+	flashlight = 100.0
+	flashlight_on = true
+	is_game_over = false
+	set_process(true)
+	set_physics_process(true)
+
+	# Resetar posição do player, animação, etc
+	global_position = Vector2.ZERO
+	sprite.animation = "idle_down"
+	sprite.play()
+	$Flashlight.enabled = true
+	$Flashlight/FlashlightArea/FlashlightPolygon.disabled = false

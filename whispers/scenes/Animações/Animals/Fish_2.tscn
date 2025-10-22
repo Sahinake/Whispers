@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://rx1qwijebr6x"]
+
+[ext_resource type="Script" uid="uid://dnvecuj2llosk" path="res://Scenes/Scripts/fish.gd" id="1_vusgl"]
+[ext_resource type="Texture2D" uid="uid://dxf7a7slcsd" path="res://Assets/Tiles/Animals/fish2Texture.png" id="2_vusgl"]
+
+[sub_resource type="Curve2D" id="Curve2D_f5qig"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -75, 0, 5.012062, 0.17524338, -5.012062, -0.17524338, 137, -2, 0, 0, 0, 0, -75, 0)
+}
+point_count = 3
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Fish" type="Node2D" parent="."]
+script = ExtResource("1_vusgl")
+
+[node name="Path2D" type="Path2D" parent="Fish"]
+curve = SubResource("Curve2D_f5qig")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Fish/Path2D"]
+position = Vector2(-75, 0)
+rotation = -0.00595231
+rotates = false
+
+[node name="Fish1" type="Sprite2D" parent="Fish/Path2D/PathFollow2D"]
+position = Vector2(9.536743e-07, 4.7683716e-07)
+scale = Vector2(0.63148284, 0.63148284)
+texture = ExtResource("2_vusgl")
+
+[node name="Fish2" type="Sprite2D" parent="Fish/Path2D/PathFollow2D"]
+position = Vector2(-38.850502, -25.231697)
+scale = Vector2(0.451, 0.451)
+texture = ExtResource("2_vusgl")
+
+[node name="Fish3" type="Sprite2D" parent="Fish/Path2D/PathFollow2D"]
+position = Vector2(-36.18984, 31.78515)
+scale = Vector2(0.3432237, 0.3432237)
+texture = ExtResource("2_vusgl")

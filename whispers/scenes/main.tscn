@@ -23,9 +23,9 @@ fractal_gain = 0.98
 fractal_weighted_strength = 0.57
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vcsgt"]
+noise = SubResource("FastNoiseLite_344ge")
 seamless = true
 seamless_blend_skirt = 0.6
-noise = SubResource("FastNoiseLite_344ge")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ynf5e"]
 shader = ExtResource("8_yxlcp")
@@ -148,8 +148,7 @@ volume_db = 0.5
 volume_db = 5.0
 
 [node name="FadeOverlay" type="ColorRect" parent="."]
-visible = false
 layout_mode = 0
 offset_right = 1155.0
 offset_bottom = 650.0
-color = Color(0, 0, 0, 0)
+color = Color(0, 0, 0, 1)

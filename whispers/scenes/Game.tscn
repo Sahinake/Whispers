@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cwr1by4kqynqg"]
+[gd_scene load_steps=28 format=3 uid="uid://cwr1by4kqynqg"]
 
 [ext_resource type="Script" uid="uid://cksj6w6wrmsr1" path="res://Scenes/Scripts/game.gd" id="1_iukft"]
 [ext_resource type="PackedScene" uid="uid://b6u2c7130mn3l" path="res://Scenes/Player/player.tscn" id="2_gl6un"]
@@ -11,10 +11,16 @@
 [ext_resource type="Texture2D" uid="uid://bdg40fy77b8g2" path="res://icon.svg" id="5_fgofq"]
 [ext_resource type="PackedScene" uid="uid://bo1d1sck661g2" path="res://Scenes/Player/player_ui.tscn" id="6_aug50"]
 [ext_resource type="AudioStream" uid="uid://dfy1sgwd4h6gx" path="res://Assets/Sounds/Menu/Effects/Effect5.mp3" id="6_x3xnh"]
-[ext_resource type="Texture2D" uid="uid://d1w3u7m6iftq3" path="res://Assets/Player/Inventory/InventoryBackground.png" id="7_2irst"]
+[ext_resource type="AudioStream" uid="uid://kawx0t5bwndw" path="res://Assets/Sounds/Menu/Effects/Effect6.mp3" id="7_8r6kd"]
 [ext_resource type="PackedScene" uid="uid://cxu4ld8hpxo2o" path="res://Scenes/Inventory.tscn" id="7_fgofq"]
-[ext_resource type="PackedScene" uid="uid://ttkefanoi1bc" path="res://Scenes/Enemy.tscn" id="8_acvyw"]
 [ext_resource type="AudioStream" uid="uid://b3306s1ibe1ps" path="res://Assets/Sounds/Menu/Underwater Ambience.mp3" id="9_bf53h"]
+[ext_resource type="AudioStream" uid="uid://qut4gb0vspqy" path="res://Assets/Sounds/Menu/Effects/Effect8.mp3" id="9_rajel"]
+[ext_resource type="AudioStream" uid="uid://hjfjhqprm77t" path="res://Assets/Sounds/Menu/Effects/Effect9.mp3" id="10_vvhu1"]
+[ext_resource type="AudioStream" uid="uid://0cqoqgjs3tuj" path="res://Assets/Sounds/Menu/Heartbeat.mp3" id="18_vvhu1"]
+[ext_resource type="AudioStream" uid="uid://bni17k53of18d" path="res://Assets/Sounds/Menu/Breathing.mp3" id="19_lbihj"]
+[ext_resource type="Texture2D" uid="uid://d1w3u7m6iftq3" path="res://Assets/Player/Inventory/InventoryBackground.png" id="19_rajel"]
+[ext_resource type="Texture2D" uid="uid://du7v6voleg3go" path="res://Assets/Runa.png" id="20_vvhu1"]
+[ext_resource type="Shader" uid="uid://d4nj7rxgau02" path="res://Scenes/Scripts/Shaders/SanityShader.gdshader" id="21_rajel"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_2irst"]
 frequency = 0.0034
@@ -23,9 +29,9 @@ fractal_gain = 0.98
 fractal_weighted_strength = 0.57
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vkm7v"]
+noise = SubResource("FastNoiseLite_2irst")
 seamless = true
 seamless_blend_skirt = 0.6
-noise = SubResource("FastNoiseLite_2irst")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bf53h"]
 shader = ExtResource("4_7lihs")
@@ -34,9 +40,21 @@ shader_parameter/fast_noise = SubResource("NoiseTexture2D_vkm7v")
 shader_parameter/speed = Vector2(0.03, 0.07)
 shader_parameter/wave_strength = 2.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vvhu1"]
+shader = ExtResource("21_rajel")
+shader_parameter/intensity = 0.0
+shader_parameter/darken_factor = 0.5
+shader_parameter/pulse_value = 0.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_vvhu1"]
+font_size = 22
+shadow_size = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_lbihj"]
+
 [node name="Game" type="Node2D"]
 script = ExtResource("1_iukft")
-random_sounds = Array[AudioStream]([ExtResource("2_wxwew"), ExtResource("3_acvyw"), ExtResource("4_alh3a"), ExtResource("5_4q8tf"), ExtResource("6_x3xnh")])
+random_sounds = Array[AudioStream]([ExtResource("2_wxwew"), ExtResource("3_acvyw"), ExtResource("4_alh3a"), ExtResource("5_4q8tf"), ExtResource("6_x3xnh"), ExtResource("7_8r6kd"), ExtResource("9_rajel"), ExtResource("10_vvhu1")])
 
 [node name="Layer1" type="CanvasLayer" parent="."]
 layer = 0
@@ -46,15 +64,12 @@ follow_viewport_enabled = true
 
 [node name="Player" parent="Layer1" instance=ExtResource("2_gl6un")]
 position = Vector2(366, 370)
+camera_path = NodePath("../../Camera2D")
+sanity_overlay_path = NodePath("../../PlayerUI/ColorRect2")
 ui_node_path = NodePath("../../PlayerUI")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Layer1/Player"]
 remote_path = NodePath("../../../Camera2D")
-
-[node name="Enemy" parent="Layer1" node_paths=PackedStringArray("target_to_chase") instance=ExtResource("8_acvyw")]
-position = Vector2(459, 253)
-scale = Vector2(0.5, 0.5)
-target_to_chase = NodePath("../Player")
 
 [node name="Layer2" type="CanvasLayer" parent="."]
 
@@ -70,15 +85,53 @@ texture = ExtResource("5_fgofq")
 
 [node name="WaterMenuSound" type="AudioStreamPlayer" parent="Layer2"]
 stream = ExtResource("9_bf53h")
-volume_db = 0.5
 
 [node name="Effects" type="Node2D" parent="Layer2"]
 
 [node name="EffectsSound" type="AudioStreamPlayer" parent="Layer2/Effects"]
-volume_db = 5.0
+
+[node name="Heartbeat" type="AudioStreamPlayer" parent="Layer2/Effects"]
+stream = ExtResource("18_vvhu1")
+parameters/looping = true
+
+[node name="Breathing" type="AudioStreamPlayer" parent="Layer2/Effects"]
+stream = ExtResource("19_lbihj")
+parameters/looping = true
 
 [node name="PlayerUI" parent="." instance=ExtResource("6_aug50")]
 layer = 2
+
+[node name="ColorRect2" type="ColorRect" parent="PlayerUI"]
+material = SubResource("ShaderMaterial_vvhu1")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MessageLabel" type="Label" parent="PlayerUI"]
+offset_left = 961.0
+offset_top = 605.0
+offset_right = 1116.0
+offset_bottom = 624.0
+text = "Pressione ENTER"
+label_settings = SubResource("LabelSettings_vvhu1")
+
+[node name="RuneIcon" type="TextureRect" parent="PlayerUI"]
+visible = false
+offset_left = 904.0
+offset_top = 590.0
+offset_right = 944.0
+offset_bottom = 630.0
+texture = ExtResource("20_vvhu1")
+
+[node name="MessageLabelAltar" type="Label" parent="PlayerUI"]
+offset_left = 586.0
+offset_top = 608.0
+offset_right = 626.0
+offset_bottom = 621.0
+scale = Vector2(1.28, 1.28)
+label_settings = SubResource("LabelSettings_lbihj")
 
 [node name="Layer3" type="CanvasLayer" parent="."]
 layer = 3
@@ -95,7 +148,7 @@ offset_left = 111.0
 offset_top = -92.0
 offset_right = 1112.0
 offset_bottom = 721.0
-texture = ExtResource("7_2irst")
+texture = ExtResource("19_rajel")
 
 [node name="Inventory" parent="Layer3" instance=ExtResource("7_fgofq")]
 visible = false
@@ -104,6 +157,14 @@ offset_top = 330.0
 offset_right = 607.0
 offset_bottom = 330.0
 scale = Vector2(1.18555, 1.18555)
+
+[node name="FadeRect" type="ColorRect" parent="Layer3"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(366, 370)

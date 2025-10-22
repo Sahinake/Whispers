@@ -2,9 +2,9 @@ extends Node2D
 
 
 @onready var path_follow : PathFollow2D = $Path2D/PathFollow2D
-@onready var fishA: Sprite2D = $Path2D/PathFollow2D/Sprite2D
-@onready var fishB: Sprite2D = $Path2D/PathFollow2D/Sprite2D2
-@onready var fishC: Sprite2D = $Path2D/PathFollow2D/Sprite2D3
+@onready var fishA: Sprite2D = $Path2D/PathFollow2D/Fish1
+@onready var fishB: Sprite2D = $Path2D/PathFollow2D/Fish2
+@onready var fishC: Sprite2D = $Path2D/PathFollow2D/Fish3
 
 @export var speed = 80
 
