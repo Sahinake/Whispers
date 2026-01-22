@@ -67,6 +67,7 @@ layer = 0
 follow_viewport_enabled = true
 
 [node name="Fishes" type="TileMapLayer" parent="CanvasLayer"]
+visible = false
 position = Vector2(-51, 198)
 
 [node name="Node2D" parent="CanvasLayer/Fishes" instance=ExtResource("4_j1rch")]
