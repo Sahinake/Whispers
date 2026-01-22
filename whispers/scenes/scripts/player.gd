@@ -155,8 +155,8 @@ func _input(event):
 			# coleta runa especial
 			elif body.is_in_group("runas"):
 				body.collect(self)
-				has_rune = true
 				break
+
 			elif body.is_in_group("altar"):
 				body.try_activate(self)
 				break
@@ -178,9 +178,6 @@ func _update_resources(delta):
 		# Recupera oxigênio e sanidade na base
 		oxygen = clamp(oxygen + 10 * delta, 0, 100)
 		sanity = clamp(sanity + 5 * delta, 0, 100)
-		
-		if has_rune:
-			is_game_over = true
 			
 	else:
 		# Oxigênio sempre diminui
@@ -199,7 +196,8 @@ func _update_resources(delta):
 	
 		if flashlight_on:
 			# Se a lanterna está ligada → perde bateria
-			flashlight = clamp(flashlight - 0.5 * delta, 0, 100)
+			flashlight = clamp(flashlight - 1.0
+			 * delta, 0, 100)
 			
 			# Se acabar a bateria, desliga automaticamente
 			if flashlight <= 0.0:
@@ -274,3 +272,8 @@ func _reset_player_variables():
 	sprite.play()
 	$Flashlight.enabled = true
 	$Flashlight/FlashlightArea/FlashlightPolygon.disabled = false
+
+func deliver_rune():
+	has_rune = false
+	if ui:
+		ui.hide_rune_icon()

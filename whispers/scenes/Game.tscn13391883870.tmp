@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cwr1by4kqynqg"]
+[gd_scene load_steps=28 format=3 uid="uid://cwr1by4kqynqg"]
 
 [ext_resource type="Script" uid="uid://cksj6w6wrmsr1" path="res://Scenes/Scripts/game.gd" id="1_iukft"]
 [ext_resource type="PackedScene" uid="uid://b6u2c7130mn3l" path="res://Scenes/Player/player.tscn" id="2_gl6un"]
@@ -50,22 +50,6 @@ shader_parameter/pulse_value = 0.0
 font_size = 22
 shadow_size = 2
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rajel"]
-content_margin_left = 18.0
-content_margin_top = 14.0
-content_margin_right = 18.0
-content_margin_bottom = 14.0
-bg_color = Color(0.043137256, 0.043137256, 0.07058824, 0.8)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(1, 1, 1, 0.53333336)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
 [sub_resource type="LabelSettings" id="LabelSettings_lbihj"]
 
 [node name="Game" type="Node2D"]
@@ -115,7 +99,7 @@ stream = ExtResource("19_lbihj")
 parameters/looping = true
 
 [node name="PlayerUI" parent="." instance=ExtResource("6_aug50")]
-layer = 2
+layer = 4
 
 [node name="ColorRect2" type="ColorRect" parent="PlayerUI"]
 material = SubResource("ShaderMaterial_vvhu1")
@@ -140,23 +124,13 @@ offset_right = 1119.0
 offset_bottom = 587.0
 texture = ExtResource("20_vvhu1")
 
-[node name="AltarCard" type="PanelContainer" parent="PlayerUI"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -229.0
-offset_top = 20.0
-offset_right = -22.0
-offset_bottom = 122.0
-grow_horizontal = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_rajel")
-
-[node name="MessageLabelAltar" type="Label" parent="PlayerUI/AltarCard"]
-modulate = Color(0.9411765, 0.9372549, 1, 1)
-layout_mode = 2
+[node name="MessageLabelAltar" type="Label" parent="PlayerUI"]
+offset_left = 586.0
+offset_top = 608.0
+offset_right = 626.0
+offset_bottom = 621.0
+scale = Vector2(1.28, 1.28)
 label_settings = SubResource("LabelSettings_lbihj")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Layer3" type="CanvasLayer" parent="."]
 layer = 3
@@ -184,6 +158,7 @@ offset_bottom = 330.0
 scale = Vector2(1.18555, 1.18555)
 
 [node name="FadeRect" type="ColorRect" parent="Layer3"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

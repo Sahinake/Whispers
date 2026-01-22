@@ -10,7 +10,7 @@ extends Control
 
 @export var music_volume_db := 0.0  
 @export var water_volume_db := 2.0   
-@export var effects_volume_db := -10.0
+@export var effects_volume_db := -15.0
 
 var showing_controls := false
 var current_button : Button = null
@@ -51,13 +51,16 @@ func _ready():
 			b.focus_mode = Control.FOCUS_ALL
 			b.focus_entered.connect(Callable(self, "_on_button_focus").bind(b))
 			b.pressed.connect(_on_button_pressed)
+	
+	if GameState.skip_intro:
+		GameState.skip_intro = false
+		show_menu_directly()
+	else:
+		# áudio (pode começar antes)
+		setup_audio()
 
-	# áudio (pode começar antes)
-	setup_audio()
-
-	play_random_effect()
-
-	await play_intro()
+		play_random_effect()
+		await play_intro()
 
 	# MOSTRA TUDO DE UMA VEZ
 	canvas_layer.visible = true
@@ -97,7 +100,23 @@ func setup_audio():
 	if water.stream:
 		water.stream.loop = true
 		water.play()
-		
+
+func show_menu_directly():
+	intro_label.visible = false
+	menu_container.visible = true
+	set_initial_focus()
+
+func set_initial_focus():
+	if not menu_container.visible:
+		return
+
+	var buttons = menu_container.get_children()
+	for b in buttons:
+		if b is Button:
+			current_button = b
+			b.grab_focus()
+			break
+
 func play_intro():
 	intro_running = true
 
@@ -110,7 +129,7 @@ func play_intro():
 	await wait_or_skip(0.3)
 
 	# ===== MENSAGEM 2 =====
-	intro_label.text = "Whispers é apenas uma demo.\nA experiência completa ainda está por vir..."
+	intro_label.text = "Sussurros é apenas uma demo.\nA experiência completa ainda está por vir..."
 	await fade_in_label(1.0)
 	await wait_or_skip(2.5)
 	await fade_out_label(0.5)
@@ -213,7 +232,7 @@ func set_how_to_play_text():
 
 	[font_size=48]OBJETIVO DA DEMO[/font_size]
 	[font_size=22]
-	Encontrar três Runas e ativar o portal.
+	Coletar as 3 Runas e ativar o portal.
 	[/font_size]
 	[/center]
 	"""
@@ -227,6 +246,7 @@ func set_controls_text():
 	• Mouse – Olhar ao redor
 	• T – Ligar/Desligar a lanterna
 	• E – Interagir com objetos
+	• SHIFT - Correr
 	• ENTER – Interagir com Entradas/Saídas
 	• ESC – Pausar / Voltar
 	[/font_size][/left][/cell][/table]

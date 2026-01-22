@@ -41,5 +41,5 @@ func start_fade_to_menu():
 	tween.tween_callback(Callable(self, "_go_to_menu"))
 
 func _go_to_menu():
-	# Troca para a cena do menu principal
+	GameState.skip_intro = true
 	get_tree().change_scene_to_file("res://Scenes/Main.tscn")
