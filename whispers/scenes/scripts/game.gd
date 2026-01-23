@@ -10,6 +10,7 @@ extends Node2D
 @onready var breathing_player = $Layer2/Effects/Breathing
 @onready var heartbeat_player = $Layer2/Effects/Heartbeat
 @export var random_sounds : Array[AudioStream] = []
+var random_sounds_playing := true
 
 @export var water_volume_db := 3.0
 @export var effects_volume_db := -20.0
@@ -86,6 +87,7 @@ func load_level(path: String):
 	
 	# Desativa Bubbles e WaterShade se não for CT_map
 	if current_level_name != "CT_map":
+		random_sounds_playing = true
 		$Layer2/Bubbles.visible = true
 		$Layer2/WaterShade.visible = true
 		if current_level_name == "Atlantic_Map_Open":
@@ -94,6 +96,9 @@ func load_level(path: String):
 			start_sounds()
 		
 	else:
+		water.stop()
+		random_sounds_playing = false
+		effect_player.stop()
 		$Layer2/Bubbles.visible = false
 		$Layer2/WaterShade.visible = false
 		
@@ -111,7 +116,7 @@ func start_sounds():
 	play_random_effect()
 
 func play_random_effect():
-	if random_sounds.is_empty():
+	if random_sounds.is_empty() or not random_sounds_playing:
 		return
 
 	var sound = random_sounds[randi() % random_sounds.size()]

@@ -178,7 +178,32 @@ func _update_resources(delta):
 		# Recupera oxigênio e sanidade na base
 		oxygen = clamp(oxygen + 10 * delta, 0, 100)
 		sanity = clamp(sanity + 5 * delta, 0, 100)
+		
+		if flashlight_on:
+			# Se a lanterna está ligada → perde bateria
+			flashlight = clamp(flashlight - 1.0
+			 * delta, 0, 100)
 			
+			# Se acabar a bateria, desliga automaticamente
+			if flashlight <= 0.0:
+				flashlight = 0.0
+				flashlight_on = false
+				$Flashlight.enabled = false
+				light_polygon.disabled = true
+			else:
+				if flashlight <= flashlight_low_threshold:
+					# decrementa o tempo para a próxima mudança
+					next_blink_time -= delta
+					
+					if next_blink_time <= 0.0:
+						# sorteia uma nova intensidade aleatória entre 0.3 e 1.0
+						$Flashlight.energy = randf_range(0.3, 1.0)
+						# define o tempo até a próxima piscada (ex: entre 0.3 e 1.5 segundos)
+						next_blink_time = randf_range(0.3, 1.5)
+				else:
+					$Flashlight.energy = 1.0
+					# reseta o timer quando a bateria não está baixa
+					next_blink_time = 0.0
 	else:
 		# Oxigênio sempre diminui
 		var oxygen_decay = base_oxygen_decay

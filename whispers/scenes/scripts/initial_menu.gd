@@ -10,7 +10,7 @@ extends Control
 
 @export var music_volume_db := 0.0  
 @export var water_volume_db := 2.0   
-@export var effects_volume_db := -15.0
+@export var effects_volume_db := 10.0
 
 var showing_controls := false
 var current_button : Button = null
@@ -22,6 +22,7 @@ var intro_running := true
 # =========================
 @onready var canvas_layer : CanvasLayer = $CanvasLayer
 @onready var menu_container : VBoxContainer = $VBoxContainer
+@onready var config_container : VBoxContainer = $HowToPlayPanel/VBoxContainer
 @onready var fade_rect : ColorRect = $FadeOverlay
 @onready var intro_label : Label = $IntroLabel
 
@@ -34,8 +35,6 @@ func _ready():
 	# ESCONDE TUDO DO MENU
 	canvas_layer.visible = false
 	how_to_play_panel.visible = false
-	how_to_play_back_button.pressed.connect(_on_how_to_play_back)
-	how_to_play_back_button_controles.pressed.connect(_on_controls_button_pressed)
 	
 	fade_rect.visible = true
 	fade_rect.color = Color(0, 0, 0, 1)
@@ -51,6 +50,13 @@ func _ready():
 			b.focus_mode = Control.FOCUS_ALL
 			b.focus_entered.connect(Callable(self, "_on_button_focus").bind(b))
 			b.pressed.connect(_on_button_pressed)
+			
+	var buttons_config = config_container.get_children()
+	for bc in buttons_config:
+		if bc is Button:
+			bc.focus_mode = Control.FOCUS_ALL
+			bc.focus_entered.connect(Callable(self, "_on_button_focus").bind(bc))
+			bc.pressed.connect(_on_button_pressed)
 	
 	if GameState.skip_intro:
 		GameState.skip_intro = false
@@ -92,7 +98,7 @@ func setup_audio():
 	water.volume_db = water_volume_db
 	effect_player.volume_db = effects_volume_db
 	ui_sound.volume_db = effects_volume_db
-	select_sound.volume_db = effects_volume_db
+	select_sound.volume_db = -30.0
 
 	if music.stream:
 		music.stream.loop = true
@@ -193,6 +199,15 @@ func _on_button_pressed():
 		if select_sound.stream:
 			await get_tree().create_timer(select_sound.stream.get_length()).timeout
 		get_tree().quit()
+		
+	elif b == $HowToPlayPanel/VBoxContainer/Controles:
+		if select_sound.stream:
+				await get_tree().create_timer(select_sound.stream.get_length()).timeout
+		_on_controls_button_pressed()
+	elif b == $HowToPlayPanel/VBoxContainer/Voltar:
+		if select_sound.stream:
+			await get_tree().create_timer(select_sound.stream.get_length()).timeout
+		_on_how_to_play_back()
 
 func play_random_effect():
 	if random_sounds.is_empty():
@@ -216,8 +231,8 @@ func open_how_to_play():
 	how_to_play_label.autowrap_mode = TextServer.AUTOWRAP_WORD
 	how_to_play_back_button_controles.grab_focus()
 
-	if ui_sound and ui_sound.stream:
-		ui_sound.play()
+	if select_sound and select_sound.stream:
+		select_sound.play()
 
 func set_how_to_play_text():
 	how_to_play_label.text = """
@@ -254,9 +269,6 @@ func set_controls_text():
 	showing_controls = true
 
 func _on_controls_button_pressed():
-	if ui_sound and ui_sound.stream:
-		ui_sound.play()
-
 	if showing_controls:
 		set_how_to_play_text()
 		how_to_play_back_button_controles.text = "CONTROLES"
@@ -265,9 +277,6 @@ func _on_controls_button_pressed():
 		how_to_play_back_button_controles.text = "COMO JOGAR"
 
 func _on_how_to_play_back():
-	if select_sound and select_sound.stream:
-		select_sound.play()
-
 	how_to_play_panel.visible = false
 	menu_container.visible = true
 
