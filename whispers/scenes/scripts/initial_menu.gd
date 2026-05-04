@@ -49,6 +49,7 @@ func _ready():
 		if b is Button:
 			b.focus_mode = Control.FOCUS_ALL
 			b.focus_entered.connect(Callable(self, "_on_button_focus").bind(b))
+			b.mouse_entered.connect(Callable(self, "_on_button_mouse_entered").bind(b))
 			b.pressed.connect(_on_button_pressed)
 			
 	var buttons_config = config_container.get_children()
@@ -56,6 +57,7 @@ func _ready():
 		if bc is Button:
 			bc.focus_mode = Control.FOCUS_ALL
 			bc.focus_entered.connect(Callable(self, "_on_button_focus").bind(bc))
+			bc.mouse_entered.connect(Callable(self, "_on_button_mouse_entered").bind(bc))
 			bc.pressed.connect(_on_button_pressed)
 	
 	if GameState.skip_intro:
@@ -90,6 +92,14 @@ func _on_button_focus(button):
 		if ui_sound and ui_sound.stream:
 			ui_sound.play()
 
+func _on_button_mouse_entered(button):
+	if button != current_button:
+		current_button = button
+		button.grab_focus()
+		
+		if ui_sound and ui_sound.stream:
+			ui_sound.play()
+			
 # =========================
 # INTRO
 # =========================
@@ -147,12 +157,18 @@ func play_intro():
 # FADES
 # =========================
 func fade_in_menu(duration := 1.0):
+	fade_rect.mouse_filter = Control.MOUSE_FILTER_STOP
+	
 	var tween = create_tween()
 	tween.tween_property(fade_rect, "color:a", 0.0, duration)
 	await tween.finished
+	
+	fade_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 
 func fade_out_menu(duration := 1.0):
+	fade_rect.mouse_filter = Control.MOUSE_FILTER_STOP
+	
 	var tween = create_tween()
 	tween.tween_property(fade_rect, "color:a", 1.0, duration)
 	await tween.finished

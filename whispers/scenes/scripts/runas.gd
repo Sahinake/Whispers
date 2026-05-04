@@ -37,3 +37,9 @@ func collect(player):
 		player.ui.show_rune_icon()
 
 	queue_free()
+
+func reset():
+	# Ex: reposicionar a runa, ativar sprite e colisão novamente
+	visible = true
+	collision_layer = 1
+	collision_mask = 1

@@ -11,4 +11,5 @@ func _process(delta):
 		_hide_message()   # mata texto e tween
 		await get_tree().process_frame  # garante limpeza visual
 		var game = get_tree().current_scene
+		
 		game.load_level("res://Scenes/Levels/Level_One.tscn")

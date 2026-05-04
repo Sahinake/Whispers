@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhse2g6bs8dok"]
+[gd_scene load_steps=6 format=3 uid="uid://dhse2g6bs8dok"]
 
 [ext_resource type="Script" uid="uid://brfxsy0e05ubr" path="res://Scenes/Scripts/runas.gd" id="1_qtbr1"]
 [ext_resource type="Texture2D" uid="uid://du7v6voleg3go" path="res://Assets/Runa.png" id="2_1rcmp"]
+[ext_resource type="Texture2D" uid="uid://bp00idohjrobd" path="res://Assets/Tiles/Flashlight/light.jpg" id="3_1rcmp"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1rcmp"]
 light_mode = 2
@@ -21,4 +22,7 @@ texture = ExtResource("2_1rcmp")
 shape = SubResource("CircleShape2D_30tc5")
 
 [node name="RuneLight" type="PointLight2D" parent="."]
-energy = 0.1
+color = Color(0.13224114, 0.24007049, 0.34789982, 1)
+energy = 0.3
+texture = ExtResource("3_1rcmp")
+texture_scale = 0.3

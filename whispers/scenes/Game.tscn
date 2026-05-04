@@ -195,11 +195,3 @@ color = Color(0, 0, 0, 1)
 position = Vector2(366, 370)
 zoom = Vector2(0.9, 0.9)
 limit_smoothed = true
-
-[node name="RuneSpawnPoints" type="Node2D" parent="."]
-
-[node name="SpawnPoint1" type="Node2D" parent="RuneSpawnPoints"]
-
-[node name="SpawnPoint2" type="Node2D" parent="RuneSpawnPoints"]
-
-[node name="SpawnPoint3" type="Node2D" parent="RuneSpawnPoints"]

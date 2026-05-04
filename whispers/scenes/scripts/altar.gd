@@ -54,8 +54,6 @@ func try_activate(player):
 	await get_tree().create_timer(0.6).timeout
 	interaction_locked = false
 
-
-
 func _play_if_exists(anim_name: String):
 	
 	if sprite.sprite_frames.has_animation(anim_name):
@@ -99,3 +97,9 @@ func _adjust_label_position():
 	# canto inferior direito com margem
 	message_label.position.x = viewport_size.x - max_width - screen_margin
 	message_label.position.y = viewport_size.y - message_label.size.y - screen_margin
+
+func reset():
+	GameState.deposited_runes = 0
+	GameState.altar_activated = false
+	# Troca sprite para estado inicial
+	sprite.frame = 0
