@@ -155,8 +155,8 @@ func _input(event):
 			# coleta runa especial
 			elif body.is_in_group("runas"):
 				body.collect(self)
-				has_rune = true
 				break
+
 			elif body.is_in_group("altar"):
 				body.try_activate(self)
 				break
@@ -179,9 +179,31 @@ func _update_resources(delta):
 		oxygen = clamp(oxygen + 10 * delta, 0, 100)
 		sanity = clamp(sanity + 5 * delta, 0, 100)
 		
-		if has_rune:
-			is_game_over = true
+		if flashlight_on:
+			# Se a lanterna está ligada → perde bateria
+			flashlight = clamp(flashlight - 1.0
+			 * delta, 0, 100)
 			
+			# Se acabar a bateria, desliga automaticamente
+			if flashlight <= 0.0:
+				flashlight = 0.0
+				flashlight_on = false
+				$Flashlight.enabled = false
+				light_polygon.disabled = true
+			else:
+				if flashlight <= flashlight_low_threshold:
+					# decrementa o tempo para a próxima mudança
+					next_blink_time -= delta
+					
+					if next_blink_time <= 0.0:
+						# sorteia uma nova intensidade aleatória entre 0.3 e 1.0
+						$Flashlight.energy = randf_range(0.3, 1.0)
+						# define o tempo até a próxima piscada (ex: entre 0.3 e 1.5 segundos)
+						next_blink_time = randf_range(0.3, 1.5)
+				else:
+					$Flashlight.energy = 1.0
+					# reseta o timer quando a bateria não está baixa
+					next_blink_time = 0.0
 	else:
 		# Oxigênio sempre diminui
 		var oxygen_decay = base_oxygen_decay
@@ -199,7 +221,8 @@ func _update_resources(delta):
 	
 		if flashlight_on:
 			# Se a lanterna está ligada → perde bateria
-			flashlight = clamp(flashlight - 0.5 * delta, 0, 100)
+			flashlight = clamp(flashlight - 1.0
+			 * delta, 0, 100)
 			
 			# Se acabar a bateria, desliga automaticamente
 			if flashlight <= 0.0:
@@ -274,3 +297,8 @@ func _reset_player_variables():
 	sprite.play()
 	$Flashlight.enabled = true
 	$Flashlight/FlashlightArea/FlashlightPolygon.disabled = false
+
+func deliver_rune():
+	has_rune = false
+	if ui:
+		ui.hide_rune_icon()

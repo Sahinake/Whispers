@@ -19,3 +19,6 @@ func update_ui(oxygen: float, sanity: float, flashlight: float) -> void:
 
 func show_rune_icon():
 	rune_icon.visible = true
+
+func hide_rune_icon():
+	rune_icon.visible = false

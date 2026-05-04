@@ -10,6 +10,7 @@ extends Node2D
 @onready var breathing_player = $Layer2/Effects/Breathing
 @onready var heartbeat_player = $Layer2/Effects/Heartbeat
 @export var random_sounds : Array[AudioStream] = []
+var random_sounds_playing := true
 
 @export var water_volume_db := 3.0
 @export var effects_volume_db := -20.0
@@ -78,30 +79,58 @@ func load_level(path: String):
 	current_level_name = path.get_file().get_basename()  # ex: "CT_map"
 	
 	# Posiciona o player no ponto inicial (se houver um marcador na fase)
-	var spawn = find_spawn(scene)
+	var spawn: Node2D = null
+
+	# Se veio do Level_One e está indo para CT_map, spawn no SpawnPoint2
+	if GameState.last_level_name == "Level_One" and path.get_file().get_basename() == "CT_map":
+		spawn = find_spawn_by_name(scene, "SpawnPoint2")
+	else:
+		spawn = find_spawn(scene)
+
 	if spawn:
 		player.global_position = spawn.global_position
 	else:
 		player.global_position = Vector2.ZERO
-	
+
+	# Atualiza o último nível no GameState
+	GameState.last_level_name = current_level_name
+
 	# Desativa Bubbles e WaterShade se não for CT_map
 	if current_level_name != "CT_map":
+		random_sounds_playing = true
 		$Layer2/Bubbles.visible = true
 		$Layer2/WaterShade.visible = true
 		if current_level_name == "Atlantic_Map_Open":
 			start_sounds()
 		elif current_level_name == "Level_One":
+			var bubbles_node = $Layer2/Bubbles
+			if bubbles_node:
+				bubbles_node.visible = (current_level_name == "Level_One")
+
 			start_sounds()
 		
 	else:
+		water.stop()
+		random_sounds_playing = false
+		effect_player.stop()
 		$Layer2/Bubbles.visible = false
 		$Layer2/WaterShade.visible = false
+		
 		
 	# Fade in
 	var tween_in = create_tween()
 	tween_in.tween_property(fade_rect, "modulate:a", 0.0, 0.8)
 	await tween_in.finished
-		
+
+func find_spawn_by_name(node: Node, name: String) -> Node2D:
+	if node.name == name:
+		return node
+	for child in node.get_children():
+		var result = find_spawn_by_name(child, name)
+		if result:
+			return result
+	return null
+	
 func start_sounds():	
 	# habilita loop no player
 	if water.stream:
@@ -111,7 +140,7 @@ func start_sounds():
 	play_random_effect()
 
 func play_random_effect():
-	if random_sounds.is_empty():
+	if random_sounds.is_empty() or not random_sounds_playing:
 		return
 
 	var sound = random_sounds[randi() % random_sounds.size()]
@@ -167,8 +196,6 @@ func open_inventory():
 	# Pausa o Jogo
 	pause_node_tree($Layer1/Level)
 	pause_node_tree($Layer1/Player)
-	pause_node_tree($Layer2/Bubbles)
-	pause_node_tree($Layer2/Bubbles/BubbleSpawner)
 	pause_node_tree($Layer2/WaterShade)
 
 	# Mostra o fundo escuro e o inventário

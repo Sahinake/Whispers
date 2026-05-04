@@ -40,6 +40,21 @@ func start_fade_to_menu():
 	tween.tween_property(fade_rect, "color:a", 1.0, fade_duration)
 	tween.tween_callback(Callable(self, "_go_to_menu"))
 
+func reset_runes_and_altar():
+	# Reseta runas no mapa
+	for runa in get_tree().get_nodes_in_group("runas"):
+		if runa.has_method("reset"):
+			runa.reset()  # cada runa pode ter seu método de reset
+		else:
+			runa.queue_free()  # se não tiver reset, apenas remove
+	
+	# Reset no altar
+	var altars = get_tree().get_nodes_in_group("altar")
+	for altar in altars:
+		if altar.has_method("reset"):
+			altar.reset()
+
 func _go_to_menu():
-	# Troca para a cena do menu principal
+	GameState.skip_intro = true
+	GameState.reset_game_state()
 	get_tree().change_scene_to_file("res://Scenes/Main.tscn")

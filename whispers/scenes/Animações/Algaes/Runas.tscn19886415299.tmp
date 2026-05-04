@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://dhse2g6bs8dok"]
+
+[ext_resource type="Script" uid="uid://brfxsy0e05ubr" path="res://Scenes/Scripts/runas.gd" id="1_qtbr1"]
+[ext_resource type="Texture2D" uid="uid://du7v6voleg3go" path="res://Assets/Runa.png" id="2_1rcmp"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qtbr1"]
+light_mode = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_30tc5"]
+radius = 58.420887
+
+[sub_resource type="Gradient" id="Gradient_qtbr1"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1rcmp"]
+gradient = SubResource("Gradient_qtbr1")
+
+[node name="Runa" type="Area2D" groups=["runas"]]
+script = ExtResource("1_qtbr1")
+
+[node name="Runa" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_qtbr1")
+scale = Vector2(1.8984374, 1.8984374)
+texture = ExtResource("2_1rcmp")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["runas"]]
+shape = SubResource("CircleShape2D_30tc5")
+
+[node name="RuneLight" type="PointLight2D" parent="Area2D"]
+energy = 0.1
+texture = SubResource("GradientTexture2D_1rcmp")
